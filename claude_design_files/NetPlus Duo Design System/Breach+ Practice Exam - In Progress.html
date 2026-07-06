@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<title>Breach+ — Practice Exam · In Progress</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #111; }
+.phone {
+  position: absolute;
+  width: 375px;
+  height: 812px;
+  overflow: hidden;
+  border: 1px solid #181818;
+}
+.phone-scroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+.phone-scroll::-webkit-scrollbar { display: none; }
+.row-label {
+  position: absolute;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  color: #383838;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  border-top: 1px solid #222;
+  padding-top: 9px;
+  width: 375px;
+}
+</style>
+<link rel="stylesheet" href="breach-mockup-desktop.css">
+</head>
+<body class="canvas-triple" style="--canvas-width: 1335px;">
+<div class="design-canvas" style="position:relative;width:1335px;min-height:980px;">
+
+<!-- Canvas header -->
+<div style="position:absolute;top:44px;left:80px;font-family:'DM Sans',sans-serif;">
+  <div style="font-size:0.8125rem;font-weight:700;letter-spacing:3px;color:#555;text-transform:uppercase;">Direction D</div>
+  <div style="font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px;margin-top:4px;">Breach+</div>
+  <div style="font-size:12px;color:#888888;margin-top:4px;line-height:1.5;">Screen 08b — Practice Exam · In Progress</div>
+</div>
+
+<!-- Screen A: Default state (question unanswered) -->
+<div class="row-label" style="top:140px;left:80px;">State A — Question unanswered</div>
+
+<div class="phone" style="left:80px;top:163px;background:#000;font-family:'JetBrains Mono',monospace;">
+<div class="phone-scroll">
+
+  <!-- Exam topbar: timer + question counter -->
+  <div style="display:flex;align-items:stretch;justify-content:space-between;border-bottom:1px solid #1a0000;background:#030000;">
+
+    <!-- Timer -->
+    <div style="padding:10px 14px;border-right:1px solid #1a0000;display:flex;flex-direction:column;gap:2px;">
+      <div style="font-size:0.6875rem;color:#dc3535;letter-spacing:2.5px;">// TIME LEFT</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#dc3535;line-height:1;letter-spacing:2px;">67<span style="font-size:20px;color:#7a1515;">:</span>43</div>
+    </div>
+
+    <!-- Center: question position + progress line -->
+    <div style="flex:1;padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;">
+        <span style="font-size:0.6875rem;color:#2a2a2a;letter-spacing:2px;">// QUESTION</span>
+        <span style="font-size:0.6875rem;color:#333;letter-spacing:2px;">90 TOTAL</span>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#fff;line-height:1;letter-spacing:1px;">23<span style="font-size:16px;color:#333;letter-spacing:0px;">/90</span></div>
+      <!-- Progress tick strip -->
+      <div style="display:flex;gap:1px;align-items:center;margin-top:6px;">
+        <!-- answered correct (dim white) -->
+        <div style="height:3px;flex:22;background:#2a2a2a;"></div>
+        <!-- current -->
+        <div style="height:3px;width:4px;flex-shrink:0;background:#dc3535;"></div>
+        <!-- remaining -->
+        <div style="height:3px;flex:67;background:#111;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:3px;">
+        <span style="font-size:0.6875rem;color:#2a2a2a;letter-spacing:1.5px;">22 ANSWERED</span>
+        <span style="font-size:0.6875rem;color:#333;letter-spacing:1.5px;">67 LEFT</span>
+      </div>
+    </div>
+
+    <!-- Flag / exit -->
+    <div style="padding:10px 12px;border-left:1px solid #1a0000;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;">
+      <span style="font-size:0.6875rem;color:#2a2a2a;letter-spacing:2px;">// FLAG</span>
+      <div style="font-size:16px;color:#2a2a2a;letter-spacing:1px;">⚑</div>
+      <span style="font-size:0.6875rem;color:#1a1a1a;letter-spacing:1.5px;">REVIEW</span>
+    </div>
+
+  </div>
+
+  <!-- Domain badge -->
+  <div style="padding:8px 16px;border-bottom:1px solid #0d0d0d;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:#dc3535;letter-spacing:1px;">D2</span>
+      <div style="width:1px;height:10px;background:#1a1a1a;"></div>
+      <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:2px;text-transform:uppercase;">Network Implementation</span>
+    </div>
+    <span style="font-size:0.6875rem;color:#222;letter-spacing:2px;">// SINGLE SELECT</span>
+  </div>
+
+  <!-- Question text -->
+  <div style="padding:20px 16px 16px;">
+    <div style="font-size:14px;color:#e8e8e8;line-height:1.65;letter-spacing:0.3px;text-transform:uppercase;">
+      A network technician is configuring a small office with multiple VLANs. The switch port connecting to the router must carry traffic for all VLANs simultaneously. Which port type should be configured?
+    </div>
+  </div>
+
+  <!-- Answer options -->
+  <div style="padding:0 16px;display:flex;flex-direction:column;gap:0;">
+
+    <div style="padding:14px 0;border-top:1px solid #111;display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#888;line-height:1;flex-shrink:0;padding-top:1px;">A</span>
+      <span style="font-size:11px;color:#c0c0c0;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;">Access port assigned to a single VLAN</span>
+    </div>
+
+    <div style="padding:14px 0;border-top:1px solid #111;display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#888;line-height:1;flex-shrink:0;padding-top:1px;">B</span>
+      <span style="font-size:11px;color:#c0c0c0;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;">Trunk port using 802.1Q tagging</span>
+    </div>
+
+    <div style="padding:14px 0;border-top:1px solid #111;display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#888;line-height:1;flex-shrink:0;padding-top:1px;">C</span>
+      <span style="font-size:11px;color:#c0c0c0;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;">Port mirroring to span all VLAN traffic</span>
+    </div>
+
+    <div style="padding:14px 0;border-top:1px solid #111;border-bottom:1px solid #111;display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#888;line-height:1;flex-shrink:0;padding-top:1px;">D</span>
+      <span style="font-size:11px;color:#c0c0c0;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;">Native VLAN port with no tagging</span>
+    </div>
+
+  </div>
+
+  <!-- Nav -->
+  <div style="padding:16px 16px 0;display:flex;align-items:center;gap:0;">
+    <button style="flex:1;padding:14px;background:transparent;border:1px solid #1a1a1a;color:#2a2a2a;font-family:'JetBrains Mono',monospace;font-size:0.8125rem;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;border-right:none;">[ ← PREV ]</button>
+    <button style="flex:2;padding:14px;background:#111;border:1px solid #1e1e1e;color:#333;font-family:'JetBrains Mono',monospace;font-size:0.8125rem;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;">[ NEXT → ]</button>
+  </div>
+
+  <!-- Question map hint -->
+  <div style="padding:14px 16px 24px;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-size:0.6875rem;color:#1e1e1e;letter-spacing:2px;">// SELECT AN ANSWER TO CONTINUE</span>
+    <span style="font-size:0.6875rem;color:#1a1a1a;letter-spacing:2px;">MAP ↓</span>
+  </div>
+
+</div>
+</div>
+
+<!-- Screen B: Option selected (pre-submit) -->
+<div class="row-label" style="top:140px;left:520px;">State B — Option selected</div>
+
+<div class="phone" style="left:520px;top:163px;background:#000;font-family:'JetBrains Mono',monospace;">
+<div class="phone-scroll">
+
+  <!-- Topbar -->
+  <div style="display:flex;align-items:stretch;justify-content:space-between;border-bottom:1px solid #1a0000;background:#030000;">
+    <div style="padding:10px 14px;border-right:1px solid #1a0000;display:flex;flex-direction:column;gap:2px;">
+      <div style="font-size:0.6875rem;color:#dc3535;letter-spacing:2.5px;">// TIME LEFT</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#dc3535;line-height:1;letter-spacing:2px;">67<span style="font-size:20px;color:#7a1515;">:</span>41</div>
+    </div>
+    <div style="flex:1;padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;">
+        <span style="font-size:0.6875rem;color:#2a2a2a;letter-spacing:2px;">// QUESTION</span>
+        <span style="font-size:0.6875rem;color:#333;letter-spacing:2px;">90 TOTAL</span>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#fff;line-height:1;letter-spacing:1px;">23<span style="font-size:16px;color:#333;letter-spacing:0px;">/90</span></div>
+      <div style="display:flex;gap:1px;align-items:center;margin-top:6px;">
+        <div style="height:3px;flex:22;background:#2a2a2a;"></div>
+        <div style="height:3px;width:4px;flex-shrink:0;background:#dc3535;"></div>
+        <div style="height:3px;flex:67;background:#111;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:3px;">
+        <span style="font-size:0.6875rem;color:#2a2a2a;letter-spacing:1.5px;">22 ANSWERED</span>
+        <span style="font-size:0.6875rem;color:#333;letter-spacing:1.5px;">67 LEFT</span>
+      </div>
+    </div>
+    <div style="padding:10px 12px;border-left:1px solid #1a0000;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;">
+      <span style="font-size:0.6875rem;color:#2a2a2a;letter-spacing:2px;">// FLAG</span>
+      <div style="font-size:16px;color:#2a2a2a;letter-spacing:1px;">⚑</div>
+      <span style="font-size:0.6875rem;color:#1a1a1a;letter-spacing:1.5px;">REVIEW</span>
+    </div>
+  </div>
+
+  <!-- Domain badge -->
+  <div style="padding:8px 16px;border-bottom:1px solid #0d0d0d;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:#dc3535;letter-spacing:1px;">D2</span>
+      <div style="width:1px;height:10px;background:#1a1a1a;"></div>
+      <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:2px;text-transform:uppercase;">Network Implementation</span>
+    </div>
+    <span style="font-size:0.6875rem;color:#222;letter-spacing:2px;">// SINGLE SELECT</span>
+  </div>
+
+  <!-- Question -->
+  <div style="padding:20px 16px 16px;">
+    <div style="font-size:14px;color:#e8e8e8;line-height:1.65;letter-spacing:0.3px;text-transform:uppercase;">
+      A network technician is configuring a small office with multiple VLANs. The switch port connecting to the router must carry traffic for all VLANs simultaneously. Which port type should be configured?
+    </div>
+  </div>
+
+  <!-- Options — B selected -->
+  <div style="padding:0 16px;display:flex;flex-direction:column;gap:0;">
+
+    <div style="padding:14px 0;border-top:1px solid #111;display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#888;line-height:1;flex-shrink:0;padding-top:1px;">A</span>
+      <span style="font-size:11px;color:#c0c0c0;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;">Access port assigned to a single VLAN</span>
+    </div>
+
+    <!-- Selected: B -->
+    <div style="padding:14px 0;border-top:1px solid #dc3535;border-bottom:1px solid #dc3535;display:flex;align-items:flex-start;gap:12px;cursor:pointer;background:#0a0000;margin:0 -16px;padding-left:16px;padding-right:16px;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#dc3535;line-height:1;flex-shrink:0;padding-top:1px;">B</span>
+      <span style="font-size:11px;color:#dc3535;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;">Trunk port using 802.1Q tagging</span>
+    </div>
+
+    <div style="padding:14px 0;border-top:1px solid #111;display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#888;line-height:1;flex-shrink:0;padding-top:1px;">C</span>
+      <span style="font-size:11px;color:#c0c0c0;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;">Port mirroring to span all VLAN traffic</span>
+    </div>
+
+    <div style="padding:14px 0;border-top:1px solid #111;border-bottom:1px solid #111;display:flex;align-items:flex-start;gap:12px;cursor:pointer;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#888;line-height:1;flex-shrink:0;padding-top:1px;">D</span>
+      <span style="font-size:11px;color:#c0c0c0;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;">Native VLAN port with no tagging</span>
+    </div>
+
+  </div>
+
+  <!-- Confirm CTA — active once selected -->
+  <div style="padding:16px 16px 0;">
+    <button style="width:100%;padding:18px;background:#dc3535;border:none;color:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:2.5px;cursor:pointer;text-transform:uppercase;">[ CONFIRM → ]</button>
+  </div>
+  <div style="padding:10px 16px 24px;display:flex;align-items:center;gap:0;">
+    <button style="flex:1;padding:12px;background:transparent;border:1px solid #1a1a1a;color:#2a2a2a;font-family:'JetBrains Mono',monospace;font-size:0.8125rem;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;border-right:none;">[ ← PREV ]</button>
+    <button style="flex:1;padding:12px;background:transparent;border:1px solid #1a1a1a;color:#2a2a2a;font-family:'JetBrains Mono',monospace;font-size:0.8125rem;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;">[ FLAG ⚑ ]</button>
+  </div>
+
+</div>
+</div>
+
+<!-- Screen C: Timer warning (<10 min) -->
+<div class="row-label" style="top:140px;left:960px;">State C — Timer warning · answer locked in</div>
+
+<div class="phone" style="left:960px;top:163px;background:#000;font-family:'JetBrains Mono',monospace;">
+<div class="phone-scroll">
+
+  <!-- Topbar: timer critical -->
+  <div style="display:flex;align-items:stretch;justify-content:space-between;border-bottom:1px solid #3a0000;background:#0a0000;">
+    <div style="padding:10px 14px;border-right:1px solid #3a0000;display:flex;flex-direction:column;gap:2px;">
+      <div style="font-size:0.6875rem;color:#dc3535;letter-spacing:2.5px;">// TIME LEFT</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#dc3535;line-height:1;letter-spacing:2px;">08<span style="font-size:20px;color:#7a1515;">:</span>14</div>
+    </div>
+    <div style="flex:1;padding:10px 12px;display:flex;flex-direction:column;justify-content:space-between;">
+      <div style="display:flex;align-items:baseline;justify-content:space-between;">
+        <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:2px;">// QUESTION</span>
+        <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:2px;">// 8 FLAGGED</span>
+      </div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:36px;color:#fff;line-height:1;letter-spacing:1px;">71<span style="font-size:16px;color:#333;letter-spacing:0px;">/90</span></div>
+      <div style="display:flex;gap:1px;align-items:center;margin-top:6px;">
+        <div style="height:3px;flex:70;background:#2a2a2a;"></div>
+        <div style="height:3px;width:4px;flex-shrink:0;background:#dc3535;"></div>
+        <div style="height:3px;flex:19;background:#111;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:3px;">
+        <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:1.5px;">70 ANSWERED</span>
+        <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:1.5px;">19 LEFT</span>
+      </div>
+    </div>
+    <div style="padding:10px 12px;border-left:1px solid #3a0000;display:flex;flex-direction:column;justify-content:space-between;align-items:flex-end;">
+      <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:2px;">// FLAG</span>
+      <div style="font-size:16px;color:#dc3535;letter-spacing:1px;">⚑</div>
+      <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:1.5px;">8 MARKED</span>
+    </div>
+  </div>
+
+  <!-- Time warning bar -->
+  <div style="padding:7px 16px;border-bottom:1px solid #2a0000;background:#050000;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:2.5px;">// WARNING — UNDER 10 MINUTES</span>
+    <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:2px;">19 UNANSWERED</span>
+  </div>
+
+  <!-- Domain badge -->
+  <div style="padding:8px 16px;border-bottom:1px solid #0d0d0d;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;align-items:center;gap:8px;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:12px;color:#888;letter-spacing:1px;">D3</span>
+      <div style="width:1px;height:10px;background:#1a1a1a;"></div>
+      <span style="font-size:0.6875rem;color:#888888;letter-spacing:2px;text-transform:uppercase;">Network Operations</span>
+    </div>
+    <span style="font-size:0.6875rem;color:#222;letter-spacing:2px;">// SINGLE SELECT</span>
+  </div>
+
+  <!-- Question -->
+  <div style="padding:20px 16px 16px;">
+    <div style="font-size:14px;color:#e8e8e8;line-height:1.65;letter-spacing:0.3px;text-transform:uppercase;">
+      Which protocol uses UDP port 161 and is commonly used for network device monitoring and management?
+    </div>
+  </div>
+
+  <!-- Options — C selected (locked in) -->
+  <div style="padding:0 16px;display:flex;flex-direction:column;gap:0;">
+
+    <div style="padding:14px 0;border-top:1px solid #111;display:flex;align-items:flex-start;gap:12px;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#888;line-height:1;flex-shrink:0;padding-top:1px;">A</span>
+      <span style="font-size:11px;color:#c0c0c0;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;">Syslog</span>
+    </div>
+
+    <div style="padding:14px 0;border-top:1px solid #111;display:flex;align-items:flex-start;gap:12px;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#888;line-height:1;flex-shrink:0;padding-top:1px;">B</span>
+      <span style="font-size:11px;color:#c0c0c0;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;">NetFlow</span>
+    </div>
+
+    <!-- Selected: C — locked in -->
+    <div style="padding:14px 0;border-top:1px solid #dc3535;border-bottom:1px solid #dc3535;display:flex;align-items:flex-start;gap:12px;background:#0a0000;margin:0 -16px;padding-left:16px;padding-right:16px;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#dc3535;line-height:1;flex-shrink:0;padding-top:1px;">C</span>
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <span style="font-size:11px;color:#dc3535;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;">SNMP</span>
+        <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:1.5px;">// CONFIRMED</span>
+      </div>
+    </div>
+
+    <div style="padding:14px 0;border-top:1px solid #111;border-bottom:1px solid #111;display:flex;align-items:flex-start;gap:12px;">
+      <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#888;line-height:1;flex-shrink:0;padding-top:1px;">D</span>
+      <span style="font-size:11px;color:#c0c0c0;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;">ICMP</span>
+    </div>
+
+  </div>
+
+  <!-- Nav: next is active since answer confirmed -->
+  <div style="padding:16px 16px 0;display:flex;align-items:center;gap:0;">
+    <button style="flex:1;padding:14px;background:transparent;border:1px solid #1a1a1a;color:#2a2a2a;font-family:'JetBrains Mono',monospace;font-size:0.8125rem;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;border-right:none;">[ ← PREV ]</button>
+    <button style="flex:2;padding:14px;background:#dc3535;border:1px solid #dc3535;color:#fff;font-family:'JetBrains Mono',monospace;font-size:0.8125rem;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;">[ NEXT → ]</button>
+  </div>
+  <div style="padding:10px 16px 24px;">
+    <button style="width:100%;padding:12px;background:transparent;border:1px solid #1a0000;color:#dc3535;font-family:'JetBrains Mono',monospace;font-size:0.8125rem;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;">[ VIEW QUESTION MAP ]</button>
+  </div>
+
+</div>
+</div>
+
+<!-- Canvas footer label -->
+<div style="position:absolute;top:1020px;left:80px;font-family:'DM Sans',sans-serif;font-size:0.8125rem;color:#2a2a2a;letter-spacing:2px;text-transform:uppercase;">
+  State A — No selection &nbsp;&nbsp;·&nbsp;&nbsp; State B — Option selected, awaiting confirm &nbsp;&nbsp;·&nbsp;&nbsp; State C — Confirmed, timer critical (&lt;10 min)
+</div>
+
+</div>
+</body>
+</html>

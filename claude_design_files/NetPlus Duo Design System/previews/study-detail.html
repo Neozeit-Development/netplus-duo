@@ -1,0 +1,72 @@
+<!-- @dsCard group="Study Guide" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Study Guide — Objective Detail</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-stat">🔥 <span>12</span></div>
+  <div class="header-stat"><span>♥♥♥♥♡</span></div>
+  <div class="header-stat">Level <span>4</span></div>
+  <div class="header-stat">XP: <span>40</span>/<span>100</span></div>
+</header>
+
+<main id="app-root">
+  <section id="screen-study-detail" class="screen">
+    <p class="study-breadcrumb">Networking Concepts</p>
+    <h2>1.1 The Seven Layers</h2>
+    <p class="app-subtitle">The OSI model, encapsulation, and how data moves layer by layer.</p>
+
+    <div class="study-items">
+      <div class="study-card study-card-table">
+        <h3 class="study-card-title">OSI Model — All 7 Layers</h3>
+        <table class="study-table">
+          <thead>
+            <tr><th>Layer #</th><th>Name</th><th>PDU</th><th>Key Protocols / Devices</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>7</td><td>Application</td><td>Data</td><td>HTTP, HTTPS, FTP, SSH, DNS, SMTP, SNMP, Telnet</td></tr>
+            <tr><td>4</td><td>Transport</td><td>Segment / Datagram</td><td>TCP (reliable), UDP (fast) — port numbers live here</td></tr>
+            <tr><td>3</td><td>Network</td><td>Packet</td><td>IP, ICMP, OSPF, BGP — Router operates here</td></tr>
+            <tr><td>2</td><td>Data Link</td><td>Frame</td><td>Ethernet, 802.11 Wi-Fi, ARP — Switch / MAC addresses</td></tr>
+            <tr><td>1</td><td>Physical</td><td>Bit</td><td>Hubs, cables, repeaters, NICs — raw electrical/optical signals</td></tr>
+          </tbody>
+        </table>
+        <ul class="study-key-points">
+          <li>Router = Layer 3.  Switch = Layer 2.  Hub = Layer 1.</li>
+          <li>TCP/UDP port numbers live at Layer 4.</li>
+        </ul>
+      </div>
+
+      <div class="study-card study-card-mnemonic">
+        <h3 class="study-card-title">OSI Mnemonic</h3>
+        <p class="study-card-body">Please  Do  Not  Throw  Sausage  Pizza  Away
+  7        6     5      4       3         2        1
+
+(Reversed — bottom to top: All People Seem To Need Data Processing)</p>
+        <ul class="study-key-points">
+          <li>Top-down (app to wire): Please Do Not Throw Sausage Pizza Away</li>
+          <li>Bottom-up (wire to app): All People Seem To Need Data Processing</li>
+        </ul>
+      </div>
+
+      <div class="study-card study-card-concept">
+        <h3 class="study-card-title">Encapsulation &amp; PDU Names</h3>
+        <p class="study-card-body">When data travels DOWN the OSI stack, each layer ADDS a header (and sometimes a trailer). This is encapsulation.</p>
+        <ul class="study-key-points">
+          <li>Data → Segment → Packet → Frame → Bits (DSPFB)</li>
+          <li>De-encapsulation: reverse process on the receiving end.</li>
+        </ul>
+      </div>
+    </div>
+
+    <button class="btn btn-secondary btn-lg">Back to Objectives</button>
+  </section>
+</main>
+
+</body>
+</html>

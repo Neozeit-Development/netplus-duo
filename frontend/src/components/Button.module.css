@@ -1,0 +1,52 @@
+.btn {
+  display: block;
+  font-family: var(--font-body);
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  border-radius: var(--radius);
+  transition: background var(--motion), color var(--motion), border-color var(--motion);
+}
+
+.full {
+  width: 100%;
+}
+
+.primary {
+  background: var(--signal-red);
+  color: var(--paper-white);
+  padding: 17px 20px;
+}
+
+.primary:hover:not(:disabled) {
+  background: var(--signal-red-hover);
+}
+
+.primary:active:not(:disabled) {
+  background: var(--signal-red-active);
+}
+
+.primary:disabled {
+  background: var(--ink-700);
+  color: var(--ink-500);
+  cursor: not-allowed;
+}
+
+.ghost {
+  background: transparent;
+  color: var(--ink-300);
+  border: 1px solid var(--hairline-strong);
+  padding: 13px 16px;
+}
+
+.ghost:hover:not(:disabled) {
+  background: var(--surface-raised);
+  color: var(--ink-200);
+}
+
+.ghost:disabled {
+  border-color: var(--ink-900);
+  color: var(--ink-700);
+  cursor: not-allowed;
+}

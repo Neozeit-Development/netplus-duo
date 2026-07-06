@@ -1,0 +1,115 @@
+.sidebar {
+  display: none;
+}
+
+@media (min-width: 900px) {
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    width: 260px;
+    flex-shrink: 0;
+    min-height: 100dvh;
+    background: var(--surface-sunken);
+    border-right: 1px solid var(--hairline-strong);
+    padding: var(--space-xl) var(--space-lg);
+  }
+
+  .brand {
+    padding-bottom: var(--space-xl);
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: var(--space-lg);
+  }
+
+  .brandCaption {
+    font-size: var(--text-label);
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--ink-500);
+    margin-bottom: var(--space-xs);
+  }
+
+  .wordmark {
+    font-family: var(--font-display);
+    font-size: 2rem;
+    letter-spacing: 0.04em;
+    color: var(--paper-white);
+    line-height: 1;
+  }
+
+  .operator {
+    margin-top: var(--space-sm);
+    font-size: var(--text-label);
+    color: var(--ink-300);
+    letter-spacing: 0.12em;
+  }
+
+  .nav {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 2px;
+  }
+
+  .navLink {
+    display: block;
+    padding: 11px var(--space-md);
+    font-size: var(--text-label);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--ink-500);
+    border: 1px solid transparent;
+    transition: background var(--motion), color var(--motion), border-color var(--motion);
+  }
+
+  .navLink:hover {
+    background: var(--surface-raised);
+    color: var(--ink-200);
+  }
+
+  .navLinkActive {
+    color: var(--signal-red);
+    background: var(--surface-sunken-red);
+    border-color: var(--hairline-strong);
+  }
+
+  .status {
+    margin-top: auto;
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .statusRow {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-md);
+  }
+
+  .statusLabel {
+    font-size: var(--text-label);
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    color: var(--ink-500);
+    display: block;
+    margin-bottom: 2px;
+  }
+
+  .hearts {
+    color: var(--signal-red);
+    font-size: 0.75rem;
+    letter-spacing: 1px;
+  }
+
+  .statusGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-sm);
+  }
+
+  .statusValue {
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    color: var(--ink-100);
+    line-height: 1;
+  }
+}

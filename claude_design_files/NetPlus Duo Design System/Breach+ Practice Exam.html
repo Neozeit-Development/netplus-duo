@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<title>Breach+ — Practice Exam</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #111; }
+.phone {
+  position: absolute;
+  width: 375px;
+  height: 812px;
+  overflow: hidden;
+  border: 1px solid #181818;
+}
+.phone-scroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+.phone-scroll::-webkit-scrollbar { display: none; }
+.row-label {
+  position: absolute;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  color: #383838;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  border-top: 1px solid #222;
+  padding-top: 9px;
+  width: 375px;
+}
+</style>
+<link rel="stylesheet" href="breach-mockup-desktop.css">
+</head>
+<body class="canvas-single" style="--canvas-width: 535px;">
+<div class="design-canvas" style="position:relative;width:535px;min-height:980px;">
+
+<!-- Canvas header -->
+<div style="position:absolute;top:44px;left:80px;font-family:'DM Sans',sans-serif;">
+  <div style="font-size:0.8125rem;font-weight:700;letter-spacing:3px;color:#555;text-transform:uppercase;">Direction D</div>
+  <div style="font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px;margin-top:4px;">Breach+</div>
+  <div style="font-size:12px;color:#888888;margin-top:4px;line-height:1.5;">Screen 08 — Practice Exam · Intro</div>
+</div>
+
+<div class="row-label" style="top:140px;left:80px;">Screen 08 — Practice Exam · Intro</div>
+
+<div class="phone" style="left:80px;top:163px;background:#000;font-family:'JetBrains Mono',monospace;">
+<div class="phone-scroll">
+
+  <!-- Status bar -->
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:12px;color:#dc3535;letter-spacing:1px;">♥♥♥♥♡</span>
+    <span style="font-size:0.8125rem;color:#3a3a3a;letter-spacing:2px;">ZONE 02 · LESSON 3</span>
+    <span style="font-size:0.875rem;color:#333;">// 🔥 13</span>
+  </div>
+
+  <!-- Mode header -->
+  <div style="padding:0 16px;border-bottom:1px solid #1a0000;background:#060000;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 0 0;">
+      <span style="font-size:0.75rem;color:#dc3535;letter-spacing:2.5px;">// EXAM MODE</span>
+      <span style="font-size:0.75rem;color:#2a2a2a;letter-spacing:2px;">← BACK</span>
+    </div>
+    <div style="padding:8px 0 0;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:62px;color:#dc3535;line-height:0.88;letter-spacing:1px;">PRACTICE<br>EXAM</div>
+      <div style="margin-top:10px;display:flex;align-items:center;justify-content:space-between;">
+        <span style="font-size:0.75rem;color:#dc3535;letter-spacing:1.5px;">COMPTIA N10-009</span>
+        <span style="font-size:0.75rem;color:#2a0000;letter-spacing:2px;">SIMULATION</span>
+      </div>
+    </div>
+    <!-- Readiness bar -->
+    <div style="margin-top:10px;padding-bottom:14px;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+        <span style="font-size:0.6875rem;color:#2a0000;letter-spacing:2px;">// READINESS</span>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:14px;color:#dc3535;letter-spacing:1px;">68<span style="font-size:0.8125rem;color:#dc3535;">%</span></span>
+      </div>
+      <div style="height:1px;background:#1a0000;position:relative;">
+        <div style="position:absolute;top:0;left:0;height:1px;width:68%;background:#dc3535;"></div>
+      </div>
+      <div style="display:flex;justify-content:space-between;margin-top:4px;">
+        <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:1.5px;">// NOT YET EXAM-READY</span>
+        <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:1.5px;">720 TO PASS</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Exam parameters -->
+  <div style="padding:22px 16px 10px;border-bottom:1px solid #0d0d0d;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;">
+
+    <div style="padding-right:10px;border-right:1px solid #0d0d0d;">
+      <div style="font-size:0.6875rem;color:#888888;letter-spacing:2px;margin-bottom:5px;">// QUESTIONS</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:#fff;line-height:1;letter-spacing:1px;">90</div>
+    </div>
+
+    <div style="padding:0 10px;border-right:1px solid #0d0d0d;">
+      <div style="font-size:0.6875rem;color:#888888;letter-spacing:2px;margin-bottom:5px;">// TIME LIMIT</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:#fff;line-height:1;letter-spacing:1px;">90<span style="font-size:18px;color:#555;">MIN</span></div>
+    </div>
+
+    <div style="padding-left:10px;">
+      <div style="font-size:0.6875rem;color:#888888;letter-spacing:2px;margin-bottom:5px;">// PASS SCORE</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:#dc3535;line-height:1;letter-spacing:1px;">720<span style="font-size:18px;color:#dc3535;">/900</span></div>
+    </div>
+
+  </div>
+
+  <!-- Domain coverage header -->
+  <div style="padding:22px 16px 8px;border-bottom:1px solid #0d0d0d;">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:0.75rem;color:#888888;letter-spacing:2.5px;">// DOMAIN COVERAGE</span>
+      <span style="font-size:0.6875rem;color:#2a2a2a;letter-spacing:2px;">YOUR MASTERY</span>
+    </div>
+  </div>
+
+  <!-- Domain 1 -->
+  <div style="padding:11px 16px;border-bottom:1px solid #0d0d0d;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+      <div style="display:flex;align-items:baseline;gap:8px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#3a3a3a;line-height:1;">D1</span>
+        <span style="font-size:0.75rem;color:#555;letter-spacing:0.5px;text-transform:uppercase;">Networking Concepts</span>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:6px;flex-shrink:0;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#888;line-height:1;">74<span style="font-size:0.875rem;color:#888888;">%</span></span>
+        <span style="font-size:0.6875rem;color:#222;letter-spacing:1.5px;">23%</span>
+      </div>
+    </div>
+    <div style="height:1px;background:#111;position:relative;">
+      <div style="position:absolute;top:0;left:0;height:1px;width:74%;background:#555;"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:4px;">
+      <span style="font-size:0.6875rem;color:#2a2a2a;letter-spacing:1.5px;">// 21 OBJECTIVES</span>
+      <span style="font-size:0.6875rem;color:#333;letter-spacing:1.5px;">EXAM WEIGHT</span>
+    </div>
+  </div>
+
+  <!-- Domain 2 -->
+  <div style="padding:11px 16px;border-bottom:1px solid #0d0d0d;background:#060000;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+      <div style="display:flex;align-items:baseline;gap:8px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#dc3535;line-height:1;">D2</span>
+        <span style="font-size:0.75rem;color:#dc3535;letter-spacing:0.5px;text-transform:uppercase;">Network Implementation</span>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:6px;flex-shrink:0;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#dc3535;line-height:1;">62<span style="font-size:0.875rem;color:#dc3535;">%</span></span>
+        <span style="font-size:0.6875rem;color:#3a0000;letter-spacing:1.5px;">20%</span>
+      </div>
+    </div>
+    <div style="height:1px;background:#1a0000;position:relative;">
+      <div style="position:absolute;top:0;left:0;height:1px;width:62%;background:#dc3535;"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:4px;">
+      <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:1.5px;">// 18 OBJECTIVES · ACTIVE ZONE</span>
+      <span style="font-size:0.6875rem;color:#3a0000;letter-spacing:1.5px;">EXAM WEIGHT</span>
+    </div>
+  </div>
+
+  <!-- Domain 3 -->
+  <div style="padding:11px 16px;border-bottom:1px solid #0d0d0d;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:6px;">
+      <div style="display:flex;align-items:baseline;gap:8px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#2a2a2a;line-height:1;">D3</span>
+        <span style="font-size:0.75rem;color:#888888;letter-spacing:0.5px;text-transform:uppercase;">Network Operations</span>
+      </div>
+      <div style="display:flex;align-items:baseline;gap:6px;flex-shrink:0;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#555;line-height:1;">31<span style="font-size:0.875rem;color:#2a2a2a;">%</span></span>
+        <span style="font-size:0.6875rem;color:#1e1e1e;letter-spacing:1.5px;">17%</span>
+      </div>
+    </div>
+    <div style="height:1px;background:#0d0d0d;position:relative;">
+      <div style="position:absolute;top:0;left:0;height:1px;width:31%;background:#333;"></div>
+    </div>
+    <div style="display:flex;justify-content:space-between;margin-top:4px;">
+      <span style="font-size:0.6875rem;color:#222;letter-spacing:1.5px;">// 15 OBJECTIVES · LOCKED</span>
+      <span style="font-size:0.6875rem;color:#222;letter-spacing:1.5px;">EXAM WEIGHT</span>
+    </div>
+  </div>
+
+  <!-- Domains 4-5: both genuinely locked (0%, no data yet) — one compact row instead of two full ones -->
+  <div style="padding:9px 16px;border-bottom:1px solid #0d0d0d;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-size:0.75rem;color:#2a2a2a;letter-spacing:0.5px;text-transform:uppercase;">D4 · Network Security &nbsp;/&nbsp; D5 · Troubleshooting</span>
+    <span style="font-size:0.6875rem;color:#1a1a1a;letter-spacing:1.5px;">// LOCKED · 40% COMBINED WEIGHT</span>
+  </div>
+
+  <!-- Exam rules -->
+  <div style="padding:22px 16px 11px;border-bottom:1px solid #0d0d0d;background:#050505;">
+    <div style="font-size:0.6875rem;color:#333;letter-spacing:2.5px;margin-bottom:7px;">// EXAM CONDITIONS</div>
+    <div style="display:flex;flex-direction:column;gap:5px;">
+      <div style="display:flex;align-items:flex-start;gap:9px;">
+        <div style="width:1px;background:#1a1a1a;flex-shrink:0;margin-top:2px;align-self:stretch;"></div>
+        <span style="font-size:0.75rem;color:#888888;letter-spacing:0.5px;line-height:1.7;text-transform:uppercase;">Timer runs continuously. No pause once started.</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:9px;">
+        <div style="width:1px;background:#1a1a1a;flex-shrink:0;margin-top:2px;align-self:stretch;"></div>
+        <span style="font-size:0.75rem;color:#888888;letter-spacing:0.5px;line-height:1.7;text-transform:uppercase;">Questions cannot be skipped. Flag for review only.</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:9px;">
+        <div style="width:1px;background:#1a1a1a;flex-shrink:0;margin-top:2px;align-self:stretch;"></div>
+        <span style="font-size:0.75rem;color:#888888;letter-spacing:0.5px;line-height:1.7;text-transform:uppercase;"><span style="color:#777;">Lives suspended.</span> No XP penalty per question. Score calculated on completion.</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:9px;">
+        <div style="width:1px;background:#1a1a1a;flex-shrink:0;margin-top:2px;align-self:stretch;"></div>
+        <span style="font-size:0.75rem;color:#888888;letter-spacing:0.5px;line-height:1.7;text-transform:uppercase;">Weighted toward domains with lowest mastery.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- XP reward -->
+  <div style="padding:11px 16px;border-bottom:1px solid #0d0d0d;display:flex;align-items:center;justify-content:space-between;">
+    <div>
+      <div style="font-size:0.6875rem;color:#333;letter-spacing:2.5px;margin-bottom:4px;">// COMPLETION REWARD</div>
+      <div style="font-size:0.75rem;color:#888888;letter-spacing:0.5px;text-transform:uppercase;">Pass threshold + all flagged reviewed</div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#888888;line-height:1;">+500 <span style="font-size:14px;color:#2a2a2a;">XP</span></div>
+      <div style="font-size:0.6875rem;color:#dc3535;letter-spacing:1.5px;">// +250 PASS BONUS</div>
+    </div>
+  </div>
+
+  <!-- Warning callout -->
+  <div style="margin:22px 16px 0;padding:10px 12px;border:1px solid #1a0000;background:#030000;">
+    <div style="font-size:0.6875rem;color:#dc3535;letter-spacing:2px;margin-bottom:5px;">// READINESS WARNING</div>
+    <div style="font-size:0.75rem;color:#dc3535;letter-spacing:0.5px;line-height:1.6;text-transform:uppercase;">D3–D5 not yet studied. Exam questions will include these domains. Expect lower score until zones unlock.</div>
+  </div>
+
+  <!-- CTAs -->
+  <div style="padding:12px 16px 0;">
+    <button style="width:100%;padding:18px;background:#dc3535;border:none;color:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:2.5px;cursor:pointer;text-transform:uppercase;">[ BEGIN EXAM → ]</button>
+  </div>
+  <div style="padding:10px 16px 28px;display:flex;align-items:center;gap:0;">
+    <button style="flex:1;padding:13px;background:transparent;border:1px solid #1a1a1a;color:#333;font-family:'JetBrains Mono',monospace;font-size:0.8125rem;font-weight:600;letter-spacing:2px;cursor:pointer;text-transform:uppercase;border-right:none;">[ REVIEW DOMAINS ]</button>
+    <button style="flex:1;padding:13px;background:transparent;border:1px solid #1a1a1a;color:#333;font-family:'JetBrains Mono',monospace;font-size:0.8125rem;font-weight:600;letter-spacing:2px;cursor:pointer;text-transform:uppercase;">[ SCHEDULE LATER ]</button>
+  </div>
+
+</div><!-- phone-scroll -->
+</div><!-- phone -->
+
+</div>
+</body>
+</html>

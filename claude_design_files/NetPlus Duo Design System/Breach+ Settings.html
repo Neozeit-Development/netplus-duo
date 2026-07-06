@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<title>Breach+ — Settings</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #111; }
+.phone {
+  position: absolute;
+  width: 375px;
+  height: 812px;
+  overflow: hidden;
+  border: 1px solid #181818;
+}
+.row-label {
+  position: absolute;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  color: #383838;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  border-top: 1px solid #222;
+  padding-top: 9px;
+  width: 375px;
+}
+</style>
+<link rel="stylesheet" href="breach-mockup-desktop.css">
+</head>
+<body class="canvas-single" style="--canvas-width: 535px;">
+<div class="design-canvas" style="position:relative;width:535px;min-height:980px;">
+
+<!-- Header -->
+<div style="position:absolute;top:44px;left:80px;font-family:'DM Sans',sans-serif;">
+  <div style="font-size:0.8125rem;font-weight:700;letter-spacing:3px;color:#555;text-transform:uppercase;">Direction D</div>
+  <div style="font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px;margin-top:4px;">Breach+</div>
+  <div style="font-size:12px;color:#888888;margin-top:4px;line-height:1.5;">Screen 07 — Settings</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- Screen 07 — Settings                              -->
+<!-- ══════════════════════════════════════════════════ -->
+
+<div class="row-label" style="top:140px;left:80px;">Screen 07 — Settings</div>
+
+<div class="phone" style="left:80px;top:163px;background:#000;font-family:'JetBrains Mono',monospace;">
+
+  <!-- Status bar -->
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:0.875rem;color:#333;letter-spacing:1px;cursor:pointer;">&lt; BACK</span>
+    <span style="font-size:0.8125rem;color:#3a3a3a;letter-spacing:2px;">SETTINGS</span>
+    <span style="font-size:0.875rem;color:#0a0a0a;letter-spacing:1px;">·····</span>
+  </div>
+
+  <!-- Operator identity block -->
+  <div style="padding:20px 16px 0;">
+    <div style="font-size:0.75rem;color:#888888;letter-spacing:2.5px;margin-bottom:12px;">// OPERATOR IDENTITY</div>
+    <div style="display:flex;align-items:center;gap:14px;">
+      <!-- Avatar: monogram square -->
+      <div style="width:52px;height:52px;background:#0d0d0d;border:1px solid #1e1e1e;display:flex;align-items:center;justify-content:center;flex-shrink:0;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:30px;color:#dc3535;line-height:1;">JR</span>
+      </div>
+      <div>
+        <div style="font-size:14px;font-weight:700;color:#e0e0e0;letter-spacing:0.5px;text-transform:uppercase;">J. REYES</div>
+        <div style="font-size:0.75rem;color:#888888;letter-spacing:1.5px;margin-top:3px;">j.reyes@email.com</div>
+        <div style="display:flex;align-items:center;gap:6px;margin-top:5px;">
+          <span style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:#dc3535;line-height:1;">L04</span>
+          <span style="font-size:0.75rem;color:#333;letter-spacing:2px;">// NETWORK TECH II</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Red divider -->
+  <div style="height:1px;background:#dc3535;margin:16px 16px 0;"></div>
+
+  <!-- ── TRAINING ── -->
+  <div style="padding:14px 16px 0;">
+    <div style="font-size:0.75rem;color:#dc3535;letter-spacing:2.5px;margin-bottom:12px;">// TRAINING</div>
+
+    <!-- Daily goal -->
+    <div style="border-bottom:1px solid #0d0d0d;padding-bottom:13px;margin-bottom:0;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+        <div>
+          <div style="font-size:0.8125rem;font-weight:700;color:#c0c0c0;letter-spacing:0.5px;text-transform:uppercase;">Daily Goal</div>
+          <div style="font-size:0.75rem;color:#888888;letter-spacing:1.5px;margin-top:2px;">// QUESTIONS PER SESSION</div>
+        </div>
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#dc3535;line-height:1;">10</span>
+      </div>
+      <!-- Segmented selector -->
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;border:1px solid #1e1e1e;">
+        <div style="padding:8px 0;text-align:center;border-right:1px solid #1e1e1e;">
+          <span style="font-size:0.8125rem;color:#333;letter-spacing:1px;">05</span>
+        </div>
+        <div style="padding:8px 0;text-align:center;border-right:1px solid #1e1e1e;background:#1a0000;">
+          <span style="font-size:0.8125rem;color:#dc3535;letter-spacing:1px;">10</span>
+        </div>
+        <div style="padding:8px 0;text-align:center;border-right:1px solid #1e1e1e;">
+          <span style="font-size:0.8125rem;color:#333;letter-spacing:1px;">20</span>
+        </div>
+        <div style="padding:8px 0;text-align:center;">
+          <span style="font-size:0.8125rem;color:#333;letter-spacing:1px;">30</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Difficulty -->
+    <div style="border-bottom:1px solid #0d0d0d;padding:13px 0;">
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+        <div>
+          <div style="font-size:0.8125rem;font-weight:700;color:#c0c0c0;letter-spacing:0.5px;text-transform:uppercase;">Difficulty</div>
+          <div style="font-size:0.75rem;color:#888888;letter-spacing:1.5px;margin-top:2px;">// QUESTION WEIGHTING</div>
+        </div>
+        <span style="font-size:0.75rem;color:#dc3535;letter-spacing:2px;">STANDARD</span>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;border:1px solid #1e1e1e;">
+        <div style="padding:8px 0;text-align:center;border-right:1px solid #1e1e1e;">
+          <span style="font-size:0.75rem;color:#333;letter-spacing:1px;">EASY</span>
+        </div>
+        <div style="padding:8px 0;text-align:center;border-right:1px solid #1e1e1e;background:#1a0000;">
+          <span style="font-size:0.75rem;color:#dc3535;letter-spacing:1px;">STANDARD</span>
+        </div>
+        <div style="padding:8px 0;text-align:center;">
+          <span style="font-size:0.75rem;color:#333;letter-spacing:1px;">HARD</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Exam mode toggle -->
+    <div style="border-bottom:1px solid #0d0d0d;padding:13px 0;display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-size:0.8125rem;font-weight:700;color:#c0c0c0;letter-spacing:0.5px;text-transform:uppercase;">Exam Mode</div>
+        <div style="font-size:0.75rem;color:#888888;letter-spacing:1.5px;margin-top:2px;">// HIDE ANSWER EXPLANATIONS</div>
+      </div>
+      <!-- Toggle: off -->
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:0.75rem;color:#888;letter-spacing:1px;">OFF</span>
+        <div style="width:36px;height:14px;border:1px solid #1e1e1e;position:relative;background:#0a0a0a;">
+          <div style="position:absolute;top:2px;left:2px;width:8px;height:8px;background:#2a2a2a;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── NOTIFICATIONS ── -->
+  <div style="padding:14px 16px 0;">
+    <div style="font-size:0.75rem;color:#888888;letter-spacing:2.5px;margin-bottom:12px;">// NOTIFICATIONS</div>
+
+    <!-- Daily reminder -->
+    <div style="border-bottom:1px solid #0d0d0d;padding-bottom:13px;display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-size:0.8125rem;font-weight:700;color:#c0c0c0;letter-spacing:0.5px;text-transform:uppercase;">Daily Reminder</div>
+        <div style="font-size:0.75rem;color:#dc3535;letter-spacing:1.5px;margin-top:2px;">// 19:00 · EVERY DAY</div>
+      </div>
+      <!-- Toggle: on -->
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:0.75rem;color:#dc3535;letter-spacing:1px;">ON</span>
+        <div style="width:36px;height:14px;border:1px solid #dc3535;position:relative;background:#1a0000;">
+          <div style="position:absolute;top:2px;right:2px;width:8px;height:8px;background:#dc3535;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Streak alert -->
+    <div style="border-bottom:1px solid #0d0d0d;padding:13px 0;display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-size:0.8125rem;font-weight:700;color:#c0c0c0;letter-spacing:0.5px;text-transform:uppercase;">Streak Alert</div>
+        <div style="font-size:0.75rem;color:#888888;letter-spacing:1.5px;margin-top:2px;">// WARN BEFORE STREAK BREAKS</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:0.75rem;color:#dc3535;letter-spacing:1px;">ON</span>
+        <div style="width:36px;height:14px;border:1px solid #dc3535;position:relative;background:#1a0000;">
+          <div style="position:absolute;top:2px;right:2px;width:8px;height:8px;background:#dc3535;"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sound -->
+    <div style="border-bottom:1px solid #0d0d0d;padding:13px 0;display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-size:0.8125rem;font-weight:700;color:#c0c0c0;letter-spacing:0.5px;text-transform:uppercase;">Sound Effects</div>
+        <div style="font-size:0.75rem;color:#888;letter-spacing:1.5px;margin-top:2px;">// MUTED</div>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:0.75rem;color:#888;letter-spacing:1px;">OFF</span>
+        <div style="width:36px;height:14px;border:1px solid #1e1e1e;position:relative;background:#0a0a0a;">
+          <div style="position:absolute;top:2px;left:2px;width:8px;height:8px;background:#2a2a2a;"></div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- ── ACCOUNT ── -->
+  <div style="padding:14px 16px 0;">
+    <div style="font-size:0.75rem;color:#888888;letter-spacing:2.5px;margin-bottom:12px;">// ACCOUNT</div>
+
+    <!-- Cert track -->
+    <div style="border-bottom:1px solid #0d0d0d;padding-bottom:13px;display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-size:0.8125rem;font-weight:700;color:#c0c0c0;letter-spacing:0.5px;text-transform:uppercase;">Cert Track</div>
+        <div style="font-size:0.75rem;color:#dc3535;letter-spacing:1.5px;margin-top:2px;">// COMPTIA NETWORK+</div>
+      </div>
+      <span style="font-size:0.75rem;color:#333;letter-spacing:1px;">CHANGE ›</span>
+    </div>
+
+    <!-- Reset progress -->
+    <div style="border-bottom:1px solid #0d0d0d;padding:13px 0;display:flex;align-items:center;justify-content:space-between;">
+      <div>
+        <div style="font-size:0.8125rem;font-weight:700;color:#dc3535;letter-spacing:0.5px;text-transform:uppercase;">Reset Progress</div>
+        <div style="font-size:0.75rem;color:#3a1010;letter-spacing:1.5px;margin-top:2px;">// WIPE ALL XP · IRREVERSIBLE</div>
+      </div>
+      <span style="font-size:0.75rem;color:#dc3535;letter-spacing:1px;">RESET ›</span>
+    </div>
+
+  </div>
+
+  <!-- Logout CTA -->
+  <div style="padding:16px 16px 0;">
+    <button style="width:100%;padding:17px;background:transparent;border:1px solid #1e1e1e;color:#333;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;">[ LOG OUT ]</button>
+  </div>
+
+  <!-- Version stamp -->
+  <div style="padding:14px 16px 0;text-align:center;">
+    <span style="font-size:0.75rem;color:#1a1a1a;letter-spacing:2px;">// BREACH+ v2.1.0 · BUILD 441</span>
+  </div>
+
+</div>
+
+</div>
+</body>
+</html>

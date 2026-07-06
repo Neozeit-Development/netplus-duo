@@ -1,0 +1,1227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="design_doc_mode" content="canvas">
+<title>NetPlus — 3 Design Directions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Space+Grotesk:wght@400;500;600;700&family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #111; }
+.phone {
+  position: absolute;
+  width: 375px;
+  height: 630px;
+  overflow: hidden;
+  border-radius: 22px;
+  box-shadow: 0 12px 50px rgba(0,0,0,0.7);
+}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════ COLUMN HEADERS ═══════════════════════════ -->
+
+<!-- Option D -->
+<div style="position:absolute;top:44px;left:1451px;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:#555;text-transform:uppercase;">Option D</div>
+<div style="position:absolute;top:62px;left:1451px;font-family:'DM Sans',sans-serif;font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px;">Breach+</div>
+<div style="position:absolute;top:98px;left:1451px;font-family:'DM Sans',sans-serif;font-size:12px;color:#444;max-width:300px;line-height:1.5;">C's editorial scale + A's monospace chrome. Stark and bold, but everything readable.</div>
+
+<!-- Option A -->
+<div style="position:absolute;top:44px;left:80px;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:#555;text-transform:uppercase;">Option A</div>
+<div style="position:absolute;top:62px;left:80px;font-family:'DM Sans',sans-serif;font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px;">Terminal</div>
+<div style="position:absolute;top:98px;left:80px;font-family:'DM Sans',sans-serif;font-size:12px;color:#444;max-width:300px;line-height:1.5;">Monospace, pure black, neon red. Every screen feels like you're <em style="color:#555;">inside</em> the network.</div>
+
+<!-- Option B -->
+<div style="position:absolute;top:44px;left:537px;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:#555;text-transform:uppercase;">Option B</div>
+<div style="position:absolute;top:62px;left:537px;font-family:'DM Sans',sans-serif;font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px;">Nexus</div>
+<div style="position:absolute;top:98px;left:537px;font-family:'DM Sans',sans-serif;font-size:12px;color:#444;max-width:300px;line-height:1.5;">Space Grotesk, dark navy, red glow. Polished and premium — feels like a real cert platform.</div>
+
+<!-- Option C -->
+<div style="position:absolute;top:44px;left:994px;font-family:'DM Sans',sans-serif;font-size:9px;font-weight:700;letter-spacing:3px;color:#555;text-transform:uppercase;">Option C</div>
+<div style="position:absolute;top:62px;left:994px;font-family:'DM Sans',sans-serif;font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px;">Breach</div>
+<div style="position:absolute;top:98px;left:994px;font-family:'DM Sans',sans-serif;font-size:12px;color:#444;max-width:300px;line-height:1.5;">Bebas Neue, pure black, stark red. Editorial, bold — designed to command attention.</div>
+
+<!-- ═══════════════════════════ ROW LABELS ═══════════════════════════════ -->
+
+<div style="position:absolute;top:155px;left:80px;width:1290px;border-top:1px solid #222;padding-top:9px;">
+  <span style="font-family:'DM Sans',sans-serif;font-size:9px;color:#383838;letter-spacing:2.5px;text-transform:uppercase;">Screen 01 — Home / Mission Select</span>
+</div>
+
+<div style="position:absolute;top:875px;left:80px;width:1290px;border-top:1px solid #222;padding-top:9px;">
+  <span style="font-family:'DM Sans',sans-serif;font-size:9px;color:#383838;letter-spacing:2.5px;text-transform:uppercase;">Screen 02 — Teaching Card (bite-sized, one concept at a time)</span>
+</div>
+
+<div style="position:absolute;top:1595px;left:80px;width:1290px;border-top:1px solid #222;padding-top:9px;">
+  <span style="font-family:'DM Sans',sans-serif;font-size:9px;color:#383838;letter-spacing:2.5px;text-transform:uppercase;">Screen 03 — New Question Types</span>
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--              DIRECTION A — TERMINAL         -->
+<!-- ════════════════════════════════════════════ -->
+
+<!-- A · Home -->
+<div class="phone" style="left:80px;top:178px;background:#080808;font-family:'JetBrains Mono',monospace;border:1px solid #1c1c1c;">
+
+  <div style="background:#050505;border-bottom:1px solid #141414;padding:9px 14px;display:flex;gap:14px;align-items:center;font-size:11px;color:#444;">
+    <span style="color:#cc1515;letter-spacing:1px;font-size:12px;">♥♥♥♥♡</span>
+    <span>// 🔥 12</span>
+    <span>// L4</span>
+    <span style="margin-left:auto;color:#2e2e2e;font-size:10px;">XP 40/100</span>
+  </div>
+
+  <div style="padding:16px 15px 0;">
+    <div style="font-size:20px;font-weight:800;color:#ff1e1e;letter-spacing:-0.5px;">&gt; NETPLUS_DUO<span style="opacity:0.5;">_</span></div>
+    <div style="font-size:8px;color:#2e2e2e;margin-top:3px;letter-spacing:2.5px;">NETWORK+ CERT TRAINER v2.0</div>
+  </div>
+
+  <div style="margin:12px 15px;position:relative;border-top:1px solid #1a1a1a;">
+    <span style="position:absolute;top:-7px;background:#080808;padding-right:8px;font-size:8px;color:#2e2e2e;letter-spacing:2px;">MISSION_SELECT</span>
+  </div>
+
+  <div style="padding:2px 15px;display:flex;flex-direction:column;gap:6px;">
+
+    <div style="padding:9px 11px;background:#0d0d0d;border:1px solid #191919;border-radius:4px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+        <span style="font-size:8px;color:#3a3a3a;">01 //</span>
+        <span style="font-size:8px;color:#2a5a2a;">73% ✓</span>
+      </div>
+      <div style="font-size:11px;color:#777;font-weight:700;margin-bottom:3px;">NETWORKING CONCEPTS</div>
+      <div style="font-size:7px;color:#1e4a1e;letter-spacing:0.5px;">████████████░░░░</div>
+    </div>
+
+    <div style="padding:10px 11px;background:#110000;border:1px solid #cc1515;border-radius:4px;position:relative;">
+      <div style="position:absolute;right:9px;top:8px;font-size:7px;color:#cc1515;border:1px solid #cc1515;border-radius:2px;padding:1px 4px;letter-spacing:1px;">RESUME</div>
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+        <span style="font-size:8px;color:#cc1515;">02 //</span>
+        <span style="font-size:8px;color:#cc1515;">48%</span>
+      </div>
+      <div style="font-size:12px;color:#ff4444;font-weight:800;margin-bottom:3px;">NETWORK IMPLEMENTATION</div>
+      <div style="font-size:7px;color:#991111;letter-spacing:0.5px;">████████░░░░░░░░</div>
+    </div>
+
+    <div style="padding:9px 11px;background:#0d0d0d;border:1px solid #191919;border-radius:4px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:3px;">
+        <span style="font-size:8px;color:#3a3a3a;">03 //</span>
+        <span style="font-size:8px;color:#3a3a3a;">22%</span>
+      </div>
+      <div style="font-size:11px;color:#555;font-weight:700;margin-bottom:3px;">NETWORK OPERATIONS</div>
+      <div style="font-size:7px;color:#282828;letter-spacing:0.5px;">███░░░░░░░░░░░░░</div>
+    </div>
+
+    <div style="padding:7px 11px;background:#090909;border:1px solid #131313;border-radius:4px;opacity:0.4;">
+      <div style="font-size:8px;color:#2e2e2e;margin-bottom:2px;">04 // NETWORK SECURITY</div>
+      <div style="font-size:7px;color:#181818;letter-spacing:0.5px;">░░░░░░░░░░░░░░░░</div>
+    </div>
+
+    <div style="padding:7px 11px;background:#090909;border:1px solid #131313;border-radius:4px;opacity:0.35;">
+      <div style="font-size:8px;color:#2e2e2e;margin-bottom:2px;">05 // TROUBLESHOOTING</div>
+      <div style="font-size:7px;color:#181818;letter-spacing:0.5px;">░░░░░░░░░░░░░░░░</div>
+    </div>
+
+  </div>
+
+  <div style="padding:12px 15px 0;">
+    <button style="width:100%;padding:13px;background:transparent;border:1px solid #cc1515;color:#cc1515;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;cursor:pointer;border-radius:3px;text-transform:uppercase;">[ RESUME MISSION 02 → ]</button>
+  </div>
+
+</div>
+
+<!-- A · Teaching Card -->
+<div class="phone" style="left:80px;top:898px;background:#080808;font-family:'JetBrains Mono',monospace;border:1px solid #1c1c1c;">
+
+  <div style="background:#050505;border-bottom:1px solid #141414;padding:9px 14px;display:flex;align-items:center;justify-content:space-between;font-size:10px;color:#3a3a3a;">
+    <span style="cursor:pointer;color:#282828;">&lt; BACK</span>
+    <span>CARD 02 / 05</span>
+    <span style="color:#cc1515;">NET IMPL</span>
+  </div>
+
+  <div style="display:flex;gap:5px;padding:12px 15px 0;justify-content:center;">
+    <div style="width:28px;height:2px;background:#1e4a1e;border-radius:1px;"></div>
+    <div style="width:28px;height:2px;background:#cc1515;border-radius:1px;"></div>
+    <div style="width:28px;height:2px;background:#1a1a1a;border-radius:1px;"></div>
+    <div style="width:28px;height:2px;background:#1a1a1a;border-radius:1px;"></div>
+    <div style="width:28px;height:2px;background:#1a1a1a;border-radius:1px;"></div>
+  </div>
+
+  <div style="padding:18px 15px 0;display:flex;flex-direction:column;gap:13px;">
+
+    <span style="font-size:7px;color:#cc1515;border:1px solid #cc1515;padding:2px 6px;border-radius:2px;letter-spacing:2px;display:inline-block;">TERM</span>
+
+    <div>
+      <div style="font-size:34px;font-weight:800;color:#fff;line-height:1;letter-spacing:-1px;">LAYER 3</div>
+      <div style="font-size:13px;color:#ff4444;font-weight:700;margin-top:3px;">Network Layer</div>
+    </div>
+
+    <div style="position:relative;border-top:1px solid #1a1a1a;">
+      <span style="position:absolute;top:-7px;background:#080808;padding-right:8px;font-size:7px;color:#2e2e2e;letter-spacing:2px;">// DEFINITION</span>
+    </div>
+
+    <p style="font-size:12px;color:#888;line-height:1.75;margin:0;">Routes packets between networks using IP addresses. Makes hop-by-hop decisions — doesn't track individual connections.</p>
+
+    <div style="background:#110000;border-left:2px solid #cc1515;padding:10px 12px;border-radius:0 3px 3px 0;">
+      <div style="font-size:7px;color:#cc1515;letter-spacing:2px;margin-bottom:5px;">// WHY IT MATTERS</div>
+      <p style="font-size:11px;color:#7a3030;line-height:1.65;margin:0;">Every web request crosses multiple L3 routers. IP addresses only exist at this layer — not at Layer 2.</p>
+    </div>
+
+    <div style="background:#0d0d0d;border-left:2px solid #252525;padding:10px 12px;border-radius:0 3px 3px 0;">
+      <div style="font-size:7px;color:#2e2e2e;letter-spacing:2px;margin-bottom:4px;">// ANALOGY</div>
+      <p style="font-size:11px;color:#4a4a4a;line-height:1.6;margin:0;font-style:italic;">Post office routing between cities. Layer 2 is your local carrier walking to your door.</p>
+    </div>
+
+  </div>
+
+  <div style="padding:14px 15px 0;">
+    <button style="width:100%;padding:13px;background:#cc1515;border:none;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:2px;cursor:pointer;border-radius:3px;">[ NEXT CARD → ]</button>
+  </div>
+
+</div>
+
+<!-- A · Question — True / False -->
+<div class="phone" style="left:80px;top:1618px;background:#080808;font-family:'JetBrains Mono',monospace;border:1px solid #1c1c1c;">
+
+  <div style="background:#050505;border-bottom:1px solid #141414;padding:9px 14px;display:flex;align-items:center;justify-content:space-between;font-size:11px;">
+    <span style="color:#cc1515;letter-spacing:1px;">♥♥♥♥♡</span>
+    <span style="color:#4a4a4a;">Q 04 / 10</span>
+    <span style="color:#3a3a3a;font-size:10px;">STK 12 🔥</span>
+  </div>
+
+  <div style="height:2px;background:#111;">
+    <div style="height:2px;width:40%;background:#cc1515;"></div>
+  </div>
+
+  <div style="padding:18px 15px 0;">
+    <span style="font-size:7px;color:#3a3a3a;border:1px solid #1f1f1f;padding:2px 7px;border-radius:2px;letter-spacing:2px;">TRUE / FALSE</span>
+  </div>
+
+  <div style="padding:14px 15px 0;">
+    <p style="font-size:15px;color:#d0d0d0;font-weight:700;line-height:1.55;border-left:2px solid #cc1515;padding-left:13px;">"A switch operates at OSI Layer 2 and uses MAC addresses to forward frames."</p>
+  </div>
+
+  <div style="padding:10px 15px 0;">
+    <p style="font-size:10px;color:#2e2e2e;line-height:1.5;font-style:italic;">// Does a switch read IP or MAC addresses?</p>
+  </div>
+
+  <div style="padding:22px 15px;display:flex;flex-direction:column;gap:10px;">
+    <button style="padding:24px;background:#081408;border:1px solid #1a401a;color:#3a8a3a;font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:800;letter-spacing:4px;cursor:pointer;border-radius:3px;">TRUE</button>
+    <button style="padding:24px;background:#100808;border:1px solid #1f1414;color:#3a1a1a;font-family:'JetBrains Mono',monospace;font-size:18px;font-weight:800;letter-spacing:4px;cursor:pointer;border-radius:3px;">FALSE</button>
+  </div>
+
+  <div style="padding:0 15px;text-align:center;">
+    <p style="font-size:8px;color:#222;letter-spacing:2px;">QUICK-FIRE MODE // 5s TIMER</p>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--              DIRECTION B — NEXUS            -->
+<!-- ════════════════════════════════════════════ -->
+
+<!-- B · Home -->
+<div class="phone" style="left:537px;top:178px;background:#0c0c1e;font-family:'Space Grotesk',sans-serif;border:1px solid #18183a;">
+
+  <div style="padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
+    <div style="display:flex;gap:3px;font-size:14px;">
+      <span style="color:#e63946;">♥</span><span style="color:#e63946;">♥</span><span style="color:#e63946;">♥</span><span style="color:#e63946;">♥</span><span style="color:#20204a;">♥</span>
+    </div>
+    <div style="display:flex;gap:12px;font-size:11px;color:#363680;font-weight:600;">
+      <span>🔥 12</span><span>Lv 4</span><span style="color:#e63946;">40 XP</span>
+    </div>
+  </div>
+
+  <div style="padding:0 16px 14px;">
+    <div style="font-size:28px;font-weight:700;color:#e8e8f8;line-height:1.1;letter-spacing:-0.5px;">Net<span style="color:#e63946;">+</span> Duo</div>
+    <div style="font-size:11px;color:#282860;font-weight:600;margin-top:3px;letter-spacing:0.5px;">Choose your training zone</div>
+  </div>
+
+  <div style="padding:0 12px;display:flex;flex-direction:column;gap:7px;">
+
+    <div style="background:#12122a;border-radius:13px;padding:12px 14px;border:1px solid #1c1c42;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
+        <div>
+          <div style="font-size:8px;color:#363680;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Zone 01</div>
+          <div style="font-size:13px;font-weight:700;color:#c0c0e0;">Networking Concepts</div>
+        </div>
+        <div style="font-size:20px;font-weight:700;color:#404090;">73<span style="font-size:10px;">%</span></div>
+      </div>
+      <div style="height:3px;background:#1c1c42;border-radius:2px;">
+        <div style="height:3px;width:73%;background:linear-gradient(90deg,#5060d0,#9060c0);border-radius:2px;"></div>
+      </div>
+    </div>
+
+    <div style="background:linear-gradient(135deg,#1c0a14,#160812);border-radius:13px;padding:12px 14px;border:1px solid #e63946;box-shadow:0 0 20px rgba(230,57,70,0.12);">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
+        <div>
+          <div style="font-size:8px;color:#e63946;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Active — Zone 02</div>
+          <div style="font-size:13px;font-weight:700;color:#f0f0f8;">Network Implementation</div>
+        </div>
+        <div style="font-size:20px;font-weight:700;color:#e63946;">48<span style="font-size:10px;">%</span></div>
+      </div>
+      <div style="height:3px;background:#2c0a14;border-radius:2px;">
+        <div style="height:3px;width:48%;background:linear-gradient(90deg,#e63946,#ff8fa3);border-radius:2px;"></div>
+      </div>
+    </div>
+
+    <div style="background:#12122a;border-radius:13px;padding:12px 14px;border:1px solid #1c1c42;">
+      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:7px;">
+        <div>
+          <div style="font-size:8px;color:#363680;font-weight:700;letter-spacing:1px;text-transform:uppercase;">Zone 03</div>
+          <div style="font-size:13px;font-weight:700;color:#c0c0e0;">Network Operations</div>
+        </div>
+        <div style="font-size:20px;font-weight:700;color:#404090;">22<span style="font-size:10px;">%</span></div>
+      </div>
+      <div style="height:3px;background:#1c1c42;border-radius:2px;">
+        <div style="height:3px;width:22%;background:linear-gradient(90deg,#5060d0,#9060c0);border-radius:2px;"></div>
+      </div>
+    </div>
+
+    <div style="background:#0e0e24;border-radius:13px;padding:10px 14px;border:1px solid #141430;display:flex;justify-content:space-between;align-items:center;opacity:0.45;">
+      <span style="font-size:12px;font-weight:600;color:#282850;">Zone 04 · Network Security</span>
+      <span style="font-size:11px;color:#202040;font-weight:600;">🔒</span>
+    </div>
+
+    <div style="background:#0e0e24;border-radius:13px;padding:10px 14px;border:1px solid #141430;display:flex;justify-content:space-between;align-items:center;opacity:0.35;">
+      <span style="font-size:12px;font-weight:600;color:#282850;">Zone 05 · Troubleshooting</span>
+      <span style="font-size:11px;color:#202040;font-weight:600;">🔒</span>
+    </div>
+
+  </div>
+
+  <div style="padding:12px 12px 0;">
+    <button style="width:100%;padding:15px;background:#e63946;border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;cursor:pointer;border-radius:13px;box-shadow:0 4px 20px rgba(230,57,70,0.28);">Continue Zone 02 →</button>
+  </div>
+
+</div>
+
+<!-- B · Teaching Card -->
+<div class="phone" style="left:537px;top:898px;background:#0c0c1e;font-family:'Space Grotesk',sans-serif;border:1px solid #18183a;">
+
+  <div style="padding:12px 16px;display:flex;align-items:center;justify-content:space-between;">
+    <button style="background:none;border:none;color:#363680;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:600;cursor:pointer;">← Back</button>
+    <span style="font-size:11px;color:#282860;font-weight:600;">Network Implementation</span>
+  </div>
+
+  <div style="display:flex;gap:5px;padding:0 16px 14px;align-items:center;">
+    <div style="width:26px;height:3px;background:#363680;border-radius:2px;opacity:0.5;"></div>
+    <div style="width:26px;height:3px;background:#e63946;border-radius:2px;"></div>
+    <div style="width:26px;height:3px;background:#1a1a3a;border-radius:2px;"></div>
+    <div style="width:26px;height:3px;background:#1a1a3a;border-radius:2px;"></div>
+    <div style="width:26px;height:3px;background:#1a1a3a;border-radius:2px;"></div>
+    <span style="font-size:10px;color:#282860;font-weight:700;margin-left:6px;">2 / 5</span>
+  </div>
+
+  <div style="margin:0 12px;background:#11112a;border-radius:18px;border:1px solid #1c1c42;overflow:hidden;">
+
+    <div style="background:linear-gradient(135deg,#e63946 0%,#ff6b7a 100%);padding:16px 18px 14px;">
+      <div style="font-size:8px;color:rgba(255,255,255,0.6);font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:3px;">Key Term</div>
+      <div style="font-size:26px;font-weight:700;color:#fff;line-height:1.1;">OSI Layer 3</div>
+      <div style="font-size:12px;color:rgba(255,255,255,0.75);margin-top:2px;font-weight:600;">Network Layer</div>
+    </div>
+
+    <div style="padding:16px 18px;display:flex;flex-direction:column;gap:13px;">
+
+      <div>
+        <div style="font-size:8px;color:#464690;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;">Definition</div>
+        <p style="font-size:13px;color:#a8a8cc;line-height:1.65;margin:0;">Routes packets between networks using IP addresses. Decides the next hop — not the individual connection.</p>
+      </div>
+
+      <div style="border-top:1px solid #1c1c42;"></div>
+
+      <div>
+        <div style="font-size:8px;color:#e63946;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:5px;">Why it matters</div>
+        <p style="font-size:13px;color:#a8a8cc;line-height:1.65;margin:0;">IP addresses live at Layer 3. Every ping crosses multiple routers — all operating at this layer.</p>
+      </div>
+
+      <div style="background:#0c0c28;border-radius:10px;padding:11px 13px;">
+        <div style="font-size:8px;color:#464690;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:4px;">Analogy</div>
+        <p style="font-size:12px;color:#606090;line-height:1.6;margin:0;font-style:italic;">The post office routing mail between cities. Layer 2 is the carrier who walks up to your specific door.</p>
+      </div>
+
+    </div>
+
+  </div>
+
+  <div style="padding:12px 12px 0;">
+    <button style="width:100%;padding:14px;background:#e63946;border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;cursor:pointer;border-radius:13px;box-shadow:0 4px 18px rgba(230,57,70,0.25);">Got it — Next Card →</button>
+  </div>
+
+</div>
+
+<!-- B · Question — Match Pairs -->
+<div class="phone" style="left:537px;top:1618px;background:#0c0c1e;font-family:'Space Grotesk',sans-serif;border:1px solid #18183a;">
+
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #111128;">
+    <div style="display:flex;gap:2px;font-size:13px;"><span style="color:#e63946;">♥♥♥♥</span><span style="color:#202048;">♥</span></div>
+    <span style="font-size:11px;color:#282860;font-weight:600;">Q 04 / 10</span>
+    <span style="font-size:12px;color:#363680;font-weight:600;">🔥 12</span>
+  </div>
+
+  <div style="height:3px;background:#111128;">
+    <div style="height:3px;width:40%;background:linear-gradient(90deg,#e63946,#ff8fa3);"></div>
+  </div>
+
+  <div style="padding:14px 16px 10px;">
+    <div style="display:inline-block;font-size:8px;background:#181840;color:#5050a0;padding:3px 9px;border-radius:20px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:10px;">Match Pairs</div>
+    <p style="font-size:15px;font-weight:700;color:#e8e8f8;line-height:1.4;margin:0;">Connect each OSI layer to the device that lives there.</p>
+  </div>
+
+  <div style="padding:4px 14px;display:grid;grid-template-columns:1fr 22px 1fr;gap:7px 0;align-items:center;">
+
+    <!-- Matched: Layer 2 ↔ Switch -->
+    <div style="background:#1c0a14;border:1.5px solid #e63946;border-radius:10px;padding:10px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#e63946;">Layer 2</div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:center;">
+      <div style="width:22px;height:2px;background:#e63946;"></div>
+    </div>
+    <div style="background:#1c0a14;border:1.5px solid #e63946;border-radius:10px;padding:10px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#e63946;">Switch</div>
+    </div>
+
+    <!-- Unmatched -->
+    <div style="background:#12122a;border:1.5px solid #1c1c42;border-radius:10px;padding:10px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#6060a0;">Layer 1</div>
+    </div>
+    <div></div>
+    <div style="background:#12122a;border:1.5px solid #1c1c42;border-radius:10px;padding:10px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#6060a0;">Router</div>
+    </div>
+
+    <div style="background:#12122a;border:1.5px solid #1c1c42;border-radius:10px;padding:10px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#6060a0;">Layer 3</div>
+    </div>
+    <div></div>
+    <div style="background:#12122a;border:1.5px solid #1c1c42;border-radius:10px;padding:10px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#6060a0;">Hub</div>
+    </div>
+
+    <div style="background:#12122a;border:1.5px solid #1c1c42;border-radius:10px;padding:10px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#6060a0;">Layer 4</div>
+    </div>
+    <div></div>
+    <div style="background:#12122a;border:1.5px solid #1c1c42;border-radius:10px;padding:10px;text-align:center;">
+      <div style="font-size:12px;font-weight:700;color:#6060a0;">TCP/UDP</div>
+    </div>
+
+  </div>
+
+  <div style="padding:10px 12px 0;">
+    <p style="font-size:11px;color:#282860;text-align:center;margin-bottom:8px;">1 of 4 matched · Tap a term then its match</p>
+    <button style="width:100%;padding:14px;background:#181840;border:none;color:#383880;font-family:'Space Grotesk',sans-serif;font-size:13px;font-weight:700;cursor:pointer;border-radius:13px;">Check Answers</button>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--              DIRECTION C — BREACH           -->
+<!-- ════════════════════════════════════════════ -->
+
+<!-- C · Home -->
+<div class="phone" style="left:994px;top:178px;background:#000;font-family:'DM Sans',sans-serif;border:1px solid #181818;">
+
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:13px;color:#dc2626;font-weight:700;letter-spacing:1px;">♥♥♥♥♡</span>
+    <div style="display:flex;gap:14px;font-size:11px;color:#333;font-weight:600;">
+      <span>🔥 12</span><span>Lv 4</span><span>40 XP</span>
+    </div>
+  </div>
+
+  <div style="padding:16px 16px 4px;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:62px;color:#fff;line-height:0.88;letter-spacing:1px;">NET<span style="color:#dc2626;">+</span><br>DUO</div>
+    <div style="font-size:9px;color:#2e2e2e;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-top:8px;">Training Zones</div>
+  </div>
+
+  <div style="height:2px;background:#dc2626;margin:10px 16px 12px;"></div>
+
+  <div style="padding:0 16px;display:flex;flex-direction:column;">
+
+    <div style="padding:10px 0;border-bottom:1px solid #0d0d0d;display:flex;align-items:center;gap:12px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:#222;min-width:30px;line-height:1;">01</div>
+      <div style="flex:1;">
+        <div style="font-size:12px;font-weight:700;color:#444;text-transform:uppercase;letter-spacing:0.5px;">Networking Concepts</div>
+        <div style="height:1px;background:#181818;margin-top:4px;"><div style="height:1px;width:73%;background:#3a3a3a;"></div></div>
+      </div>
+      <span style="font-size:11px;color:#3a3a3a;font-weight:700;">73%</span>
+    </div>
+
+    <div style="padding:12px 0;border-bottom:1px solid #0d0d0d;display:flex;align-items:center;gap:12px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:#dc2626;min-width:30px;line-height:1;">02</div>
+      <div style="flex:1;">
+        <div style="font-size:8px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:2px;margin-bottom:2px;">Active</div>
+        <div style="font-size:14px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.3px;">Network Implementation</div>
+        <div style="height:1px;background:#2a0000;margin-top:5px;"><div style="height:1px;width:48%;background:#dc2626;"></div></div>
+      </div>
+      <span style="font-size:13px;color:#dc2626;font-weight:700;">48%</span>
+    </div>
+
+    <div style="padding:10px 0;border-bottom:1px solid #0d0d0d;display:flex;align-items:center;gap:12px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:#181818;min-width:30px;line-height:1;">03</div>
+      <div style="flex:1;">
+        <div style="font-size:12px;font-weight:700;color:#2e2e2e;text-transform:uppercase;letter-spacing:0.5px;">Network Operations</div>
+        <div style="height:1px;background:#111;margin-top:4px;"><div style="height:1px;width:22%;background:#252525;"></div></div>
+      </div>
+      <span style="font-size:11px;color:#2e2e2e;font-weight:700;">22%</span>
+    </div>
+
+    <div style="padding:8px 0;border-bottom:1px solid #080808;display:flex;align-items:center;gap:12px;opacity:0.3;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#181818;min-width:30px;line-height:1;">04</div>
+      <div style="font-size:11px;font-weight:600;color:#1e1e1e;text-transform:uppercase;">Network Security</div>
+    </div>
+
+    <div style="padding:8px 0;display:flex;align-items:center;gap:12px;opacity:0.25;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#181818;min-width:30px;line-height:1;">05</div>
+      <div style="font-size:11px;font-weight:600;color:#1e1e1e;text-transform:uppercase;">Troubleshooting</div>
+    </div>
+
+  </div>
+
+  <div style="padding:12px 16px 0;">
+    <button style="width:100%;padding:17px;background:#dc2626;border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:1.5px;cursor:pointer;text-transform:uppercase;">Launch Zone 02 →</button>
+  </div>
+
+</div>
+
+<!-- C · Teaching Card -->
+<div class="phone" style="left:994px;top:898px;background:#000;font-family:'DM Sans',sans-serif;border:1px solid #181818;">
+
+  <div style="padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:11px;color:#2e2e2e;font-weight:700;text-transform:uppercase;letter-spacing:1px;cursor:pointer;">← Back</span>
+    <div style="display:flex;gap:5px;align-items:center;">
+      <div style="width:18px;height:2px;background:#333;"></div>
+      <div style="width:18px;height:2px;background:#dc2626;"></div>
+      <div style="width:18px;height:2px;background:#181818;"></div>
+      <div style="width:18px;height:2px;background:#181818;"></div>
+      <div style="width:18px;height:2px;background:#181818;"></div>
+    </div>
+    <span style="font-size:11px;color:#2e2e2e;font-weight:700;">2 / 5</span>
+  </div>
+
+  <div style="padding:22px 16px 0;display:flex;flex-direction:column;gap:0;">
+
+    <div style="font-size:8px;color:#dc2626;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;">Key Term</div>
+
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:76px;color:#fff;line-height:0.88;margin-bottom:5px;letter-spacing:1px;">LAYER<br><span style="color:#dc2626;">3</span></div>
+    <div style="font-size:13px;color:#3a3a3a;font-weight:700;text-transform:uppercase;letter-spacing:2.5px;margin-bottom:20px;">Network Layer</div>
+
+    <div style="height:1px;background:#dc2626;margin-bottom:18px;"></div>
+
+    <p style="font-size:14px;color:#888;line-height:1.65;margin:0 0 18px;">Routes packets between networks using IP addresses. Hop-by-hop decisions — doesn't track connections.</p>
+
+    <div style="border-left:3px solid #dc2626;padding-left:13px;margin-bottom:14px;">
+      <div style="font-size:8px;color:#dc2626;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:4px;">Why it matters</div>
+      <p style="font-size:12px;color:#555;line-height:1.65;margin:0;">Every ping passes through multiple L3 routers. IP addresses are a Layer 3 concept — not Layer 2.</p>
+    </div>
+
+    <div style="background:#080808;padding:11px 13px;">
+      <div style="font-size:8px;color:#2e2e2e;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:4px;">Analogy</div>
+      <p style="font-size:12px;color:#3a3a3a;line-height:1.6;margin:0;font-style:italic;">Post office routes between cities. Layer 2 is the carrier who walks to your door.</p>
+    </div>
+
+  </div>
+
+  <div style="padding:14px 16px 0;">
+    <button style="width:100%;padding:17px;background:#dc2626;border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:1.5px;cursor:pointer;text-transform:uppercase;">Next Card →</button>
+  </div>
+
+</div>
+
+<!-- C · Question — Drag to Order -->
+<div class="phone" style="left:994px;top:1618px;background:#000;font-family:'DM Sans',sans-serif;border:1px solid #181818;">
+
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:13px;color:#dc2626;font-weight:700;letter-spacing:1px;">♥♥♥♥♡</span>
+    <span style="font-size:11px;color:#2e2e2e;font-weight:600;">Q 04 / 10</span>
+    <span style="font-size:12px;color:#2e2e2e;font-weight:600;">🔥 12</span>
+  </div>
+
+  <div style="height:2px;background:#0d0d0d;"><div style="height:2px;width:40%;background:#dc2626;"></div></div>
+
+  <div style="padding:18px 16px 12px;">
+    <div style="font-size:8px;color:#dc2626;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:10px;">Drag to Order</div>
+    <p style="font-size:15px;font-weight:700;color:#fff;line-height:1.4;margin:0;">Sort OSI layers 7 → 1. Highest layer at the top.</p>
+  </div>
+
+  <div style="padding:0 16px;display:flex;flex-direction:column;gap:6px;">
+
+    <div style="background:#0a0a0a;border:1px solid #1e1e1e;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#333;line-height:1;">7</span>
+        <span style="font-size:14px;font-weight:700;color:#d0d0d0;">Application</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;opacity:0.25;">
+        <div style="width:14px;height:1px;background:#fff;"></div>
+        <div style="width:14px;height:1px;background:#fff;"></div>
+        <div style="width:14px;height:1px;background:#fff;"></div>
+      </div>
+    </div>
+
+    <!-- Being dragged -->
+    <div style="background:#1a0000;border:1px solid #dc2626;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;transform:scale(1.02);box-shadow:0 4px 18px rgba(220,38,38,0.22);">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#dc2626;line-height:1;">?</span>
+        <span style="font-size:14px;font-weight:700;color:#dc2626;">Transport</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <div style="width:14px;height:1px;background:#dc2626;"></div>
+        <div style="width:14px;height:1px;background:#dc2626;"></div>
+        <div style="width:14px;height:1px;background:#dc2626;"></div>
+      </div>
+    </div>
+
+    <div style="background:#080808;border:1px solid #141414;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#222;line-height:1;">?</span>
+        <span style="font-size:14px;font-weight:700;color:#555;">Network</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;opacity:0.15;">
+        <div style="width:14px;height:1px;background:#fff;"></div>
+        <div style="width:14px;height:1px;background:#fff;"></div>
+        <div style="width:14px;height:1px;background:#fff;"></div>
+      </div>
+    </div>
+
+    <!-- Drop zone -->
+    <div style="background:transparent;border:1px dashed #1e1e1e;padding:12px 14px;text-align:center;">
+      <span style="font-size:10px;color:#222;letter-spacing:1.5px;text-transform:uppercase;">drop here</span>
+    </div>
+
+    <div style="background:#080808;border:1px solid #141414;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#222;line-height:1;">?</span>
+        <span style="font-size:14px;font-weight:700;color:#555;">Data Link</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;opacity:0.15;">
+        <div style="width:14px;height:1px;background:#fff;"></div>
+        <div style="width:14px;height:1px;background:#fff;"></div>
+        <div style="width:14px;height:1px;background:#fff;"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="padding:12px 16px 0;">
+    <button style="width:100%;padding:16px;background:#0d0d0d;border:1px solid #181818;color:#333;font-family:'DM Sans',sans-serif;font-size:13px;font-weight:700;letter-spacing:1.5px;cursor:pointer;text-transform:uppercase;">Check Order</button>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--           DIRECTION D — BREACH+             -->
+<!--    C's editorial scale + A's mono chrome    -->
+<!-- ════════════════════════════════════════════ -->
+
+<!-- D · Home -->
+<div class="phone" style="left:1451px;top:178px;background:#000;font-family:'JetBrains Mono',monospace;border:1px solid #181818;">
+
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:12px;color:#dc2626;letter-spacing:1px;">♥♥♥♥♡</span>
+    <div style="display:flex;gap:14px;font-size:10px;color:#444;letter-spacing:0.5px;">
+      <span>// 🔥 12</span><span>// L4</span><span>// 40 XP</span>
+    </div>
+  </div>
+
+  <div style="padding:16px 16px 4px;">
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:62px;color:#fff;line-height:0.88;letter-spacing:1px;">NET<span style="color:#dc2626;">+</span><br>DUO</div>
+    <div style="font-size:8px;color:#333;letter-spacing:3px;margin-top:8px;">// TRAINING_ZONES</div>
+  </div>
+
+  <div style="height:1px;background:#dc2626;margin:10px 16px 0;"></div>
+
+  <div style="padding:8px 16px 0;display:flex;flex-direction:column;">
+
+    <div style="padding:10px 0;border-bottom:1px solid #0d0d0d;display:flex;align-items:center;gap:12px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:#2a2a2a;min-width:30px;line-height:1;">01</div>
+      <div style="flex:1;">
+        <div style="font-size:11px;font-weight:700;color:#666;text-transform:uppercase;letter-spacing:1px;">Networking Concepts</div>
+        <div style="margin-top:5px;height:1px;background:#1a1a1a;"><div style="height:1px;width:73%;background:#3a3a3a;"></div></div>
+      </div>
+      <span style="font-size:10px;color:#444;letter-spacing:1px;">73%</span>
+    </div>
+
+    <div style="padding:12px 0;border-bottom:1px solid #0d0d0d;display:flex;align-items:center;gap:12px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:44px;color:#dc2626;min-width:30px;line-height:1;">02</div>
+      <div style="flex:1;">
+        <div style="font-size:8px;color:#dc2626;letter-spacing:2px;margin-bottom:3px;">// ACTIVE</div>
+        <div style="font-size:13px;font-weight:700;color:#fff;text-transform:uppercase;letter-spacing:0.5px;">Network Impl.</div>
+        <div style="height:1px;background:#2a0000;margin-top:5px;"><div style="height:1px;width:48%;background:#dc2626;"></div></div>
+      </div>
+      <span style="font-size:11px;color:#dc2626;letter-spacing:1px;">48%</span>
+    </div>
+
+    <div style="padding:10px 0;border-bottom:1px solid #0d0d0d;display:flex;align-items:center;gap:12px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:26px;color:#1a1a1a;min-width:30px;line-height:1;">03</div>
+      <div style="flex:1;">
+        <div style="font-size:11px;font-weight:700;color:#333;text-transform:uppercase;letter-spacing:1px;">Network Operations</div>
+        <div style="height:1px;background:#111;margin-top:5px;"><div style="height:1px;width:22%;background:#252525;"></div></div>
+      </div>
+      <span style="font-size:10px;color:#2e2e2e;letter-spacing:1px;">22%</span>
+    </div>
+
+    <div style="padding:8px 0;border-bottom:1px solid #080808;display:flex;align-items:center;gap:12px;opacity:0.3;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#181818;min-width:30px;line-height:1;">04</div>
+      <span style="font-size:10px;color:#1e1e1e;text-transform:uppercase;letter-spacing:0.5px;">Network Security</span>
+    </div>
+
+    <div style="padding:8px 0;display:flex;align-items:center;gap:12px;opacity:0.25;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:20px;color:#181818;min-width:30px;line-height:1;">05</div>
+      <span style="font-size:10px;color:#1e1e1e;text-transform:uppercase;letter-spacing:0.5px;">Troubleshooting</span>
+    </div>
+
+  </div>
+
+  <div style="padding:12px 16px 0;">
+    <button style="width:100%;padding:17px;background:#dc2626;border:none;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;">[ LAUNCH ZONE 02 → ]</button>
+  </div>
+
+</div>
+
+<!-- D · Teaching Card -->
+<div class="phone" style="left:1451px;top:898px;background:#000;font-family:'JetBrains Mono',monospace;border:1px solid #181818;">
+
+  <div style="padding:12px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:10px;color:#333;letter-spacing:1px;cursor:pointer;">&lt; BACK</span>
+    <div style="display:flex;gap:5px;align-items:center;">
+      <div style="width:18px;height:2px;background:#333;border-radius:1px;"></div>
+      <div style="width:18px;height:2px;background:#dc2626;border-radius:1px;"></div>
+      <div style="width:18px;height:2px;background:#181818;border-radius:1px;"></div>
+      <div style="width:18px;height:2px;background:#181818;border-radius:1px;"></div>
+      <div style="width:18px;height:2px;background:#181818;border-radius:1px;"></div>
+    </div>
+    <span style="font-size:10px;color:#333;">02 / 05</span>
+  </div>
+
+  <div style="padding:20px 16px 0;">
+    <div style="font-size:8px;color:#dc2626;letter-spacing:3px;margin-bottom:12px;">// KEY TERM</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:80px;color:#fff;line-height:0.88;letter-spacing:1px;">LAYER<br><span style="color:#dc2626;">3</span></div>
+    <div style="font-size:10px;color:#555;letter-spacing:3px;margin-top:8px;text-transform:uppercase;">Network Layer</div>
+  </div>
+
+  <div style="height:1px;background:#dc2626;margin:16px 16px 18px;"></div>
+
+  <div style="padding:0 16px;display:flex;flex-direction:column;gap:16px;">
+
+    <div>
+      <div style="font-size:8px;color:#555;letter-spacing:2.5px;margin-bottom:7px;">// DEFINITION</div>
+      <p style="font-size:13px;color:#c0c0c0;line-height:1.7;margin:0;">Routes packets between networks using IP addresses. Makes hop-by-hop decisions — doesn't track individual connections.</p>
+    </div>
+
+    <div style="border-left:2px solid #dc2626;padding-left:12px;">
+      <div style="font-size:8px;color:#dc2626;letter-spacing:2.5px;margin-bottom:7px;">// WHY IT MATTERS</div>
+      <p style="font-size:12px;color:#aaa;line-height:1.65;margin:0;">Every web request crosses multiple L3 routers. IP addresses only exist at this layer — not Layer 2.</p>
+    </div>
+
+    <div style="background:#080808;border-left:2px solid #222;padding:10px 12px;">
+      <div style="font-size:8px;color:#333;letter-spacing:2.5px;margin-bottom:6px;">// ANALOGY</div>
+      <p style="font-size:11px;color:#666;line-height:1.65;margin:0;font-style:italic;">Post office routing between cities. Layer 2 is your local carrier walking to your door.</p>
+    </div>
+
+  </div>
+
+  <div style="padding:14px 16px 0;">
+    <button style="width:100%;padding:17px;background:#dc2626;border:none;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;">[ NEXT CARD → ]</button>
+  </div>
+
+</div>
+
+<!-- D · Question — Drag to Order -->
+<div class="phone" style="left:1451px;top:1618px;background:#000;font-family:'JetBrains Mono',monospace;border:1px solid #181818;">
+
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:12px;color:#dc2626;letter-spacing:1px;">♥♥♥♥♡</span>
+    <span style="font-size:10px;color:#3a3a3a;letter-spacing:0.5px;">Q 04 / 10</span>
+    <span style="font-size:10px;color:#333;">// 🔥 12</span>
+  </div>
+
+  <div style="height:2px;background:#0d0d0d;"><div style="height:2px;width:40%;background:#dc2626;"></div></div>
+
+  <div style="padding:18px 16px 14px;">
+    <div style="font-size:8px;color:#dc2626;letter-spacing:3px;margin-bottom:10px;">// DRAG TO ORDER</div>
+    <p style="font-size:15px;font-weight:700;color:#e0e0e0;line-height:1.4;margin:0;">Sort OSI layers 7 → 1. Highest layer at the top.</p>
+  </div>
+
+  <div style="padding:0 16px;display:flex;flex-direction:column;gap:6px;">
+
+    <div style="background:#0a0a0a;border:1px solid #1e1e1e;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#3a3a3a;line-height:1;">7</span>
+        <span style="font-size:13px;font-weight:700;color:#c0c0c0;letter-spacing:0.5px;">Application</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;opacity:0.2;">
+        <div style="width:14px;height:1px;background:#fff;"></div>
+        <div style="width:14px;height:1px;background:#fff;"></div>
+        <div style="width:14px;height:1px;background:#fff;"></div>
+      </div>
+    </div>
+
+    <!-- Being dragged -->
+    <div style="background:#1a0000;border:1px solid #dc2626;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;transform:scale(1.02);box-shadow:0 4px 18px rgba(220,38,38,0.22);">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#dc2626;line-height:1;">?</span>
+        <span style="font-size:13px;font-weight:700;color:#dc2626;letter-spacing:0.5px;">Transport</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;">
+        <div style="width:14px;height:1px;background:#dc2626;"></div>
+        <div style="width:14px;height:1px;background:#dc2626;"></div>
+        <div style="width:14px;height:1px;background:#dc2626;"></div>
+      </div>
+    </div>
+
+    <div style="background:#080808;border:1px solid #141414;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#1e1e1e;line-height:1;">?</span>
+        <span style="font-size:13px;font-weight:700;color:#4a4a4a;letter-spacing:0.5px;">Network</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;opacity:0.12;">
+        <div style="width:14px;height:1px;background:#fff;"></div>
+        <div style="width:14px;height:1px;background:#fff;"></div>
+        <div style="width:14px;height:1px;background:#fff;"></div>
+      </div>
+    </div>
+
+    <!-- Drop zone -->
+    <div style="background:transparent;border:1px dashed #1e1e1e;padding:12px 14px;text-align:center;">
+      <span style="font-size:9px;color:#222;letter-spacing:2px;text-transform:uppercase;">// drop here</span>
+    </div>
+
+    <div style="background:#080808;border:1px solid #141414;padding:12px 14px;display:flex;align-items:center;justify-content:space-between;">
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#1e1e1e;line-height:1;">?</span>
+        <span style="font-size:13px;font-weight:700;color:#4a4a4a;letter-spacing:0.5px;">Data Link</span>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:3px;opacity:0.12;">
+        <div style="width:14px;height:1px;background:#fff;"></div>
+        <div style="width:14px;height:1px;background:#fff;"></div>
+        <div style="width:14px;height:1px;background:#fff;"></div>
+      </div>
+    </div>
+
+  </div>
+
+  <div style="padding:12px 16px 0;">
+    <button style="width:100%;padding:16px;background:transparent;border:1px solid #1e1e1e;color:#444;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;">[ CHECK ORDER ]</button>
+  </div>
+
+</div>
+
+
+<!-- ═══════════════════════════ ROW LABELS — SCREEN 04 ═══════════════════════════ -->
+
+<div style="position:absolute;top:2315px;left:80px;width:1746px;border-top:1px solid #222;padding-top:9px;">
+  <span style="font-family:'DM Sans',sans-serif;font-size:9px;color:#383838;letter-spacing:2.5px;text-transform:uppercase;">Screen 04 — Lesson Feedback · CORRECT state</span>
+</div>
+
+<div style="position:absolute;top:3045px;left:80px;width:1746px;border-top:1px solid #222;padding-top:9px;">
+  <span style="font-family:'DM Sans',sans-serif;font-size:9px;color:#383838;letter-spacing:2.5px;text-transform:uppercase;">Screen 04 — Lesson Feedback · WRONG state</span>
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--         DIRECTION A — TERMINAL              -->
+<!--         Screen 04 · CORRECT                 -->
+<!-- ════════════════════════════════════════════ -->
+
+<div class="phone" style="left:80px;top:2338px;background:#080808;font-family:'JetBrains Mono',monospace;border:1px solid #1c1c1c;">
+
+  <div style="background:#050505;border-bottom:1px solid #141414;padding:9px 14px;display:flex;align-items:center;justify-content:space-between;font-size:11px;">
+    <span style="color:#cc1515;letter-spacing:1px;">♥♥♥♥♡</span>
+    <span style="color:#4a4a4a;">Q 04 / 10</span>
+    <span style="color:#3a6a3a;font-size:10px;">STK 13 🔥</span>
+  </div>
+
+  <div style="height:2px;background:#111;">
+    <div style="height:2px;width:40%;background:#1e4a1e;"></div>
+  </div>
+
+  <!-- Big result -->
+  <div style="padding:28px 15px 0;text-align:center;">
+    <div style="font-size:8px;color:#2e6a2e;letter-spacing:3px;margin-bottom:8px;">// RESULT</div>
+    <div style="font-size:80px;font-weight:800;color:#2e8a2e;line-height:0.9;letter-spacing:-2px;">CORRECT</div>
+    <div style="height:1px;background:#1e4a1e;margin:16px 0 0;"></div>
+  </div>
+
+  <!-- Answer echo -->
+  <div style="padding:16px 15px 0;">
+    <div style="font-size:7px;color:#2a5a2a;letter-spacing:2.5px;margin-bottom:7px;">// YOUR ANSWER</div>
+    <div style="background:#091409;border:1px solid #1a401a;padding:11px 13px;">
+      <span style="font-size:14px;font-weight:800;color:#3a9a3a;letter-spacing:1px;">TRUE</span>
+      <p style="font-size:10px;color:#3a6a3a;margin-top:4px;line-height:1.5;">"A switch operates at OSI Layer 2 and uses MAC addresses to forward frames."</p>
+    </div>
+  </div>
+
+  <!-- Explanation -->
+  <div style="padding:14px 15px 0;">
+    <div style="font-size:7px;color:#2a2a2a;letter-spacing:2.5px;margin-bottom:7px;">// EXPLANATION</div>
+    <p style="font-size:11px;color:#777;line-height:1.7;margin:0;">Switches are Layer 2 devices. They read the destination MAC address in each Ethernet frame and forward it to the correct port — no IP involved.</p>
+  </div>
+
+  <!-- XP reward -->
+  <div style="margin:16px 15px 0;background:#0a120a;border:1px solid #1a3a1a;padding:10px 13px;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-size:8px;color:#2a5a2a;letter-spacing:2px;">// XP EARNED</span>
+    <span style="font-size:18px;font-weight:800;color:#3a9a3a;">+10</span>
+    <span style="font-size:8px;color:#2a5a2a;letter-spacing:1px;">STREAK ×13</span>
+  </div>
+
+  <div style="padding:14px 15px 0;">
+    <button style="width:100%;padding:13px;background:#1e4a1e;border:1px solid #2e6a2e;color:#3a9a3a;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;cursor:pointer;border-radius:3px;text-transform:uppercase;">[ CONTINUE → ]</button>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--         DIRECTION A — TERMINAL              -->
+<!--         Screen 04 · WRONG                   -->
+<!-- ════════════════════════════════════════════ -->
+
+<div class="phone" style="left:80px;top:3068px;background:#080808;font-family:'JetBrains Mono',monospace;border:1px solid #1c1c1c;">
+
+  <div style="background:#050505;border-bottom:1px solid #141414;padding:9px 14px;display:flex;align-items:center;justify-content:space-between;font-size:11px;">
+    <span style="letter-spacing:1px;"><span style="color:#cc1515;">♥♥♥</span><span style="color:#2a1a1a;">♥♡</span></span>
+    <span style="color:#4a4a4a;">Q 04 / 10</span>
+    <span style="color:#3a3a3a;font-size:10px;">STK 0 💀</span>
+  </div>
+
+  <div style="height:2px;background:#111;">
+    <div style="height:2px;width:40%;background:#cc1515;"></div>
+  </div>
+
+  <!-- Big result -->
+  <div style="padding:28px 15px 0;text-align:center;">
+    <div style="font-size:8px;color:#551515;letter-spacing:3px;margin-bottom:8px;">// RESULT</div>
+    <div style="font-size:80px;font-weight:800;color:#cc1515;line-height:0.9;letter-spacing:-2px;">WRONG</div>
+    <div style="height:1px;background:#3a1010;margin:16px 0 0;"></div>
+  </div>
+
+  <!-- Correct answer -->
+  <div style="padding:16px 15px 0;">
+    <div style="font-size:7px;color:#551515;letter-spacing:2.5px;margin-bottom:7px;">// CORRECT ANSWER</div>
+    <div style="background:#0f0404;border:1px solid #2a1010;padding:11px 13px;">
+      <span style="font-size:14px;font-weight:800;color:#cc1515;letter-spacing:1px;">FALSE</span>
+      <p style="font-size:10px;color:#7a3030;margin-top:4px;line-height:1.5;">"A router operates at Layer 3, not Layer 2 — routers read IP addresses."</p>
+    </div>
+  </div>
+
+  <!-- Explanation -->
+  <div style="padding:14px 15px 0;">
+    <div style="font-size:7px;color:#2a2a2a;letter-spacing:2.5px;margin-bottom:7px;">// EXPLANATION</div>
+    <p style="font-size:11px;color:#777;line-height:1.7;margin:0;">The statement was true — a switch IS a Layer 2 device. Routers operate at Layer 3 using IP. Don't confuse the two on the exam.</p>
+  </div>
+
+  <!-- Life lost -->
+  <div style="margin:16px 15px 0;background:#100808;border:1px solid #2a1010;padding:10px 13px;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-size:8px;color:#551515;letter-spacing:2px;">// LIFE LOST</span>
+    <span style="font-size:18px;font-weight:800;color:#cc1515;">−1</span>
+    <span style="font-size:8px;color:#3a1a1a;letter-spacing:1px;">3 REMAINING</span>
+  </div>
+
+  <div style="padding:14px 15px 0;">
+    <button style="width:100%;padding:13px;background:transparent;border:1px solid #cc1515;color:#cc1515;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:1.5px;cursor:pointer;border-radius:3px;text-transform:uppercase;">[ GOT IT → ]</button>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--         DIRECTION B — NEXUS                 -->
+<!--         Screen 04 · CORRECT                 -->
+<!-- ════════════════════════════════════════════ -->
+
+<div class="phone" style="left:537px;top:2338px;background:#0c0c1e;font-family:'Space Grotesk',sans-serif;border:1px solid #18183a;">
+
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #111128;">
+    <div style="display:flex;gap:2px;font-size:13px;"><span style="color:#e63946;">♥♥♥♥</span><span style="color:#202048;">♥</span></div>
+    <span style="font-size:11px;color:#282860;font-weight:600;">Q 04 / 10</span>
+    <span style="font-size:11px;color:#3a8a3a;font-weight:700;">🔥 13</span>
+  </div>
+
+  <div style="height:3px;background:#111128;">
+    <div style="height:3px;width:40%;background:linear-gradient(90deg,#2a7a2a,#5abd5a);"></div>
+  </div>
+
+  <!-- Result banner -->
+  <div style="background:linear-gradient(135deg,#0a1a0a,#0d240d);padding:22px 18px;text-align:center;border-bottom:1px solid #143214;">
+    <div style="font-size:8px;color:#3a7a3a;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Result</div>
+    <div style="font-size:52px;font-weight:700;color:#4abe4a;line-height:1;letter-spacing:-1px;">Correct!</div>
+    <div style="font-size:12px;color:#2a5a2a;margin-top:4px;font-weight:600;">+10 XP · Streak × 13</div>
+  </div>
+
+  <!-- Answer echo -->
+  <div style="padding:16px 16px 0;">
+    <div style="font-size:8px;color:#2a4a2a;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">Your answer</div>
+    <div style="background:#0d1a0d;border:1.5px solid #2a5a2a;border-radius:10px;padding:12px 14px;">
+      <div style="font-size:14px;font-weight:700;color:#4abe4a;">TRUE</div>
+      <p style="font-size:11px;color:#3a6a3a;margin-top:4px;line-height:1.5;">"A switch operates at OSI Layer 2 and uses MAC addresses to forward frames."</p>
+    </div>
+  </div>
+
+  <!-- Explanation -->
+  <div style="padding:14px 16px 0;">
+    <div style="font-size:8px;color:#283060;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:7px;">Why that's right</div>
+    <p style="font-size:13px;color:#a8a8cc;line-height:1.65;margin:0;">Switches are Layer 2 devices. They read the destination MAC address in each Ethernet frame and forward it to the correct port — no IP involved.</p>
+  </div>
+
+  <div style="padding:16px 12px 0;">
+    <button style="width:100%;padding:15px;background:#2a7a2a;border:none;color:#fff;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;cursor:pointer;border-radius:13px;box-shadow:0 4px 18px rgba(74,190,74,0.2);">Continue →</button>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--         DIRECTION B — NEXUS                 -->
+<!--         Screen 04 · WRONG                   -->
+<!-- ════════════════════════════════════════════ -->
+
+<div class="phone" style="left:537px;top:3068px;background:#0c0c1e;font-family:'Space Grotesk',sans-serif;border:1px solid #18183a;">
+
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #111128;">
+    <div style="display:flex;gap:2px;font-size:13px;"><span style="color:#e63946;">♥♥♥</span><span style="color:#202048;">♥♥</span></div>
+    <span style="font-size:11px;color:#282860;font-weight:600;">Q 04 / 10</span>
+    <span style="font-size:11px;color:#363680;font-weight:600;">🔥 0</span>
+  </div>
+
+  <div style="height:3px;background:#111128;">
+    <div style="height:3px;width:40%;background:linear-gradient(90deg,#e63946,#ff8fa3);"></div>
+  </div>
+
+  <!-- Result banner -->
+  <div style="background:linear-gradient(135deg,#1c0a14,#160812);padding:22px 18px;text-align:center;border-bottom:1px solid #3a1824;">
+    <div style="font-size:8px;color:#e63946;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:6px;">Result</div>
+    <div style="font-size:52px;font-weight:700;color:#e63946;line-height:1;letter-spacing:-1px;">Wrong</div>
+    <div style="font-size:12px;color:#7a2a34;margin-top:4px;font-weight:600;">Streak lost · −1 life remaining</div>
+  </div>
+
+  <!-- Correct answer -->
+  <div style="padding:16px 16px 0;">
+    <div style="font-size:8px;color:#5a1a24;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:8px;">Correct answer</div>
+    <div style="background:#150810;border:1.5px solid #e63946;border-radius:10px;padding:12px 14px;">
+      <div style="font-size:14px;font-weight:700;color:#e63946;">FALSE</div>
+      <p style="font-size:11px;color:#8a3040;margin-top:4px;line-height:1.5;">"Routers operate at Layer 3 using IP addresses, not Layer 2."</p>
+    </div>
+  </div>
+
+  <!-- Explanation -->
+  <div style="padding:14px 16px 0;">
+    <div style="font-size:8px;color:#283060;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:7px;">Remember this</div>
+    <p style="font-size:13px;color:#a8a8cc;line-height:1.65;margin:0;">The statement was actually true — switch IS Layer 2. Routers handle Layer 3 with IP. A common exam trap: don't swap the two.</p>
+  </div>
+
+  <div style="padding:16px 12px 0;">
+    <button style="width:100%;padding:15px;background:#1c0a14;border:1.5px solid #e63946;color:#e63946;font-family:'Space Grotesk',sans-serif;font-size:14px;font-weight:700;cursor:pointer;border-radius:13px;">Got it →</button>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--         DIRECTION C — BREACH                -->
+<!--         Screen 04 · CORRECT                 -->
+<!-- ════════════════════════════════════════════ -->
+
+<div class="phone" style="left:994px;top:2338px;background:#000;font-family:'DM Sans',sans-serif;border:1px solid #181818;">
+
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:13px;color:#dc2626;font-weight:700;letter-spacing:1px;">♥♥♥♥♡</span>
+    <span style="font-size:11px;color:#2e2e2e;font-weight:600;">Q 04 / 10</span>
+    <span style="font-size:12px;color:#2e6a2e;font-weight:600;">🔥 13</span>
+  </div>
+
+  <div style="height:2px;background:#0d0d0d;"><div style="height:2px;width:40%;background:#2a6a2a;"></div></div>
+
+  <!-- Big result -->
+  <div style="padding:26px 16px 0;">
+    <div style="font-size:8px;color:#2a5a2a;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">Result</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:88px;color:#fff;line-height:0.88;letter-spacing:1px;">CORRECT</div>
+    <div style="height:2px;background:#2a6a2a;margin:14px 0 0;"></div>
+  </div>
+
+  <!-- Answer echo -->
+  <div style="padding:16px 16px 0;">
+    <div style="font-size:8px;color:#2a5a2a;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">Your Answer</div>
+    <div style="border-left:3px solid #2a6a2a;padding:10px 13px;background:#050f05;">
+      <div style="font-size:16px;font-weight:700;color:#4aae4a;text-transform:uppercase;letter-spacing:1px;">True</div>
+      <p style="font-size:11px;color:#3a6a3a;margin-top:3px;line-height:1.55;">"Switches are Layer 2. They read MAC addresses — not IP."</p>
+    </div>
+  </div>
+
+  <!-- Explanation -->
+  <div style="padding:14px 16px 0;">
+    <div style="font-size:8px;color:#2e2e2e;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:7px;">Why</div>
+    <p style="font-size:13px;color:#888;line-height:1.65;margin:0;">Switches forward Ethernet frames using MAC address tables. No IP processing at Layer 2 — that's the router's job at Layer 3.</p>
+  </div>
+
+  <!-- XP earned -->
+  <div style="margin:16px 16px 0;padding:11px 14px;background:#050f05;display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:11px;font-weight:700;color:#2a5a2a;text-transform:uppercase;letter-spacing:1px;">+10 XP</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#4aae4a;line-height:1;">STREAK ×13</span>
+  </div>
+
+  <div style="padding:14px 16px 0;">
+    <button style="width:100%;padding:17px;background:#2a6a2a;border:none;color:#fff;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:1.5px;cursor:pointer;text-transform:uppercase;">Continue →</button>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--         DIRECTION C — BREACH                -->
+<!--         Screen 04 · WRONG                   -->
+<!-- ════════════════════════════════════════════ -->
+
+<div class="phone" style="left:994px;top:3068px;background:#000;font-family:'DM Sans',sans-serif;border:1px solid #181818;">
+
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:13px;font-weight:700;letter-spacing:1px;"><span style="color:#dc2626;">♥♥♥</span><span style="color:#1a0808;">♥♡</span></span>
+    <span style="font-size:11px;color:#2e2e2e;font-weight:600;">Q 04 / 10</span>
+    <span style="font-size:12px;color:#2e2e2e;font-weight:600;">🔥 0</span>
+  </div>
+
+  <div style="height:2px;background:#0d0d0d;"><div style="height:2px;width:40%;background:#dc2626;"></div></div>
+
+  <!-- Big result -->
+  <div style="padding:26px 16px 0;">
+    <div style="font-size:8px;color:#551515;font-weight:700;letter-spacing:3px;text-transform:uppercase;margin-bottom:6px;">Result</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:88px;color:#dc2626;line-height:0.88;letter-spacing:1px;">WRONG</div>
+    <div style="height:2px;background:#3a1010;margin:14px 0 0;"></div>
+  </div>
+
+  <!-- Correct answer -->
+  <div style="padding:16px 16px 0;">
+    <div style="font-size:8px;color:#551515;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:8px;">Correct Answer</div>
+    <div style="border-left:3px solid #dc2626;padding:10px 13px;background:#0f0303;">
+      <div style="font-size:16px;font-weight:700;color:#dc2626;text-transform:uppercase;letter-spacing:1px;">False</div>
+      <p style="font-size:11px;color:#7a3030;margin-top:3px;line-height:1.55;">"Routers — not switches — operate at Layer 3 using IP addresses."</p>
+    </div>
+  </div>
+
+  <!-- Explanation -->
+  <div style="padding:14px 16px 0;">
+    <div style="font-size:8px;color:#2e2e2e;font-weight:700;letter-spacing:2.5px;text-transform:uppercase;margin-bottom:7px;">Remember</div>
+    <p style="font-size:13px;color:#888;line-height:1.65;margin:0;">The statement was true. Switches are Layer 2. Routers are Layer 3. This is the most common swap on CompTIA Network+.</p>
+  </div>
+
+  <!-- Life lost -->
+  <div style="margin:16px 16px 0;padding:11px 14px;background:#0f0303;display:flex;justify-content:space-between;align-items:center;">
+    <span style="font-size:11px;font-weight:700;color:#551515;text-transform:uppercase;letter-spacing:1px;">−1 LIFE</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#dc2626;line-height:1;">3 LEFT</span>
+  </div>
+
+  <div style="padding:14px 16px 0;">
+    <button style="width:100%;padding:17px;background:transparent;border:2px solid #dc2626;color:#dc2626;font-family:'DM Sans',sans-serif;font-size:14px;font-weight:700;letter-spacing:1.5px;cursor:pointer;text-transform:uppercase;">Got It →</button>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--         DIRECTION D — BREACH+               -->
+<!--         Screen 04 · CORRECT                 -->
+<!-- ════════════════════════════════════════════ -->
+
+<div class="phone" style="left:1451px;top:2338px;background:#000;font-family:'JetBrains Mono',monospace;border:1px solid #181818;">
+
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:12px;color:#dc2626;letter-spacing:1px;">♥♥♥♥♡</span>
+    <span style="font-size:10px;color:#3a3a3a;letter-spacing:0.5px;">Q 04 / 10</span>
+    <span style="font-size:10px;color:#2a6a2a;">// 🔥 13</span>
+  </div>
+
+  <!-- progress: advanced one tick -->
+  <div style="height:2px;background:#0d0d0d;"><div style="height:2px;width:40%;background:#1e5a1e;"></div></div>
+
+  <!-- Big result -->
+  <div style="padding:28px 16px 0;">
+    <div style="font-size:8px;color:#2a5a2a;letter-spacing:3px;margin-bottom:8px;">// RESULT</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:88px;color:#fff;line-height:0.88;letter-spacing:1px;">CORRECT</div>
+  </div>
+
+  <div style="height:1px;background:#1e5a1e;margin:14px 16px 0;"></div>
+
+  <!-- Answer echo -->
+  <div style="padding:16px 16px 0;">
+    <div style="font-size:8px;color:#2a5a2a;letter-spacing:2.5px;margin-bottom:8px;">// YOUR ANSWER</div>
+    <div style="background:#060e06;border-left:2px solid #1e5a1e;padding:10px 13px;">
+      <div style="font-size:14px;font-weight:700;color:#3aaa3a;letter-spacing:2px;">TRUE</div>
+      <p style="font-size:10px;color:#2a5a2a;margin-top:4px;line-height:1.6;">"A switch operates at OSI Layer 2 and uses MAC addresses to forward frames."</p>
+    </div>
+  </div>
+
+  <!-- Explanation -->
+  <div style="padding:14px 16px 0;">
+    <div style="font-size:8px;color:#333;letter-spacing:2.5px;margin-bottom:7px;">// EXPLANATION</div>
+    <p style="font-size:12px;color:#c0c0c0;line-height:1.7;margin:0;">Switches forward Ethernet frames by reading destination MAC addresses. IP processing happens at Layer 3 — that's the router.</p>
+  </div>
+
+  <!-- XP reward -->
+  <div style="margin:16px 16px 0;background:#060e06;border-left:2px solid #1e5a1e;padding:10px 13px;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-size:8px;color:#2a5a2a;letter-spacing:2px;">// XP EARNED</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#3aaa3a;line-height:1;">+10</span>
+    <span style="font-size:8px;color:#1e4a1e;letter-spacing:1px;">STREAK ×13</span>
+  </div>
+
+  <div style="padding:14px 16px 0;">
+    <button style="width:100%;padding:17px;background:transparent;border:1px solid #2a6a2a;color:#3aaa3a;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;">[ CONTINUE → ]</button>
+  </div>
+
+</div>
+
+
+<!-- ════════════════════════════════════════════ -->
+<!--         DIRECTION D — BREACH+               -->
+<!--         Screen 04 · WRONG                   -->
+<!-- ════════════════════════════════════════════ -->
+
+<div class="phone" style="left:1451px;top:3068px;background:#000;font-family:'JetBrains Mono',monospace;border:1px solid #181818;">
+
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:12px;letter-spacing:1px;"><span style="color:#dc2626;">♥♥♥</span><span style="color:#1a0808;">♥♡</span></span>
+    <span style="font-size:10px;color:#3a3a3a;letter-spacing:0.5px;">Q 04 / 10</span>
+    <span style="font-size:10px;color:#333;">// 🔥 0</span>
+  </div>
+
+  <div style="height:2px;background:#0d0d0d;"><div style="height:2px;width:40%;background:#dc2626;"></div></div>
+
+  <!-- Big result -->
+  <div style="padding:28px 16px 0;">
+    <div style="font-size:8px;color:#551515;letter-spacing:3px;margin-bottom:8px;">// RESULT</div>
+    <div style="font-family:'Bebas Neue',sans-serif;font-size:88px;color:#dc2626;line-height:0.88;letter-spacing:1px;">WRONG</div>
+  </div>
+
+  <div style="height:1px;background:#3a1010;margin:14px 16px 0;"></div>
+
+  <!-- Correct answer -->
+  <div style="padding:16px 16px 0;">
+    <div style="font-size:8px;color:#551515;letter-spacing:2.5px;margin-bottom:8px;">// CORRECT ANSWER</div>
+    <div style="background:#0e0303;border-left:2px solid #dc2626;padding:10px 13px;">
+      <div style="font-size:14px;font-weight:700;color:#dc2626;letter-spacing:2px;">FALSE</div>
+      <p style="font-size:10px;color:#7a3030;margin-top:4px;line-height:1.6;">"Routers operate at Layer 3. Switches work at Layer 2 with MAC addresses."</p>
+    </div>
+  </div>
+
+  <!-- Explanation -->
+  <div style="padding:14px 16px 0;">
+    <div style="font-size:8px;color:#333;letter-spacing:2.5px;margin-bottom:7px;">// EXPLANATION</div>
+    <p style="font-size:12px;color:#c0c0c0;line-height:1.7;margin:0;">The statement was true — a switch IS Layer 2. Routers are Layer 3. This Layer 2 / Layer 3 device swap is the #1 Network+ trap.</p>
+  </div>
+
+  <!-- Life lost -->
+  <div style="margin:16px 16px 0;background:#0e0303;border-left:2px solid #dc2626;padding:10px 13px;display:flex;align-items:center;justify-content:space-between;">
+    <span style="font-size:8px;color:#551515;letter-spacing:2px;">// LIFE LOST</span>
+    <span style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#dc2626;line-height:1;">−1</span>
+    <span style="font-size:8px;color:#3a1010;letter-spacing:1px;">3 REMAINING</span>
+  </div>
+
+  <div style="padding:14px 16px 0;">
+    <button style="width:100%;padding:17px;background:transparent;border:1px solid #dc2626;color:#dc2626;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;">[ GOT IT → ]</button>
+  </div>
+
+</div>
+
+</body>
+</html>

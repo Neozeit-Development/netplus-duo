@@ -1,0 +1,46 @@
+<!-- @dsCard group="Screens" -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Lesson — Correct feedback</title>
+<link rel="stylesheet" href="../style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-stat">🔥 <span>12</span></div>
+  <div class="header-stat"><span>♥♥♥♥♡</span></div>
+  <div class="header-stat">Level <span>4</span></div>
+  <div class="header-stat">XP: <span>50</span>/<span>100</span></div>
+</header>
+
+<main id="app-root">
+  <section id="screen-lesson" class="screen">
+    <div class="lesson-progress">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" style="width: 40%;"></div>
+      </div>
+    </div>
+
+    <div class="question-card" id="question-card">
+      <p class="question-meta">Zone 1 · Question 4 of 10</p>
+      <h2 class="question-text">Which protocol is specifically responsible for error reporting at Layer 3?</h2>
+      <div class="options-grid">
+        <button class="option-btn" disabled>TCP (Transmission Control Protocol)</button>
+        <button class="option-btn" disabled>IP (Internet Protocol)</button>
+        <button class="option-btn correct" disabled>ICMP (Internet Control Message Protocol)</button>
+        <button class="option-btn" disabled>UDP (User Datagram Protocol)</button>
+      </div>
+    </div>
+
+    <div class="feedback-panel correct" id="feedback-panel">
+      <p class="feedback-title">Correct! +10 XP</p>
+      <p class="feedback-explanation">While IP is responsible for the actual routing of packets, ICMP is the specific protocol used by network devices to send error messages and operational information back to the source.</p>
+      <button class="btn btn-primary btn-lg">Continue</button>
+    </div>
+  </section>
+</main>
+
+</body>
+</html>

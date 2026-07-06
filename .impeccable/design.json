@@ -1,0 +1,133 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-07-06T00:00:00Z",
+  "title": "Design System: Breach+",
+  "extensions": {
+    "colorMeta": {
+      "signal-red": { "role": "primary", "displayName": "Signal Red", "canonical": "oklch(57% 0.21 27)", "tonalRamp": ["#1a0000", "#2a0000", "#3a0000", "#551515", "#7a2020", "#a83030", "#dc3535", "#ff6b6b"] },
+      "ink-black": { "role": "neutral", "displayName": "Ink Black", "canonical": "oklch(0% 0 0)", "tonalRamp": ["#000000", "#050505", "#0a0a0a", "#0d0d0d", "#1a1a1a", "#333333", "#555555", "#888888"] },
+      "correct-green": { "role": "secondary", "displayName": "Correct Green", "canonical": "oklch(58% 0.18 135)", "tonalRamp": ["#060e06", "#0d1a0d", "#1e3a1e", "#2a5a2a", "#3aaa3a", "#5ac95a", "#8ae08a", "#c0f0c0"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Rank numerals, zone numbers, key terms, result banners (CORRECT/WRONG). Numbers and single words only, never sentences." },
+      "label": { "displayName": "Comment Caption", "purpose": "The `// LABEL` micro-pattern: section captions, button text, table headers. Most-repeated style in the system." }
+    },
+    "shadows": [],
+    "motion": [
+      { "name": "ease-standard", "value": "cubic-bezier(0.22, 1, 0.36, 1)", "purpose": "Default ease-out for state transitions (toggle flips, row highlight, panel entrance) — no bounce." }
+    ],
+    "breakpoints": [
+      { "name": "phone", "value": "375px" },
+      { "name": "tablet", "value": "768px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Full-width filled CTA. The system's only saturated-red interactive surface.",
+      "html": "<button class=\"ds-btn-primary\">[ LAUNCH ZONE 02 &rarr; ]</button>",
+      "css": ".ds-btn-primary { display: block; width: 100%; padding: 17px 20px; background: #dc3535; border: none; border-radius: 0; color: #fff; font-family: 'JetBrains Mono', monospace; font-size: 11px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.15s cubic-bezier(0.22,1,0.36,1); } .ds-btn-primary:hover { background: #c11f1f; } .ds-btn-primary:focus-visible { outline: 2px solid #dc3535; outline-offset: 2px; } .ds-btn-primary:active { background: #a81a1a; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "button-ghost",
+      "description": "Transparent secondary action (Back, Quit, paired nav). Never filled.",
+      "html": "<button class=\"ds-btn-ghost\">[ REVIEW DOMAINS ]</button>",
+      "css": ".ds-btn-ghost { padding: 13px 16px; background: transparent; border: 1px solid #1a1a1a; border-radius: 0; color: #444; font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.15s cubic-bezier(0.22,1,0.36,1), color 0.15s; } .ds-btn-ghost:hover { background: #0a0a0a; color: #c0c0c0; } .ds-btn-ghost:focus-visible { outline: 2px solid #dc3535; outline-offset: 2px; }"
+    },
+    {
+      "name": "Zone Row",
+      "kind": "custom",
+      "refersTo": "zone-row",
+      "description": "Domain/zone list item: oversized index numeral, title, hairline progress bar, trailing percentage. Active state washes the row red.",
+      "html": "<div class=\"ds-zone-row ds-zone-row--active\"><span class=\"ds-zone-num\">02</span><div class=\"ds-zone-body\"><div class=\"ds-zone-tag\">// ACTIVE</div><div class=\"ds-zone-title\">Network Implementation</div><div class=\"ds-zone-track\"><div class=\"ds-zone-fill\" style=\"width:48%\"></div></div></div><span class=\"ds-zone-pct\">48%</span></div>",
+      "css": ".ds-zone-row { display: flex; align-items: center; gap: 12px; padding: 12px 0; border-bottom: 1px solid #0d0d0d; font-family: 'JetBrains Mono', monospace; } .ds-zone-row--active { background: #060000; } .ds-zone-num { font-family: 'Bebas Neue', sans-serif; font-size: 44px; line-height: 1; min-width: 30px; color: #dc3535; } .ds-zone-body { flex: 1; } .ds-zone-tag { font-size: 8px; letter-spacing: 0.15em; color: #dc3535; margin-bottom: 3px; } .ds-zone-title { font-size: 13px; font-weight: 700; color: #fff; text-transform: uppercase; letter-spacing: 0.02em; } .ds-zone-track { height: 1px; background: #2a0000; margin-top: 5px; } .ds-zone-fill { height: 1px; background: #dc3535; } .ds-zone-pct { font-size: 11px; color: #dc3535; letter-spacing: 0.05em; }"
+    },
+    {
+      "name": "Stat Block",
+      "kind": "custom",
+      "refersTo": "stat-block",
+      "description": "Label caption over an editorial-scale numeral with inline unit suffix. Used in grids of 3-4 across Stats/Exam screens.",
+      "html": "<div class=\"ds-stat\"><div class=\"ds-stat-label\">// ACCURACY</div><div class=\"ds-stat-num\">76<span>%</span></div></div>",
+      "css": ".ds-stat { padding: 0 10px; border-right: 1px solid #0d0d0d; font-family: 'JetBrains Mono', monospace; } .ds-stat-label { font-size: 6px; letter-spacing: 0.15em; color: #444; margin-bottom: 5px; text-transform: uppercase; } .ds-stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 38px; line-height: 1; letter-spacing: 0.02em; color: #fff; } .ds-stat-num span { font-size: 18px; color: #555; }"
+    },
+    {
+      "name": "Toggle Switch",
+      "kind": "custom",
+      "refersTo": "toggle",
+      "description": "36x14 rectangular toggle. On-state uses Signal Red border/wash/dot; off-state stays in the ink ramp.",
+      "html": "<div class=\"ds-toggle ds-toggle--on\" role=\"switch\" aria-checked=\"true\" tabindex=\"0\"><div class=\"ds-toggle-dot\"></div></div>",
+      "css": ".ds-toggle { width: 36px; height: 14px; border: 1px solid #1e1e1e; background: #0a0a0a; position: relative; cursor: pointer; transition: background 0.15s, border-color 0.15s; } .ds-toggle--on { border-color: #dc3535; background: #1a0000; } .ds-toggle-dot { position: absolute; top: 2px; left: 2px; width: 8px; height: 8px; background: #2a2a2a; transition: left 0.15s cubic-bezier(0.22,1,0.36,1), background 0.15s; } .ds-toggle--on .ds-toggle-dot { left: 22px; background: #dc3535; } .ds-toggle:focus-visible { outline: 2px solid #dc3535; outline-offset: 2px; }"
+    },
+    {
+      "name": "Segmented Selector",
+      "kind": "custom",
+      "refersTo": "segmented-selector",
+      "description": "Bordered row of equal cells (e.g. difficulty, daily goal). Selected cell washes red.",
+      "html": "<div class=\"ds-segmented\"><div class=\"ds-segment\">EASY</div><div class=\"ds-segment ds-segment--selected\">STANDARD</div><div class=\"ds-segment\">HARD</div></div>",
+      "css": ".ds-segmented { display: grid; grid-auto-flow: column; grid-auto-columns: 1fr; border: 1px solid #1e1e1e; font-family: 'JetBrains Mono', monospace; } .ds-segment { padding: 8px 0; text-align: center; font-size: 8px; letter-spacing: 0.05em; color: #333; border-right: 1px solid #1e1e1e; cursor: pointer; } .ds-segment:last-child { border-right: none; } .ds-segment--selected { background: #1a0000; color: #dc3535; }"
+    },
+    {
+      "name": "Reference Table Row",
+      "kind": "custom",
+      "refersTo": "ref-table-row",
+      "description": "Data table row for study-guide reference tables. The highlighted row (last missed / current value) gets a red left border — the one sanctioned use of a colored side border in this system.",
+      "html": "<table class=\"ds-ref-table\"><thead><tr><th>Prefix</th><th>Mask</th><th>Hosts</th></tr></thead><tbody><tr class=\"ds-ref-row--active\"><td class=\"ds-ref-num\">/28</td><td>255.255.255.240</td><td class=\"ds-ref-num\">14</td></tr></tbody></table>",
+      "css": ".ds-ref-table { width: 100%; border-collapse: collapse; font-family: 'JetBrains Mono', monospace; } .ds-ref-table th { font-size: 0.6875rem; color: #444; letter-spacing: 0.1em; text-transform: uppercase; text-align: left; padding: 7px 10px; border-bottom: 1px solid #1a0000; font-weight: 400; } .ds-ref-table td { font-size: 0.75rem; padding: 7px 10px; border-bottom: 1px solid #0d0d0d; } .ds-ref-row--active td { background: #060000; color: #dc3535; } .ds-ref-row--active td:first-child { border-left: 1px solid #dc3535; } .ds-ref-num { font-family: 'Bebas Neue', sans-serif; font-size: 14px; }"
+    },
+    {
+      "name": "Feedback Panel (Correct)",
+      "kind": "custom",
+      "refersTo": "feedback-panel",
+      "description": "Full-bleed result screen: giant Bebas Neue result word plus a bordered answer box. The system's rarest, biggest color+scale payoff — reserve for actual correct/wrong moments.",
+      "html": "<div class=\"ds-feedback ds-feedback--correct\"><div class=\"ds-feedback-tag\">// RESULT</div><div class=\"ds-feedback-word\">CORRECT</div><div class=\"ds-feedback-answer\">TRUE</div></div>",
+      "css": ".ds-feedback { padding: 28px 16px 16px; font-family: 'JetBrains Mono', monospace; } .ds-feedback--correct { background: #000; } .ds-feedback-tag { font-size: 0.6875rem; letter-spacing: 0.15em; color: #3aaa3a; margin-bottom: 8px; } .ds-feedback-word { font-family: 'Bebas Neue', sans-serif; font-size: 5.5rem; line-height: 0.88; color: #fff; } .ds-feedback-answer { margin-top: 16px; padding: 10px 13px; background: #060e06; border: 1px solid #1e5a1e; color: #3aaa3a; font-size: 14px; font-weight: 700; letter-spacing: 0.1em; }"
+    },
+    {
+      "name": "Lesson Failure (Lives Depleted)",
+      "kind": "custom",
+      "refersTo": "lesson-failure",
+      "description": "Lesson summary when hearts are gone. Progress-first hero, de-escalation beat, retry-primary CTA, tertiary refill row.",
+      "html": "<div class=\"ds-lesson-fail\"><div class=\"ds-lesson-fail-tag\">// SESSION RECORDED</div><div class=\"ds-lesson-fail-score\">4<span>/10</span></div><div class=\"ds-lesson-fail-meta\">// LIVES: 0 / 5 · ZONE 02 INCOMPLETE</div><div class=\"ds-lesson-fail-progress\">4 correct · +20 XP logged</div><button class=\"ds-btn-primary\">[ RETRY LESSON → ]</button><button class=\"ds-btn-ghost\">[ REVIEW ERRORS ]</button><div class=\"ds-lesson-fail-refill\">// OR REFILL LIVES · 5 hearts · 350 gems <button class=\"ds-btn-ghost\">[ REFILL ]</button></div></div>",
+      "css": ".ds-lesson-fail { font-family: 'JetBrains Mono', monospace; } .ds-lesson-fail-tag { font-size: 0.75rem; color: #551515; letter-spacing: 0.15em; } .ds-lesson-fail-score { font-family: 'Bebas Neue', sans-serif; font-size: 5.75rem; line-height: 0.85; color: #fff; } .ds-lesson-fail-score span { color: #dc3535; } .ds-lesson-fail-meta { font-size: 0.75rem; color: #333; letter-spacing: 0.1em; } .ds-lesson-fail-progress { margin: 12px 0; padding: 9px 10px; background: #050505; border: 1px solid #1a1a1a; color: #c0c0c0; font-size: 0.75rem; font-weight: 700; text-transform: uppercase; } .ds-lesson-fail-refill { margin-top: 8px; padding: 8px 10px; background: #050505; border: 1px solid #1a1a1a; display: flex; align-items: center; justify-content: space-between; font-size: 0.75rem; color: #888; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Operator Console",
+    "overview": "Breach+ casts the learner as an operator logged into a professional ops console, not a student clicking through a quiz. Every screen is pure black, lit by a single signal-red accent and structured entirely in hairline rules — there is no chrome softness to hide behind, so hierarchy has to be earned through scale (oversized Bebas Neue numerals), restraint (one red, used deliberately), and precision (JetBrains Mono's fixed-width discipline down to the // caption level). This is the direct rebuild of a product that used to be a near-exact Duolingo palette clone; the whole point of Breach+ is that it could never be mistaken for that again. Breach+ explicitly rejects two things: the gamified language-app look (rounded pill buttons, bouncy mascots, candy-bright greens/blues, emoji-forward copy) and the corporate cert-platform look (beige/light backgrounds, generic humanist sans, soft drop-shadow cards, HR-approved blandness). It leans instead on terminal and hacker-tool references — Hack The Box, TryHackMe, raw console UIs — where density and monospace precision read as competence, not clutter.",
+    "keyCharacteristics": [
+      "Pure black canvas; depth built from luminance steps and hairlines, never shadows",
+      "One accent color (signal red) carrying activity, alerts, and correctness — never decorative",
+      "Editorial-scale Bebas Neue numerals as the primary emotional payoff (rank, XP, \"CORRECT\")",
+      "JetBrains Mono as the universal workhorse — body copy, labels, buttons, tables, all of it",
+      "Locked/inactive states communicated through luminance dimming, not opacity fades or icons alone"
+    ],
+    "rules": [
+      { "name": "The One Red Rule", "body": "Signal Red marks exactly one thing per screen: the active/current item, the primary action, or an alert. Never decorative, never a second competing element.", "section": "colors" },
+      { "name": "The Contrast Floor Rule", "body": "Any text the operator is expected to actually read must clear WCAG AA (4.5:1 body, 3:1 large/bold). Only genuinely inert content (locked zones, disabled toggles, version stamps) may sit below that floor.", "section": "colors" },
+      { "name": "The Comment-Caption Rule", "body": "Every section gets a // LABEL caption. Neutral captions use Ink 300 (#888888); red-accent captions use Signal Red (#dc3535). Signal Red Dim (#551515) is for borders/washes only, not readable text.", "section": "typography" },
+      { "name": "The Type Floor Rule", "body": "Nothing meant to be read renders smaller than 11px real. The mockups are literal 375x812 device pixels, not poster scale, so a 6px source value is a 6px value on a real phone. Corrected across all 11 screens to an 11-14px floor (0.6875rem/0.75rem/0.8125rem/0.875rem); new screens must start from that floor.", "section": "typography" },
+      { "name": "The Flat-By-Default Rule", "body": "No box-shadow anywhere. 'Elevated' means one luminance step lighter than its parent, full stop.", "section": "elevation" },
+      { "name": "Interaction States", "body": "Primary: hover darken, focus 2px Signal Red outline-offset 2. Ghost: hover Surface Raised + ink-200 text. Toggles/segments: focus ring required. Locked: luminance dim only. Motion 150ms ease-out; respect prefers-reduced-motion.", "section": "components" },
+    ],
+    "dos": [
+      "Do keep every screen to two fonts only: Bebas Neue for display numerals/key terms, JetBrains Mono for everything else.",
+      "Do use hard corners (border-radius: 0) on every component.",
+      "Do reserve Signal Red for exactly one \"this matters now\" element per screen.",
+      "Do build all depth from luminance steps and hairlines; never a shadow.",
+      "Do promote any must-read text to at least #888888 on black and at least 11px real size.",
+      "Do use the // LABEL comment-caption convention consistently."
+    ],
+    "donts": [
+      "Don't use rounded pill buttons, bouncy mascots, candy-bright greens/blues, or emoji-forward copy.",
+      "Don't use beige/light backgrounds, generic humanist sans-serif, or soft drop-shadow cards.",
+      "Don't use border-left/border-right as a decorative accent stripe on cards or callouts, outside the one sanctioned reference-table row highlight.",
+      "Don't let dim/locked-state ink values (#2a2a2a, #333333 on #000000) leak into copy the operator is meant to read.",
+      "Don't ship a label caption below ~11px real rendered size on a phone.",
+      "Don't introduce a second saturated accent color."
+    ]
+  }
+}

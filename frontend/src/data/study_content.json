@@ -1,0 +1,3933 @@
+[
+  {
+    "zone": 1,
+    "domain": "Networking Concepts",
+    "flavorName": "The Plains of Concepts",
+    "objectives": [
+      {
+        "id": 1.1,
+        "name": "The Seven Layers",
+        "description": "The OSI model, encapsulation, and how data moves layer by layer.",
+        "items": [
+          {
+            "title": "OSI Model \u2014 All 7 Layers",
+            "type": "table",
+            "headers": [
+              "Layer #",
+              "Name",
+              "PDU",
+              "Key Protocols / Devices"
+            ],
+            "rows": [
+              [
+                "7",
+                "Application",
+                "Data",
+                "HTTP, HTTPS, FTP, SSH, DNS, SMTP, SNMP, Telnet"
+              ],
+              [
+                "6",
+                "Presentation",
+                "Data",
+                "TLS/SSL, JPEG, MPEG, ASCII \u2014 encryption & formatting"
+              ],
+              [
+                "5",
+                "Session",
+                "Data",
+                "NetBIOS, RPC, PPTP \u2014 session establish/maintain/terminate"
+              ],
+              [
+                "4",
+                "Transport",
+                "Segment / Datagram",
+                "TCP (reliable), UDP (fast) \u2014 port numbers live here"
+              ],
+              [
+                "3",
+                "Network",
+                "Packet",
+                "IP, ICMP, OSPF, BGP \u2014 Router operates here"
+              ],
+              [
+                "2",
+                "Data Link",
+                "Frame",
+                "Ethernet, 802.11 Wi-Fi, ARP \u2014 Switch / MAC addresses"
+              ],
+              [
+                "1",
+                "Physical",
+                "Bit",
+                "Hubs, cables, repeaters, NICs \u2014 raw electrical/optical signals"
+              ]
+            ],
+            "key_points": [
+              "Router = Layer 3.  Switch = Layer 2.  Hub = Layer 1.",
+              "TCP/UDP port numbers live at Layer 4.",
+              "TLS/SSL encryption happens at Layer 6 (Presentation).",
+              "Encapsulation adds headers going DOWN (7\u21921); decapsulation strips them going UP."
+            ]
+          },
+          {
+            "title": "OSI Mnemonic",
+            "type": "mnemonic",
+            "body": "Please  Do  Not  Throw  Sausage  Pizza  Away\n  7        6     5      4       3         2        1\n\n(Reversed \u2014 bottom to top: All People Seem To Need Data Processing)",
+            "key_points": [
+              "Top-down (app to wire): Please Do Not Throw Sausage Pizza Away",
+              "Bottom-up (wire to app): All People Seem To Need Data Processing",
+              "Exam questions often use BOTH directions \u2014 know both."
+            ]
+          },
+          {
+            "title": "Encapsulation & PDU Names",
+            "type": "concept",
+            "body": "When data travels DOWN the OSI stack, each layer ADDS a header (and sometimes a trailer). This is encapsulation.\n\nLayer 7/6/5: Data\nLayer 4 adds port numbers \u2192 Segment (TCP) or Datagram (UDP)\nLayer 3 adds IP header \u2192 Packet\nLayer 2 adds MAC header + FCS trailer \u2192 Frame\nLayer 1 converts to bits \u2192 Bits on the wire",
+            "key_points": [
+              "Data \u2192 Segment \u2192 Packet \u2192 Frame \u2192 Bits  (DSPFB)",
+              "De-encapsulation: reverse process on the receiving end.",
+              "The Frame Check Sequence (FCS) at Layer 2 detects corruption.",
+              "Exam tip: 'What PDU is used at Layer X?' \u2014 know DSPFB cold."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1.2,
+        "name": "The Toolbox",
+        "description": "Network devices and security appliances \u2014 hubs to firewalls, IDS/IPS/UTM.",
+        "items": [
+          {
+            "title": "Networking Devices \u2014 Layer & Function",
+            "type": "table",
+            "headers": [
+              "Device",
+              "OSI Layer",
+              "Key Function",
+              "Notes"
+            ],
+            "rows": [
+              [
+                "Hub",
+                "Layer 1",
+                "Repeats all traffic to all ports",
+                "Creates one collision domain \u2014 avoid in modern nets"
+              ],
+              [
+                "Switch",
+                "Layer 2",
+                "Forwards frames by MAC address (CAM table)",
+                "Each port = separate collision domain"
+              ],
+              [
+                "Layer 3 Switch",
+                "Layer 3",
+                "Switches + routes between VLANs",
+                "Faster than router for inter-VLAN \u2014 no separate router needed"
+              ],
+              [
+                "Router",
+                "Layer 3",
+                "Routes packets between networks using IP",
+                "Maintains routing table; connects different network segments"
+              ],
+              [
+                "Firewall",
+                "Layer 3\u20137",
+                "Filters traffic based on rules/policy",
+                "Stateful = tracks connection state; NGFW = Layer 7 inspection"
+              ],
+              [
+                "IDS",
+                "Passive monitor",
+                "Detects and ALERTS on suspicious traffic",
+                "Does NOT block \u2014 out-of-band or tap mode"
+              ],
+              [
+                "IPS",
+                "Inline monitor",
+                "Detects and BLOCKS threats in real time",
+                "Sits inline \u2014 adds latency; can cause false-positive drops"
+              ],
+              [
+                "Load Balancer",
+                "Layer 4\u20137",
+                "Distributes traffic across server pool",
+                "Improves availability + performance"
+              ],
+              [
+                "Proxy Server",
+                "Layer 7",
+                "Intermediary between client and internet",
+                "Caches content, filters URLs, can anonymise client IP"
+              ],
+              [
+                "Media Converter",
+                "Layer 1",
+                "Converts between media types (copper\u2194fiber)",
+                "Extends distance beyond copper's 100m limit"
+              ],
+              [
+                "UTM",
+                "Layer 3\u20137",
+                "All-in-one: FW + IPS + AV + Web Filter + VPN",
+                "Unified Threat Management \u2014 single appliance for SMBs"
+              ]
+            ],
+            "key_points": [
+              "Hub = Layer 1 (dumb repeater).  Switch = Layer 2 (MAC-aware).  Router = Layer 3 (IP-aware).",
+              "IDS = detect only.  IPS = detect + block (inline).",
+              "UTM = one box does everything \u2014 firewalling, IPS, antivirus, web filter, VPN.",
+              "NGFW adds deep packet inspection and App-ID on top of standard firewall capabilities."
+            ]
+          },
+          {
+            "title": "Firewall Types Compared",
+            "type": "table",
+            "headers": [
+              "Type",
+              "What it inspects",
+              "State awareness",
+              "Key limitation"
+            ],
+            "rows": [
+              [
+                "Packet filter (stateless)",
+                "Src/Dst IP, Port, Protocol per-packet",
+                "No \u2014 each packet evaluated alone",
+                "Cannot validate returning traffic; easy to spoof"
+              ],
+              [
+                "Stateful firewall",
+                "Connection state table + packet headers",
+                "Yes \u2014 tracks TCP sessions",
+                "Cannot inspect application payload content"
+              ],
+              [
+                "Application-layer (proxy) FW",
+                "Full application data (Layer 7)",
+                "Yes",
+                "Slower; application-specific proxies needed"
+              ],
+              [
+                "Next-Gen Firewall (NGFW)",
+                "App ID, User ID, SSL/TLS decryption, IPS",
+                "Yes + deep inspection",
+                "Higher cost; SSL inspection causes latency"
+              ],
+              [
+                "WAF (Web App Firewall)",
+                "HTTP/HTTPS traffic, OWASP Top 10 attacks",
+                "Yes + app aware",
+                "Web traffic only \u2014 not a general-purpose firewall"
+              ]
+            ],
+            "key_points": [
+              "Stateful FW is the baseline \u2014 used everywhere.  Know how it tracks TCP state.",
+              "NGFW = stateful + application awareness + SSL inspection + integrated IPS.",
+              "WAF specifically protects web apps (SQL injection, XSS, etc.).",
+              "The exam may refer to 'stateful packet inspection' \u2014 that's a stateful firewall."
+            ]
+          },
+          {
+            "title": "IDS vs IPS \u2014 Know the Difference",
+            "type": "concept",
+            "body": "IDS (Intrusion Detection System):\n  \u2022 Passive \u2014 sits on a SPAN port or network tap\n  \u2022 Sees a copy of traffic (out-of-band)\n  \u2022 Detects anomalies and sends ALERTS\n  \u2022 Cannot block traffic \u2014 just watches\n\nIPS (Intrusion Prevention System):\n  \u2022 Active \u2014 sits INLINE in the traffic path\n  \u2022 Processes actual traffic (not a copy)\n  \u2022 Detects and BLOCKS threats in real time\n  \u2022 Adds latency; false positives can drop legitimate traffic\n\nHIDS / HIPS = host-based versions running on an endpoint.",
+            "key_points": [
+              "IDS = out-of-band (copy of traffic).  IPS = inline (actual traffic).",
+              "IPS can block; IDS cannot \u2014 IDS only alerts.",
+              "False positive on an IPS = legitimate traffic gets dropped.",
+              "HIDS = host-based IDS.  NIDS = network-based IDS."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1.3,
+        "name": "The Cloud",
+        "description": "Cloud service & deployment models, virtualization, SDN, and modern access.",
+        "items": [
+          {
+            "title": "Critical Ports \u2014 Must Know Cold",
+            "type": "table",
+            "headers": [
+              "Port",
+              "Protocol",
+              "Transport",
+              "Notes"
+            ],
+            "rows": [
+              [
+                "20",
+                "FTP (data)",
+                "TCP",
+                "Active mode data transfer"
+              ],
+              [
+                "21",
+                "FTP (control)",
+                "TCP",
+                "Commands \u2014 login, directory listing"
+              ],
+              [
+                "22",
+                "SSH / SFTP / SCP",
+                "TCP",
+                "Encrypted remote access + secure file transfer"
+              ],
+              [
+                "23",
+                "Telnet",
+                "TCP",
+                "Unencrypted remote access \u2014 deprecated, avoid"
+              ],
+              [
+                "25",
+                "SMTP",
+                "TCP",
+                "Server-to-server email relay"
+              ],
+              [
+                "53",
+                "DNS",
+                "UDP (queries) / TCP (zone xfer)",
+                "UDP for normal queries; TCP for large/zone transfer"
+              ],
+              [
+                "67",
+                "DHCP Server",
+                "UDP",
+                "Server listens here \u2014 clients broadcast to 255.255.255.255:67"
+              ],
+              [
+                "68",
+                "DHCP Client",
+                "UDP",
+                "Client receives reply here"
+              ],
+              [
+                "69",
+                "TFTP",
+                "UDP",
+                "Trivial FTP \u2014 unencrypted, used for booting/config files"
+              ],
+              [
+                "80",
+                "HTTP",
+                "TCP",
+                "Unencrypted web traffic"
+              ],
+              [
+                "110",
+                "POP3",
+                "TCP",
+                "Email retrieval \u2014 downloads and deletes from server"
+              ],
+              [
+                "143",
+                "IMAP",
+                "TCP",
+                "Email retrieval \u2014 syncs, keeps on server"
+              ],
+              [
+                "161",
+                "SNMP (agent poll)",
+                "UDP",
+                "Manager \u2192 Agent: GET, GETNEXT, SET requests"
+              ],
+              [
+                "162",
+                "SNMP (traps)",
+                "UDP",
+                "Agent \u2192 Manager: unsolicited TRAP notifications"
+              ],
+              [
+                "389",
+                "LDAP",
+                "TCP",
+                "Directory services \u2014 unencrypted"
+              ],
+              [
+                "443",
+                "HTTPS",
+                "TCP",
+                "Encrypted web (HTTP over TLS)"
+              ],
+              [
+                "445",
+                "SMB",
+                "TCP",
+                "Windows file sharing, Active Directory"
+              ],
+              [
+                "514",
+                "Syslog",
+                "UDP",
+                "Log forwarding to SIEM/log server"
+              ],
+              [
+                "587",
+                "SMTP (submission)",
+                "TCP",
+                "Client-to-server email with authentication"
+              ],
+              [
+                "636",
+                "LDAPS",
+                "TCP",
+                "LDAP over TLS \u2014 encrypted directory"
+              ],
+              [
+                "3389",
+                "RDP",
+                "TCP",
+                "Windows Remote Desktop Protocol"
+              ],
+              [
+                "5900",
+                "VNC",
+                "TCP",
+                "Virtual Network Computing \u2014 cross-platform remote desktop"
+              ]
+            ],
+            "key_points": [
+              "FTP = 20 (data) + 21 (control). Both unencrypted.",
+              "SSH = 22. SFTP and SCP both tunnel over SSH port 22.",
+              "DHCP: server=67, client=68. Both UDP (client has no IP yet \u2192 broadcast).",
+              "SNMP: polling=161, traps=162. Syslog=514. Know these for monitoring questions.",
+              "LDAP=389 (plain), LDAPS=636 (encrypted). Always prefer LDAPS in secure environments."
+            ]
+          },
+          {
+            "title": "Port Memory Tricks",
+            "type": "concept",
+            "body": "Group ports by function to memorize faster:\n\nSECURE vs INSECURE pairs (know both):\n  Telnet 23  \u2192  SSH 22 (replacement)\n  HTTP 80   \u2192  HTTPS 443 (encrypted)\n  LDAP 389  \u2192  LDAPS 636 (encrypted)\n  FTP 21    \u2192  SFTP/SCP 22 (over SSH)\n\nEMAIL ports:\n  Send: SMTP 25 (server-server), SMTP 587 (client-server w/ auth)\n  Receive: POP3 110 (download+delete), IMAP 143 (sync+keep)\n\nNETWORK SERVICES:\n  DNS 53 | DHCP 67/68 | TFTP 69\n\nMONITORING:\n  SNMP 161/162 | Syslog 514",
+            "key_points": [
+              "When asked about 'secure file transfer' \u2192 SFTP (port 22), not FTP (port 21).",
+              "When asked about 'unencrypted remote access' \u2192 Telnet (23).",
+              "Port 587 = SMTP with authentication (for email clients, not relay).",
+              "IMAP keeps email on server (sync), POP3 downloads and deletes."
+            ]
+          },
+          {
+            "title": "Essential Port Numbers (memorize cold)",
+            "type": "mnemonic",
+            "body": "Guaranteed exam points \u2014 drill until automatic:\n\n  20/21 FTP    22 SSH/SFTP/SCP   23 Telnet    25 SMTP\n  53 DNS       67/68 DHCP        69 TFTP      80 HTTP\n  110 POP3     123 NTP           143 IMAP     161/162 SNMP\n  389 LDAP     443 HTTPS         445 SMB      636 LDAPS\n  514 Syslog   3389 RDP          1433 MS-SQL  3306 MySQL",
+            "key_points": [
+              "SSH=22 \u2014 SFTP and SCP ride on 22 too. Telnet=23 is its insecure twin.",
+              "Secure swaps: HTTP 80->HTTPS 443, LDAP 389->LDAPS 636, FTP->FTPS 990.",
+              "DHCP: 67 server / 68 client.  SNMP: 161 queries / 162 traps.",
+              "RDP=3389 (Microsoft).  Syslog=UDP 514.  NTP=123."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1.4,
+        "name": "The Secret Codes",
+        "description": "Ports and protocols \u2014 TCP vs UDP and the numbers you must know cold.",
+        "items": [
+          {
+            "title": "IPv4 Address Classes & Special Ranges",
+            "type": "table",
+            "headers": [
+              "Range / Class",
+              "CIDR",
+              "Description"
+            ],
+            "rows": [
+              [
+                "10.0.0.0 \u2013 10.255.255.255",
+                "10.0.0.0/8",
+                "RFC 1918 Private \u2014 Class A private"
+              ],
+              [
+                "172.16.0.0 \u2013 172.31.255.255",
+                "172.16.0.0/12",
+                "RFC 1918 Private \u2014 Class B private (172.32+ is PUBLIC)"
+              ],
+              [
+                "192.168.0.0 \u2013 192.168.255.255",
+                "192.168.0.0/16",
+                "RFC 1918 Private \u2014 Class C private"
+              ],
+              [
+                "127.0.0.0 \u2013 127.255.255.255",
+                "127.0.0.0/8",
+                "Loopback \u2014 127.0.0.1 = local host test"
+              ],
+              [
+                "169.254.0.0 \u2013 169.254.255.255",
+                "169.254.0.0/16",
+                "APIPA \u2014 auto-assigned when DHCP fails; link-local only"
+              ],
+              [
+                "0.0.0.0",
+                "\u2014",
+                "Unspecified / default route (all networks)"
+              ],
+              [
+                "255.255.255.255",
+                "\u2014",
+                "Limited broadcast \u2014 all hosts on local segment"
+              ]
+            ],
+            "key_points": [
+              "172.16\u2013172.31 is private.  172.32.0.0+ is PUBLIC.  This is a common exam trap.",
+              "APIPA = 169.254.x.x.  Host with APIPA has no DHCP \u2014 cannot reach other networks.",
+              "Loopback = 127.0.0.1.  The whole 127.0.0.0/8 is reserved for loopback.",
+              "Private addresses are NOT routed on the internet \u2014 NAT translates them."
+            ]
+          },
+          {
+            "title": "CIDR Subnet Quick Reference",
+            "type": "table",
+            "headers": [
+              "CIDR",
+              "Subnet Mask",
+              "Total Addresses",
+              "Usable Hosts",
+              "Subnets per /24"
+            ],
+            "rows": [
+              [
+                "/24",
+                "255.255.255.0",
+                "256",
+                "254",
+                "1"
+              ],
+              [
+                "/25",
+                "255.255.255.128",
+                "128",
+                "126",
+                "2"
+              ],
+              [
+                "/26",
+                "255.255.255.192",
+                "64",
+                "62",
+                "4"
+              ],
+              [
+                "/27",
+                "255.255.255.224",
+                "32",
+                "30",
+                "8"
+              ],
+              [
+                "/28",
+                "255.255.255.240",
+                "16",
+                "14",
+                "16"
+              ],
+              [
+                "/29",
+                "255.255.255.248",
+                "8",
+                "6",
+                "32"
+              ],
+              [
+                "/30",
+                "255.255.255.252",
+                "4",
+                "2",
+                "64  \u2014 point-to-point links"
+              ],
+              [
+                "/31",
+                "255.255.255.254",
+                "2",
+                "2 (special \u2014 RFC 3021)",
+                "P2P only \u2014 no broadcast"
+              ],
+              [
+                "/32",
+                "255.255.255.255",
+                "1",
+                "1 (host route)",
+                "Specific host or loopback"
+              ]
+            ],
+            "key_points": [
+              "Usable hosts = 2^(host bits) \u2212 2.  Subtract network address and broadcast.",
+              "/30 = 2 usable hosts.  Perfect for router-to-router point-to-point links.",
+              "/26 = 64 addresses, 62 usable.  Important \u2014 appears in subnet calculation questions.",
+              "Each time you borrow 1 bit: address space halves, number of subnets doubles."
+            ]
+          },
+          {
+            "title": "Subnetting: How to Calculate Fast",
+            "type": "concept",
+            "body": "Given: 192.168.10.75/27 \u2014 find the subnet.\n\nStep 1: /27 has 5 host bits \u2192 2^5 = 32 addresses per subnet.\n\nStep 2: Subnet boundaries increment by 32:\n  192.168.10.0  (network)  \u2192 .31 (broadcast)\n  192.168.10.32 (network)  \u2192 .63 (broadcast)\n  192.168.10.64 (network)  \u2192 .95 (broadcast)  \u2190 .75 is in THIS one\n  192.168.10.96 (network)  \u2192 .127 (broadcast)\n\nAnswer: subnet = 192.168.10.64/27\n\nKey formula: Block size = 256 \u2212 last octet of subnet mask.\n  /27 mask last octet = 224 \u2192 Block = 256\u2212224 = 32.",
+            "key_points": [
+              "Block size = 256 \u2212 last non-255 octet of subnet mask.",
+              "/26 block = 64, /27 block = 32, /28 block = 16, /29 block = 8, /30 block = 4.",
+              "Find which block the IP falls in by dividing: 75\u00f732 = 2 remainder 11 \u2192 subnet starts at 64.",
+              "First address = network, last address = broadcast.  Both are unusable as host addresses."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1.5,
+        "name": "The Physical Path",
+        "description": "Copper cabling \u2014 categories, termination standards, and diagnostics.",
+        "items": [
+          {
+            "title": "Cloud Service Models (IaaS / PaaS / SaaS)",
+            "type": "table",
+            "headers": [
+              "Model",
+              "What provider manages",
+              "What YOU manage",
+              "Examples"
+            ],
+            "rows": [
+              [
+                "IaaS",
+                "Physical hardware, hypervisor, data center",
+                "OS, middleware, runtime, apps, data",
+                "AWS EC2, Azure VMs, Google Compute Engine"
+              ],
+              [
+                "PaaS",
+                "Everything IaaS + OS + runtime + middleware",
+                "Applications and data only",
+                "AWS Elastic Beanstalk, Google App Engine, Heroku"
+              ],
+              [
+                "SaaS",
+                "Everything \u2014 infra + platform + application",
+                "Just your data and user access",
+                "Office 365, Gmail, Salesforce, Dropbox"
+              ]
+            ],
+            "key_points": [
+              "Pizza-as-a-Service analogy: IaaS = you cook it; PaaS = restaurant kitchen; SaaS = delivered pizza.",
+              "More 'as a Service' = less you manage = less control = less customization.",
+              "IaaS gives max control but max responsibility.",
+              "SaaS = zero infrastructure concern; just use the app."
+            ]
+          },
+          {
+            "title": "Cloud Deployment Models",
+            "type": "table",
+            "headers": [
+              "Model",
+              "Who uses it",
+              "Infrastructure",
+              "Key trait"
+            ],
+            "rows": [
+              [
+                "Public",
+                "Anyone \u2014 open to all",
+                "Owned by cloud provider (AWS, Azure, GCP)",
+                "Low cost, shared resources, least control"
+              ],
+              [
+                "Private",
+                "Single organization only",
+                "Dedicated (on-prem or hosted)",
+                "Max control, max security, highest cost"
+              ],
+              [
+                "Hybrid",
+                "Organization + public cloud together",
+                "Mix of private + public",
+                "Flexible: burst to public, keep sensitive data private"
+              ],
+              [
+                "Community",
+                "Multiple orgs with shared compliance needs",
+                "Shared among the group",
+                "e.g., Government agencies sharing FISMA infra"
+              ]
+            ],
+            "key_points": [
+              "Private cloud = most control + most secure (but costly).",
+              "Public cloud = cheapest, least control.",
+              "Hybrid = private for sensitive workloads, public for elastic bursting.",
+              "Community cloud is often tested as the 'unusual' option \u2014 know it."
+            ]
+          },
+          {
+            "title": "NIST 5 Cloud Characteristics",
+            "type": "list",
+            "key_points": [
+              "1. On-demand self-service \u2014 provision resources without human interaction with provider",
+              "2. Broad network access \u2014 available over the network via standard mechanisms (phone, laptop)",
+              "3. Resource pooling \u2014 provider serves multiple consumers from shared resources (multi-tenancy)",
+              "4. Rapid elasticity \u2014 scale up/down quickly; appears unlimited to consumer",
+              "5. Measured service \u2014 resource use is monitored, controlled, reported (pay-per-use)"
+            ],
+            "body": "NIST SP 800-145 defines cloud computing with these 5 essential characteristics. The exam tests whether you can recognize them.\n\nElasticity = scale resources fast.\nMeasured service = metered billing.\nOn-demand = no need to call the provider."
+          },
+          {
+            "title": "IPv6 Address Types",
+            "type": "table",
+            "headers": [
+              "Type",
+              "Prefix / Range",
+              "Description"
+            ],
+            "rows": [
+              [
+                "Loopback",
+                "::1/128",
+                "Equivalent to 127.0.0.1 in IPv4 \u2014 local host"
+              ],
+              [
+                "Unspecified",
+                "::/128",
+                "All zeros \u2014 equivalent to 0.0.0.0 in IPv4"
+              ],
+              [
+                "Link-Local",
+                "FE80::/10",
+                "Auto-configured on every IPv6 interface; not routable \u2014 local segment only"
+              ],
+              [
+                "Unique Local",
+                "FC00::/7 (FC00\u2013FDFF)",
+                "Private IPv6 \u2014 roughly equivalent to RFC 1918; not globally routed"
+              ],
+              [
+                "Global Unicast",
+                "2000::/3",
+                "Publicly routable IPv6 \u2014 assigned by IANA/RIRs"
+              ],
+              [
+                "Multicast",
+                "FF00::/8",
+                "Replaces broadcast in IPv6 (no broadcast in IPv6)"
+              ],
+              [
+                "Anycast",
+                "Same as unicast \u2014 no special range",
+                "Single address assigned to multiple interfaces; packet delivered to nearest"
+              ]
+            ],
+            "key_points": [
+              "IPv6 has NO broadcast \u2014 multicast replaces it (e.g., FF02::1 = all nodes on link).",
+              "FE80::/10 = link-local. Every interface gets one automatically. NOT routable.",
+              "FC00::/7 = unique local (private). Functionally like RFC 1918 for IPv4.",
+              "IPv6 loopback = ::1.  IPv4 loopback = 127.0.0.1.  Know both."
+            ]
+          },
+          {
+            "title": "SDN \u2014 Control Plane vs Data Plane",
+            "type": "concept",
+            "body": "Traditional Networking:\n  Control plane AND data plane run ON the same physical device (router/switch).\n  Each device makes its own routing/forwarding decisions independently.\n\nSDN (Software-Defined Networking):\n  CONTROL PLANE \u2192 centralized controller (software)\n    \u2022 Makes all routing/policy decisions\n    \u2022 Has a global view of the entire network\n    \u2022 Communicates with switches via OpenFlow or NETCONF\n\n  DATA PLANE \u2192 remains on the physical switch\n    \u2022 Just forwards packets per instructions from controller\n    \u2022 Dumb hardware \u2014 faster forwarding\n\nBenefit: Centralized management, programmable network, faster provisioning.\nUse cases: Cloud DCs, SD-WAN, network slicing (5G).",
+            "key_points": [
+              "Control plane = where to send traffic (routing decisions).",
+              "Data plane = actually forwarding the packets.",
+              "SDN separates them: controller handles control, switches handle forwarding.",
+              "OpenFlow = protocol between SDN controller and switches."
+            ]
+          },
+          {
+            "title": "Zero Trust, SASE, and SD-WAN",
+            "type": "concept",
+            "body": "ZERO TRUST ARCHITECTURE (ZTA):\n  Core principle: 'Never trust, always verify.'\n  \u2022 No implicit trust based on network location (inside \u2260 trusted).\n  \u2022 Every request must be authenticated, authorised, and encrypted.\n  \u2022 Micro-segmentation: fine-grained per-workload security zones.\n  \u2022 Least-privilege access: users/devices get minimum access needed.\n\nSASE (Secure Access Service Edge):\n  Gartner-coined term combining:\n    \u2022 SD-WAN (network performance)\n    \u2022 Cloud security (SWG, CASB, ZTNA, FWaaS)\n  Delivered as a cloud service \u2014 security enforced at the edge.\n\nSD-WAN:\n  Intelligently routes traffic across multiple WAN links (MPLS + broadband + LTE)\n  based on real-time performance metrics (latency, jitter, packet loss).\n  Reduces dependency on expensive MPLS circuits.",
+            "key_points": [
+              "Zero Trust: verify everything, trust nothing by default \u2014 even internal traffic.",
+              "SASE = SD-WAN + cloud security services in one cloud-delivered package.",
+              "SD-WAN optimises WAN by using multiple link types intelligently.",
+              "Micro-segmentation = Zero Trust applied inside the data center (stops lateral movement).",
+              "ZTNA (Zero Trust Network Access) replaces traditional VPN in SASE architecture."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1.6,
+        "name": "The Layout",
+        "description": "Network topologies and data-center architectures.",
+        "items": [
+          {
+            "title": "Network Topologies Compared",
+            "type": "table",
+            "headers": [
+              "Topology",
+              "Description",
+              "Pros",
+              "Cons / Single point of failure?"
+            ],
+            "rows": [
+              [
+                "Bus",
+                "All devices on one shared cable segment",
+                "Simple, cheap",
+                "One break = total failure. High collisions. SPOF: the bus cable"
+              ],
+              [
+                "Ring",
+                "Each device connects to two others \u2014 forms a loop",
+                "Predictable latency (token passing)",
+                "One failure takes down ring unless dual-ring. SPOF: any node/link"
+              ],
+              [
+                "Star",
+                "All devices connect to central hub/switch",
+                "Easy troubleshoot, isolate faults per-port",
+                "SPOF: the central switch (mitigated by redundant switches)"
+              ],
+              [
+                "Full Mesh",
+                "Every device connects to every other",
+                "Max redundancy, no SPOF",
+                "Expensive: n*(n-1)/2 connections. Hard to scale"
+              ],
+              [
+                "Partial Mesh",
+                "Some redundant paths \u2014 not all-to-all",
+                "Balance of cost and redundancy",
+                "Some SPOFs remain"
+              ],
+              [
+                "Hybrid",
+                "Combination of topologies",
+                "Flexible \u2014 mix star+mesh for key nodes",
+                "Complexity increases troubleshooting"
+              ],
+              [
+                "Point-to-Point",
+                "Direct link between exactly two nodes",
+                "Simple, dedicated bandwidth",
+                "Only connects two endpoints \u2014 not scalable"
+              ]
+            ],
+            "key_points": [
+              "Star = most common LAN topology today (switch at center).",
+              "Full mesh = max redundancy, max cost.  Used in WAN/SP core networks.",
+              "Bus topology = obsolete.  Ring = used in SONET/SDH (dual-ring).",
+              "The internet is a partial mesh \u2014 not all routers connect to all routers."
+            ]
+          },
+          {
+            "title": "Data Center: Three-Tier vs Spine-and-Leaf",
+            "type": "table",
+            "headers": [
+              "Property",
+              "Three-Tier (Core/Dist/Access)",
+              "Spine-and-Leaf"
+            ],
+            "rows": [
+              [
+                "Layers",
+                "Core \u2192 Distribution \u2192 Access",
+                "Spine switches + Leaf switches (2 layers only)"
+              ],
+              [
+                "Traffic pattern",
+                "North-South dominant (client\u2192server)",
+                "East-West dominant (server\u2192server)"
+              ],
+              [
+                "Hops any-to-any",
+                "Variable (3\u20136+ hops)",
+                "Always exactly 2 hops (leaf\u2192spine\u2192leaf)"
+              ],
+              [
+                "Latency",
+                "Variable \u2014 depends on path",
+                "Consistent and predictable"
+              ],
+              [
+                "Scaling",
+                "Complex \u2014 upgrade core is disruptive",
+                "Add a leaf switch = linear scale-out"
+              ],
+              [
+                "Spanning Tree",
+                "Required \u2014 loop prevention",
+                "Avoided \u2014 uses ECMP and BGP/EVPN instead"
+              ],
+              [
+                "Use case",
+                "Enterprise campus networks",
+                "Modern data centers with heavy VM/container traffic"
+              ]
+            ],
+            "key_points": [
+              "Three-tier = Core/Distribution/Access.  Collapsed core = Distribution merged into Core.",
+              "Spine-and-leaf = any two servers always 2 hops apart.  Predictable latency.",
+              "East-West traffic (server\u2194server) drove adoption of spine-and-leaf in DCs.",
+              "North-South = traffic in/out of the DC.  East-West = traffic within the DC."
+            ]
+          },
+          {
+            "title": "Traffic Patterns \u2014 North-South vs East-West",
+            "type": "concept",
+            "body": "NORTH-SOUTH traffic:\n  Direction: Between external users/internet and servers inside the data center.\n  Think of it as traffic crossing the perimeter firewall.\n  Example: A user in London browsing a website hosted in AWS.\n  Traditional three-tier architecture was designed for this.\n\nEAST-WEST traffic:\n  Direction: Between servers WITHIN the same data center.\n  Example: Web server \u2192 App server \u2192 Database server (same DC).\n  With virtualization and microservices, this is now the dominant traffic pattern.\n  Spine-and-leaf is designed specifically for high east-west volumes.",
+            "key_points": [
+              "East-west traffic dominates modern DCs \u2014 it grew with virtualization/microservices.",
+              "Spine-and-leaf was invented to handle east-west efficiently.",
+              "North-south crosses the perimeter (external \u2194 internal).",
+              "Exam question: 'server-to-server traffic within a DC' = east-west."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1.7,
+        "name": "The Address Book",
+        "description": "IPv4 addressing, private ranges, APIPA, default gateways, and DNS.",
+        "items": [
+          {
+            "title": "Copper Cabling Standards",
+            "type": "table",
+            "headers": [
+              "Standard",
+              "Max Speed",
+              "Max Distance",
+              "Notes"
+            ],
+            "rows": [
+              [
+                "Cat5",
+                "100 Mbps",
+                "100m",
+                "Obsolete \u2014 rarely seen"
+              ],
+              [
+                "Cat5e",
+                "1 Gbps",
+                "100m",
+                "Enhanced Cat5 \u2014 reduced crosstalk; most common legacy cable"
+              ],
+              [
+                "Cat6",
+                "1 Gbps (full 100m) / 10 Gbps (55m)",
+                "100m @ 1G, 55m @ 10G",
+                "More twisted pairs \u2014 reduced interference"
+              ],
+              [
+                "Cat6a",
+                "10 Gbps",
+                "100m",
+                "Augmented Cat6 \u2014 supports 10G at full 100m run"
+              ],
+              [
+                "Cat7",
+                "10 Gbps",
+                "100m",
+                "Shielded \u2014 better EMI protection; not TIA-recognised standard"
+              ],
+              [
+                "Cat8",
+                "25/40 Gbps",
+                "30m",
+                "Data center use \u2014 very short runs, server-to-ToR switch"
+              ]
+            ],
+            "key_points": [
+              "Cat5e = 1 Gbps at 100m.  Cat6 = 10 Gbps but only 55m.  Cat6a = 10 Gbps at full 100m.",
+              "All copper Ethernet is limited to 100 meters maximum segment length.",
+              "Cat6a required for 10GBase-T at full 100m \u2014 important for structured wiring installs.",
+              "Cat8 = data center only (server to Top-of-Rack switch, 30m max)."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 1.8,
+        "name": "The New Wave",
+        "description": "SDN, SASE, Zero Trust, and IPv6 fundamentals.",
+        "items": [
+          {
+            "title": "Fiber Optic \u2014 SMF vs MMF",
+            "type": "table",
+            "headers": [
+              "Property",
+              "Single-Mode (SMF)",
+              "Multi-Mode (MMF)"
+            ],
+            "rows": [
+              [
+                "Core size",
+                "8\u201310 microns",
+                "50\u201362.5 microns"
+              ],
+              [
+                "Light source",
+                "Laser (coherent light)",
+                "LED or VCSEL"
+              ],
+              [
+                "Distance",
+                "Up to 100km+ (WAN/metro)",
+                "Up to 550m (OM4) in data centers"
+              ],
+              [
+                "Bandwidth",
+                "Extremely high",
+                "High (lower than SMF)"
+              ],
+              [
+                "Cable jacket colour",
+                "Yellow (OS1/OS2)",
+                "Orange (OM1/OM2) or Aqua (OM3/OM4)"
+              ],
+              [
+                "Cost",
+                "Higher \u2014 laser transceivers",
+                "Lower \u2014 LED transceivers cheaper"
+              ],
+              [
+                "Use case",
+                "WAN, ISP backbone, building-to-building long runs",
+                "Within a building, data center, campus short runs"
+              ]
+            ],
+            "key_points": [
+              "SMF = long distance, laser, yellow jacket.  MMF = short distance, LED, orange/aqua.",
+              "OM3 supports 10 Gbps at 300m.  OM4 supports 10 Gbps at 550m.",
+              "SMF supports 10 Gbps and beyond at 10km, 40km, 80km+ depending on transceiver.",
+              "Exam: 'connects two buildings 300m apart at 10 Gbps' \u2192 OM3/OM4 MMF or SMF."
+            ]
+          },
+          {
+            "title": "Connectors & Transceivers",
+            "type": "table",
+            "headers": [
+              "Connector / Device",
+              "Type",
+              "Use"
+            ],
+            "rows": [
+              [
+                "RJ-45",
+                "Copper \u2014 8-pin",
+                "Ethernet (Cat5e/Cat6/Cat6a) \u2014 standard Ethernet jack"
+              ],
+              [
+                "RJ-11",
+                "Copper \u2014 6-pin",
+                "Telephone landline \u2014 NOT Ethernet"
+              ],
+              [
+                "LC (Lucent)",
+                "Fiber \u2014 small form-factor",
+                "Data centers, patch panels \u2014 push-pull latch, common in modern installs"
+              ],
+              [
+                "SC (Subscriber)",
+                "Fiber \u2014 square, push-pull",
+                "Older ISP/telecom installs \u2014 larger than LC"
+              ],
+              [
+                "ST (Straight Tip)",
+                "Fiber \u2014 bayonet twist-lock",
+                "Legacy enterprise \u2014 rarely new installs"
+              ],
+              [
+                "FC",
+                "Fiber \u2014 threaded screw",
+                "High-vibration environments, test equipment"
+              ],
+              [
+                "SFP",
+                "Transceiver module",
+                "1 Gbps \u2014 hot-swappable, supports fiber or copper via DAC"
+              ],
+              [
+                "SFP+",
+                "Transceiver module",
+                "10 Gbps \u2014 same form factor as SFP"
+              ],
+              [
+                "QSFP / QSFP+",
+                "Transceiver module",
+                "40 Gbps / 100 Gbps \u2014 data center spine links"
+              ],
+              [
+                "Auto-MDIX",
+                "Switch NIC feature",
+                "Automatically detects crossover vs straight-through \u2014 no manual cable choice needed"
+              ]
+            ],
+            "key_points": [
+              "LC = most common modern fiber connector (small, data center friendly).",
+              "RJ-45 for copper Ethernet.  RJ-11 for phone.  Don't confuse them.",
+              "SFP = 1G, SFP+ = 10G, QSFP = 40G/100G.  All hot-swappable.",
+              "Auto-MDIX makes the straight-through/crossover distinction mostly irrelevant now."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "zone": 2,
+    "domain": "Network Implementation",
+    "flavorName": "The Implementation Citadel",
+    "objectives": [
+      {
+        "id": 2.1,
+        "name": "Pathfinding",
+        "description": "Routing protocols, admin distance, NAT, and first-hop redundancy.",
+        "items": [
+          {
+            "title": "Static vs Dynamic Routing \u2014 Printed Directions vs GPS",
+            "type": "concept",
+            "body": "Static = printed directions: fixed route, zero overhead, doesn't adapt if the road closes.\nDynamic = GPS: routers share updates and reroute automatically, at the cost of CPU/bandwidth.\n\nUse static for stub networks, defaults, or backup routes. Use dynamic wherever topology changes or redundancy exists.",
+            "key_points": [
+              "AD = tiebreaker when two sources know the same route \u2014 lowest AD wins.",
+              "Static AD=1 beats OSPF AD=110 by default.",
+              "Mnemonic (low\u2192high AD): Connected(0), Static(1), eBGP(20), EIGRP(90), OSPF(110), RIP(120), iBGP(200).",
+              "Floating static route: deliberately set a HIGH AD so it's only a backup."
+            ]
+          },
+          {
+            "title": "Administrative Distance (AD) \u2014 Quick Reference",
+            "type": "table",
+            "headers": [
+              "Route Source",
+              "AD Value",
+              "Notes"
+            ],
+            "rows": [
+              [
+                "Directly Connected",
+                "0",
+                "The interface is physically connected \u2014 always preferred"
+              ],
+              [
+                "Static Route",
+                "1",
+                "Manually configured by admin \u2014 almost always preferred over dynamic"
+              ],
+              [
+                "eBGP (external BGP)",
+                "20",
+                "Routes learned from external BGP peers (internet routing)"
+              ],
+              [
+                "EIGRP (internal)",
+                "90",
+                "Cisco proprietary \u2014 DUAL algorithm, fast convergence"
+              ],
+              [
+                "OSPF",
+                "110",
+                "Open standard \u2014 link-state, area-based, SPF algorithm"
+              ],
+              [
+                "IS-IS",
+                "115",
+                "Link-state, used by large ISPs, rarely tested on N+"
+              ],
+              [
+                "RIP v1/v2",
+                "120",
+                "Distance vector, hop count \u226415, slow convergence \u2014 legacy"
+              ],
+              [
+                "EIGRP (external)",
+                "170",
+                "Routes redistributed INTO EIGRP from another protocol"
+              ],
+              [
+                "iBGP (internal BGP)",
+                "200",
+                "BGP routes learned from internal BGP peers \u2014 least trusted dynamic"
+              ],
+              [
+                "Unknown / Unreachable",
+                "255",
+                "Never installed in routing table \u2014 effectively blocked"
+              ]
+            ],
+            "key_points": [
+              "Lower AD = more trustworthy. Router installs LOWEST AD route.",
+              "Static AD=1 almost always beats dynamic protocols (AD 90\u2013200).",
+              "Floating static route: set AD > dynamic protocol AD to use as backup only.",
+              "Memorise: Connected(0) > Static(1) > eBGP(20) > EIGRP(90) > OSPF(110) > RIP(120) > iBGP(200).",
+              "Exam trap: 'Which route is preferred?' \u2014 always pick lowest AD."
+            ]
+          },
+          {
+            "title": "Routing Protocols \u2014 Head-to-Head",
+            "type": "table",
+            "headers": [
+              "Protocol",
+              "Type",
+              "Algorithm",
+              "Metric",
+              "AD",
+              "Use Case"
+            ],
+            "rows": [
+              [
+                "RIP v2",
+                "Distance Vector",
+                "Bellman-Ford",
+                "Hop count (max 15)",
+                "120",
+                "Small legacy networks \u2014 avoid in production"
+              ],
+              [
+                "EIGRP",
+                "Hybrid (Adv. DV)",
+                "DUAL",
+                "Bandwidth + Delay (+ load, reliability)",
+                "90",
+                "Cisco-only enterprise LANs"
+              ],
+              [
+                "OSPF",
+                "Link State",
+                "Dijkstra (SPF)",
+                "Cost (based on bandwidth)",
+                "110",
+                "Multi-vendor enterprise, most common IGP"
+              ],
+              [
+                "BGP",
+                "Path Vector",
+                "Best-path selection",
+                "AS-PATH, MED, LOCAL_PREF",
+                "20/200",
+                "Internet routing between ASes \u2014 THE internet protocol"
+              ],
+              [
+                "IS-IS",
+                "Link State",
+                "Dijkstra (SPF)",
+                "Cost (configured manually)",
+                "115",
+                "Service provider networks, rarely in enterprise"
+              ]
+            ],
+            "key_points": [
+              "IGP (Interior) = inside one AS: RIP, EIGRP, OSPF, IS-IS.",
+              "EGP (Exterior) = between ASes: BGP (only one in use today).",
+              "OSPF area 0 = backbone area \u2014 all other areas must connect to area 0.",
+              "BGP uses TCP port 179.",
+              "OSPF elects DR/BDR on multi-access segments (Ethernet) to reduce LSA flooding.",
+              "EIGRP uses RTP (Reliable Transport Protocol) \u2014 not TCP/UDP."
+            ]
+          },
+          {
+            "title": "NAT Types \u2014 Translation Explained",
+            "type": "table",
+            "headers": [
+              "NAT Type",
+              "Mapping",
+              "Direction",
+              "Use Case"
+            ],
+            "rows": [
+              [
+                "Static NAT",
+                "One-to-one: single private IP \u2194 single public IP",
+                "Bidirectional",
+                "Hosting a server \u2014 needs consistent public IP"
+              ],
+              [
+                "Dynamic NAT",
+                "Pool: private IP \u2192 one public IP from pool",
+                "Outbound only",
+                "Multiple clients sharing a pool of public IPs"
+              ],
+              [
+                "PAT / NAT Overload",
+                "Many-to-one: all private IPs \u2192 one public IP + unique port",
+                "Outbound only",
+                "Home/office internet access \u2014 most common NAT"
+              ],
+              [
+                "NAT64",
+                "IPv6 \u2194 IPv4 translation",
+                "Bidirectional",
+                "IPv6-only hosts communicating with IPv4 servers"
+              ]
+            ],
+            "key_points": [
+              "PAT (Port Address Translation) = NAT Overload \u2014 tracks connections by port number.",
+              "Static NAT needed for inbound connections (servers, DMZ hosts).",
+              "NAT hides internal addressing \u2014 'inside local' is the private IP.",
+              "Inside global = public IP seen by internet. Inside local = private IP on LAN.",
+              "NAT breaks end-to-end connectivity (can cause VoIP, VPN, gaming issues)."
+            ]
+          },
+          {
+            "title": "First Hop Redundancy Protocols (FHRP)",
+            "type": "table",
+            "headers": [
+              "Protocol",
+              "Standard",
+              "Active/Standby Role Names",
+              "Load Balancing",
+              "Notes"
+            ],
+            "rows": [
+              [
+                "HSRP",
+                "Cisco proprietary",
+                "Active / Standby",
+                "Per-VLAN only (via multiple groups)",
+                "Hot Standby Router Protocol \u2014 most common on Cisco"
+              ],
+              [
+                "VRRP",
+                "Open (RFC 5798)",
+                "Master / Backup",
+                "Per-VLAN only (via multiple groups)",
+                "Virtual Router Redundancy Protocol \u2014 vendor-neutral"
+              ],
+              [
+                "GLBP",
+                "Cisco proprietary",
+                "AVG + AVFs",
+                "Yes \u2014 true load balancing per-gateway",
+                "Gateway Load Balancing Protocol \u2014 most advanced, Cisco only"
+              ]
+            ],
+            "key_points": [
+              "All FHRPs create a virtual IP + virtual MAC shared by the group.",
+              "Clients use the VIRTUAL IP as their default gateway \u2014 not a physical router IP.",
+              "HSRP: one active, one standby. Election: highest priority wins (default 100); tie \u2192 highest IP.",
+              "VRRP: same concept as HSRP but RFC standard \u2014 compatible with all vendors.",
+              "GLBP: one AVG (Active Virtual Gateway) assigns different virtual MACs \u2192 true load balancing.",
+              "Preemption: when a higher-priority router comes back up, it can reclaim active role (must be enabled in HSRP)."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2.2,
+        "name": "The Switchboard",
+        "description": "VLANs, 802.1Q trunking, Spanning Tree, and link aggregation.",
+        "items": [
+          {
+            "title": "VLAN Fundamentals & 802.1Q Trunking",
+            "type": "concept",
+            "body": "A VLAN (Virtual LAN) is a logical segment of a switched network. It creates separate broadcast domains without needing physical separation.\n\n802.1Q TAGGING:\nWhen a frame travels over a trunk link, an 802.1Q tag (4 bytes) is inserted into the Ethernet header:\n  \u2022 Tag Protocol ID (TPID): 0x8100\n  \u2022 Priority (PCP): 3 bits (QoS/CoS)\n  \u2022 Drop Eligible (DEI): 1 bit\n  \u2022 VLAN ID (VID): 12 bits \u2192 supports 4094 VLANs (0 and 4095 reserved)\n\nPORT MODES:\n  \u2022 Access port: belongs to ONE VLAN, frames are UNTAGGED\n  \u2022 Trunk port: carries MULTIPLE VLANs, frames are TAGGED (except native VLAN)\n  \u2022 Native VLAN: the ONE VLAN that is NOT tagged on a trunk (default VLAN 1 \u2014 change it for security)\n  \u2022 Voice VLAN: access port can carry data VLAN + voice VLAN simultaneously (for IP phones)",
+            "key_points": [
+              "VLANs create separate broadcast domains \u2014 a broadcast in VLAN 10 doesn't reach VLAN 20.",
+              "Trunk ports tag ALL VLANs except the native VLAN \u2014 native VLAN frames pass untagged.",
+              "Native VLAN mismatch = security risk (VLAN hopping) \u2014 always set native VLAN to unused VLAN.",
+              "Default VLAN is VLAN 1 \u2014 all ports start in VLAN 1; best practice is to NOT use VLAN 1 for data.",
+              "Inter-VLAN routing requires either a router (router-on-a-stick) or a Layer 3 switch (SVI).",
+              "DTP (Dynamic Trunking Protocol) \u2014 Cisco auto-negotiates trunk; disable on access ports (switchport nonegotiate)."
+            ]
+          },
+          {
+            "title": "STP Port States & Roles (802.1D)",
+            "type": "table",
+            "headers": [
+              "Port State",
+              "Learns MACs?",
+              "Forwards Frames?",
+              "Duration"
+            ],
+            "rows": [
+              [
+                "Blocking",
+                "No",
+                "No",
+                "Up to 20 sec (Max Age)"
+              ],
+              [
+                "Listening",
+                "No",
+                "No",
+                "15 sec (Forward Delay)"
+              ],
+              [
+                "Learning",
+                "Yes",
+                "No",
+                "15 sec (Forward Delay)"
+              ],
+              [
+                "Forwarding",
+                "Yes",
+                "Yes",
+                "Normal operation"
+              ],
+              [
+                "Disabled",
+                "No",
+                "No",
+                "Admin shutdown"
+              ]
+            ],
+            "key_points": [
+              "STP convergence = 30\u201350 seconds total (Blocking\u2192Listening\u2192Learning\u2192Forwarding).",
+              "Mnemonic for states: Blocking Learners Listen First \u2014 BLLF, or 'Big Losers Listen Forever'.",
+              "PORT ROLES: Root Port (toward root bridge), Designated Port (best port on a segment, forwards), Alternate/Backup (blocked to prevent loops).",
+              "ROOT BRIDGE: elected by lowest Bridge ID = Bridge Priority (default 32768) + MAC address. Tie: lower MAC wins.",
+              "All ports on Root Bridge = Designated (Forwarding).",
+              "PortFast: skips Listening/Learning \u2014 use on ACCESS ports only (not trunk). Enables immediately.",
+              "BPDU Guard: shuts down a PortFast port if it receives a BPDU (protects against accidental switch connections)."
+            ]
+          },
+          {
+            "title": "STP Variants & LACP",
+            "type": "table",
+            "headers": [
+              "Protocol",
+              "IEEE Standard",
+              "Convergence",
+              "Instances",
+              "Notes"
+            ],
+            "rows": [
+              [
+                "STP",
+                "802.1D",
+                "30\u201350 seconds",
+                "1 (CST)",
+                "Original \u2014 one spanning tree for all VLANs. Too slow for modern networks."
+              ],
+              [
+                "RSTP",
+                "802.1w",
+                "< 1\u20132 seconds",
+                "1 (CST)",
+                "Rapid STP \u2014 same logic, much faster. Backward compatible with 802.1D."
+              ],
+              [
+                "PVST+",
+                "Cisco proprietary",
+                "30\u201350 sec",
+                "1 per VLAN",
+                "Per-VLAN STP \u2014 separate tree per VLAN. Rapid PVST+ uses 802.1w per VLAN."
+              ],
+              [
+                "MSTP",
+                "802.1s",
+                "< 1\u20132 seconds",
+                "Multiple mapped to VLANs",
+                "Maps multiple VLANs to fewer STP instances \u2014 scalable in large networks."
+              ],
+              [
+                "LACP",
+                "802.3ad (802.1ax)",
+                "N/A \u2014 link aggregation",
+                "N/A",
+                "Combines multiple physical links into one logical link (EtherChannel/Port-Channel). Active/passive modes."
+              ]
+            ],
+            "key_points": [
+              "RSTP (802.1w) = what you should use today \u2014 same concept as STP but < 2 sec convergence.",
+              "LACP modes: Active (initiates negotiation) and Passive (responds to negotiation). Active-Active or Active-Passive works; Passive-Passive does NOT.",
+              "EtherChannel/Port-Channel: up to 8 active links bundled. STP sees it as ONE logical link \u2014 no blocking needed.",
+              "LACP vs PAgP: LACP is IEEE standard; PAgP is Cisco proprietary (both do link aggregation).",
+              "MSTP groups VLANs into instances \u2014 reduces CPU load vs PVST+ in large deployments."
+            ]
+          },
+          {
+            "title": "Inter-VLAN Routing Methods",
+            "type": "table",
+            "headers": [
+              "Method",
+              "How it works",
+              "Hardware needed",
+              "Pros / Cons"
+            ],
+            "rows": [
+              [
+                "Router-on-a-stick",
+                "Single trunk link from switch to router; router uses subinterfaces (one per VLAN)",
+                "Router + managed switch",
+                "Simple setup; router becomes bottleneck at high traffic"
+              ],
+              [
+                "Layer 3 Switch (SVI)",
+                "Switch itself routes between VLANs using Switch Virtual Interfaces",
+                "Layer 3 switch only",
+                "Fast (hardware routing); no external router needed; most scalable"
+              ],
+              [
+                "Separate router per VLAN",
+                "Each VLAN has a dedicated router port",
+                "Multiple router ports",
+                "Simple but wastes ports; impractical for many VLANs"
+              ]
+            ],
+            "key_points": [
+              "SVI (Switched Virtual Interface) = virtual Layer 3 interface on a switch, one per VLAN.",
+              "Router-on-a-stick: connect switch trunk port to router \u2192 create subinterfaces with 802.1Q encapsulation.",
+              "Layer 3 switch is always preferred in enterprise (line-rate routing, no bottleneck).",
+              "Default gateway for hosts in each VLAN = IP address of the SVI or router subinterface for that VLAN.",
+              "Exam question: 'Host A (VLAN 10) can't reach Host B (VLAN 20)' \u2192 usually missing SVI or misconfigured inter-VLAN routing."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2.3,
+        "name": "Airwaves",
+        "description": "Wireless standards, security protocols, channel planning, and AP architecture.",
+        "items": [
+          {
+            "title": "802.11 Wireless Standards \u2014 Full Comparison",
+            "type": "table",
+            "headers": [
+              "Standard",
+              "Wi-Fi Name",
+              "Frequency",
+              "Max Speed",
+              "Key Feature"
+            ],
+            "rows": [
+              [
+                "802.11a",
+                "Wi-Fi 1",
+                "5 GHz",
+                "54 Mbps",
+                "First 5GHz standard. Less range, no 2.4GHz interference."
+              ],
+              [
+                "802.11b",
+                "Wi-Fi 2",
+                "2.4 GHz",
+                "11 Mbps",
+                "First widely adopted. Slow; prone to interference (microwaves, BT)."
+              ],
+              [
+                "802.11g",
+                "Wi-Fi 3",
+                "2.4 GHz",
+                "54 Mbps",
+                "Backward compatible with 802.11b. Replaced b in most deployments."
+              ],
+              [
+                "802.11n",
+                "Wi-Fi 4",
+                "2.4 / 5 GHz",
+                "600 Mbps",
+                "MIMO (multiple antennas). Channel bonding to 40 MHz. Dual-band."
+              ],
+              [
+                "802.11ac",
+                "Wi-Fi 5",
+                "5 GHz only",
+                "3.5 Gbps",
+                "MU-MIMO, 80/160 MHz channels, beamforming. Common today."
+              ],
+              [
+                "802.11ax",
+                "Wi-Fi 6/6E",
+                "2.4 / 5 / 6 GHz",
+                "9.6 Gbps",
+                "OFDMA, BSS coloring, TWT (Target Wake Time). Dense environments."
+              ],
+              [
+                "802.11be",
+                "Wi-Fi 7",
+                "2.4 / 5 / 6 GHz",
+                "46 Gbps (theoretical)",
+                "Multi-Link Operation (MLO). Latest standard (2024)."
+              ]
+            ],
+            "key_points": [
+              "Memorise: a=5GHz/54M, b=2.4GHz/11M, g=2.4GHz/54M, n=both/600M, ac=5GHz/3.5G, ax=all/9.6G.",
+              "802.11ac/Wi-Fi 5 = 5GHz ONLY. Cannot use 2.4GHz band.",
+              "Wi-Fi 6E adds the 6GHz band \u2014 less congestion, more channels, shorter range.",
+              "MIMO (n) = multiple antennas transmit/receive simultaneously on same channel.",
+              "MU-MIMO (ac/ax) = Multiple User MIMO \u2014 serves multiple clients simultaneously.",
+              "OFDMA (ax/Wi-Fi 6) = divides channel into sub-carriers per client \u2014 efficient in dense deployments."
+            ]
+          },
+          {
+            "title": "Wireless Security \u2014 WEP/WPA/WPA2/WPA3",
+            "type": "table",
+            "headers": [
+              "Standard",
+              "Encryption",
+              "Auth (Personal)",
+              "Auth (Enterprise)",
+              "Status"
+            ],
+            "rows": [
+              [
+                "WEP",
+                "RC4 (40/104-bit key, weak IV)",
+                "Shared Key / Open",
+                "N/A",
+                "BROKEN \u2014 do not use. IV reuse \u2192 cracked in minutes."
+              ],
+              [
+                "WPA (Wi-Fi Protected Access)",
+                "TKIP (RC4 with per-packet key)",
+                "PSK (passphrase)",
+                "802.1X + EAP",
+                "Deprecated \u2014 TKIP has vulnerabilities. Avoid."
+              ],
+              [
+                "WPA2 (802.11i)",
+                "AES-CCMP (strong)",
+                "PSK (passphrase)",
+                "802.1X + EAP (RADIUS)",
+                "Current standard \u2014 still widely used and secure."
+              ],
+              [
+                "WPA3",
+                "AES-GCMP-256 (Enterprise), AES-128 (Personal)",
+                "SAE (replaces PSK)",
+                "192-bit Suite B + 802.1X",
+                "Strongest \u2014 SAE resists offline dictionary attacks."
+              ],
+              [
+                "OWE (Wi-Fi Enhanced Open)",
+                "Opportunistic Wireless Encryption",
+                "None (open network)",
+                "N/A",
+                "Encrypts open networks without authentication (WPA3 feature)."
+              ]
+            ],
+            "key_points": [
+              "WPA2 Personal = PSK (pre-shared key / passphrase). WPA2 Enterprise = 802.1X + RADIUS server.",
+              "WPA3 SAE (Simultaneous Authentication of Equals) replaces PSK \u2014 prevents offline brute-force attacks.",
+              "WPA2 vulnerability: KRACK attack (Key Reinstallation Attack) \u2014 mitigated by patches.",
+              "802.1X = port-based access control framework. EAP = Extensible Authentication Protocol (runs over 802.1X).",
+              "Common EAP types: EAP-TLS (certificate both sides), PEAP (server cert + MSCHAPv2), EAP-FAST.",
+              "Captive portal: redirect unauthenticated users to a login page \u2014 common in guest Wi-Fi."
+            ]
+          },
+          {
+            "title": "Wireless Channel Planning",
+            "type": "concept",
+            "body": "2.4 GHz BAND:\n  \u2022 11 channels in North America (14 worldwide)\n  \u2022 Channels are 22 MHz wide but spaced 5 MHz apart \u2192 OVERLAP\n  \u2022 Non-overlapping channels: 1, 6, 11 (the only three that don't interfere)\n  \u2022 All APs in the same area should use channels 1, 6, or 11\n  \u2022 2.4 GHz has only 3 non-overlapping channels \u2192 congested in dense environments\n\n5 GHz BAND:\n  \u2022 24+ non-overlapping 20 MHz channels (varies by country/regulatory domain)\n  \u2022 Channels can be bonded: 40 MHz (2 channels), 80 MHz (4 channels), 160 MHz (8 channels)\n  \u2022 DFS (Dynamic Frequency Selection): some 5GHz channels require radar detection + avoidance\n  \u2022 UNII-1 (indoor), UNII-2 (DFS), UNII-3, UNII-4 sub-bands\n\n6 GHz BAND (Wi-Fi 6E):\n  \u2022 59 non-overlapping 20 MHz channels\n  \u2022 Huge capacity improvement \u2014 ideal for dense deployments",
+            "key_points": [
+              "2.4 GHz non-overlapping: 1, 6, 11 \u2014 MEMORISE THIS. Only these three can coexist without interference.",
+              "5 GHz has 24+ non-overlapping channels \u2014 much less congestion than 2.4 GHz.",
+              "Co-channel interference: two APs on same channel \u2192 contention (worse than adjacent channel).",
+              "Adjacent channel interference: partially overlapping channels (e.g., 1 and 3) \u2192 noise floor rises.",
+              "Cell sizing: turn down AP power to avoid overlap in dense deployments (smaller cells = more APs needed).",
+              "Site survey: walk-through to measure signal strength, noise, and interference before deploying APs."
+            ]
+          },
+          {
+            "title": "AP Architecture & Antenna Types",
+            "type": "table",
+            "headers": [
+              "Topic",
+              "Type/Mode",
+              "Description"
+            ],
+            "rows": [
+              [
+                "AP Mode",
+                "Autonomous (Fat AP)",
+                "Fully self-contained \u2014 manages own SSID, security, RF. No controller needed. Hard to manage at scale."
+              ],
+              [
+                "AP Mode",
+                "Lightweight (Thin AP / LWAP)",
+                "Offloads config and management to WLC (Wireless LAN Controller). Uses CAPWAP tunnel to WLC."
+              ],
+              [
+                "AP Mode",
+                "Mesh AP",
+                "Wireless backhaul to other APs \u2014 no wired connection to every AP. Extends coverage where cables can't reach."
+              ],
+              [
+                "AP Mode",
+                "Bridge Mode",
+                "Connects two wired LAN segments wirelessly \u2014 point-to-point or point-to-multipoint."
+              ],
+              [
+                "Antenna",
+                "Omnidirectional",
+                "Radiates 360\u00b0 horizontally (like a donut shape). Default for most indoor APs. Lower gain (~2\u20135 dBi)."
+              ],
+              [
+                "Antenna",
+                "Directional (Yagi / Patch)",
+                "Focused beam \u2014 high gain in one direction. Used for point-to-point links or specific coverage areas."
+              ],
+              [
+                "Antenna",
+                "Parabolic Dish",
+                "Extremely high gain, very narrow beam. Long-distance outdoor point-to-point links (up to miles)."
+              ],
+              [
+                "Protocol",
+                "CAPWAP",
+                "Control and Provisioning of Wireless Access Points \u2014 UDP 5246 (control) + 5247 (data). LWAP\u2194WLC tunnel."
+              ]
+            ],
+            "key_points": [
+              "CAPWAP: lightweight AP tunnels all traffic to WLC. UDP 5246 (control plane) + 5247 (data plane).",
+              "WLC (Wireless LAN Controller): centrally manages LWAPs \u2014 RF profiles, SSIDs, security, roaming.",
+              "Autonomous APs: simple to set up individually; nightmare to manage at scale (each configured separately).",
+              "Omnidirectional: good for open office/coverage. Directional: good for hallways, point-to-point outdoor.",
+              "EIRP (Effective Isotropic Radiated Power): regulated max transmit power including antenna gain.",
+              "SSID can be the same across multiple APs \u2192 client roams seamlessly (ESS \u2014 Extended Service Set)."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2.4,
+        "name": "Physical Foundations",
+        "description": "Data center infrastructure, MDF/IDF, UPS types, and environmental considerations.",
+        "items": [
+          {
+            "title": "Data Center Hierarchy \u2014 MDF, IDF & Cabling",
+            "type": "concept",
+            "body": "WIRING HIERARCHY (3-tier structured cabling):\n\n  Entrance Facility (EF)\n       \u2193\n  Main Distribution Frame (MDF)\n       \u2193 (vertical/backbone cabling)\n  Intermediate Distribution Frame (IDF) \u2014 one per floor / wiring closet\n       \u2193 (horizontal cabling \u2014 max 90m)\n  Work Area (end devices)\n\nMDF:\n  \u2022 Houses core/distribution switches, routers, WAN connections, patch panels\n  \u2022 Central point for the entire building's network\n  \u2022 Connects to all IDFs via backbone cabling (fiber between floors)\n\nIDF:\n  \u2022 Floor-level or zone-level wiring closet\n  \u2022 Houses access layer switches, patch panels\n  \u2022 Connected to MDF via riser cables (fiber or Cat6A)\n  \u2022 Contains: switch(es), patch panel, cable management, UPS\n\nHORIZONTAL CABLING (TIA-568):\n  \u2022 Max 90m permanent link + 10m for patch cables = 100m total\n  \u2022 Copper (Cat5e/Cat6/Cat6A) \u2014 1000BASE-T up to 100m\n  \u2022 Fiber for IDF\u2192MDF runs (exceeds copper limit)",
+            "key_points": [
+              "MDF = building's core network hub. IDF = floor/zone distribution point.",
+              "Horizontal cabling limit: 90m permanent link + 10m patch = 100m total (TIA-568).",
+              "Backbone/vertical cabling connects MDF to IDFs \u2014 typically fiber (exceeds 100m copper limit).",
+              "66 block (voice/legacy) vs 110 block (data) vs patch panel (modern) \u2014 exam knows all three.",
+              "Demarcation point (demarc): where ISP's responsibility ends and customer's begins (usually at entrance facility).",
+              "Smart jack (NID/NIU): ISP equipment at demarc \u2014 tests circuit from ISP side."
+            ]
+          },
+          {
+            "title": "UPS Types & Power Infrastructure",
+            "type": "table",
+            "headers": [
+              "UPS Type",
+              "How it works",
+              "Switchover time",
+              "Power quality",
+              "Cost"
+            ],
+            "rows": [
+              [
+                "Offline / Standby",
+                "Passes utility power directly; battery + inverter only switch on during outage",
+                "5\u201325 ms (brief gap)",
+                "Basic surge/spike protection only",
+                "Lowest"
+              ],
+              [
+                "Line-Interactive",
+                "Voltage regulator (AVR) adjusts output continuously; battery activates for total failure",
+                "< 4 ms",
+                "Good \u2014 handles sags and swells without battery",
+                "Medium"
+              ],
+              [
+                "Online / Double Conversion",
+                "Always runs through inverter \u2014 utility charges battery, inverter powers load 100% of time",
+                "0 ms (no transfer)",
+                "Best \u2014 clean, regulated, isolated from utility",
+                "Highest"
+              ]
+            ],
+            "key_points": [
+              "Offline UPS: basic and cheap \u2014 OK for desktops. NOT suitable for sensitive servers.",
+              "Line-Interactive: best value for small server rooms \u2014 AVR handles brownouts without depleting battery.",
+              "Online (Double Conversion): gold standard for data centers \u2014 zero transfer time, cleanest power.",
+              "UPS runtime: determined by battery capacity (Ah) vs load (W). More load = shorter runtime.",
+              "PDU (Power Distribution Unit): rack-mounted power strip. 'Smart PDU' monitors per-outlet wattage.",
+              "Generator: long-term backup power; UPS bridges the gap while generator spins up (~10-30 sec).",
+              "Redundant power paths: dual PSUs in servers + separate PDUs on separate UPS/circuits."
+            ]
+          },
+          {
+            "title": "Physical Environment & Data Center Standards",
+            "type": "concept",
+            "body": "HOT AISLE / COLD AISLE (ASHRAE standard):\n  \u2022 Server racks arranged in alternating rows facing each other\n  \u2022 Cold aisle: server fronts face each other \u2190 cold air delivered from floor/CRAC unit\n  \u2022 Hot aisle: server rears face each other \u2192 hot exhaust vented to return/ceiling\n  \u2022 Prevents hot and cold air from mixing \u2192 improves cooling efficiency\n\nRACK UNITS:\n  \u2022 1U = 1.75 inches of vertical rack space\n  \u2022 Standard rack = 42U\n  \u2022 'Half-depth' servers: 2-post rack (open frame); full-depth servers need 4-post rack\n\nENVIRONMENTAL MONITORING:\n  \u2022 Temperature: ASHRAE A2 class = 10\u00b0C\u201335\u00b0C (50\u00b0F\u201395\u00b0F) for most IT equipment\n  \u2022 Humidity: 40\u201360% RH recommended. Too low \u2192 ESD risk. Too high \u2192 condensation.\n  \u2022 Environmental sensors alert on temp/humidity out of range\n\nFIRE SUPPRESSION:\n  \u2022 NEVER water in a server room \u2014 use clean agent suppression\n  \u2022 FM-200 (HFC-227ea): fast, leaves no residue, safe for occupied rooms\n  \u2022 Halon: replaced by FM-200 (Halon depletes ozone \u2014 banned for new installations)\n  \u2022 CO\u2082: effective but displaces oxygen \u2014 evacuate before activation\n\nPHYSICAL SECURITY:\n  \u2022 Mantrap (airlock): two doors \u2014 only one opens at a time\n  \u2022 Biometric + badge: multi-factor physical access\n  \u2022 CCTV: surveillance logging for audit trails",
+            "key_points": [
+              "Hot/cold aisle containment: alternating front-to-front and back-to-back rack rows.",
+              "1U = 1.75 inches. Standard rack = 42U (~7 feet). Know this for port density questions.",
+              "ASHRAE A2 temperature range: 10\u00b0C\u201335\u00b0C \u2014 most servers today can tolerate this range.",
+              "FM-200 = safe clean agent for occupied server rooms. CO\u2082 requires evacuation.",
+              "ESD (Electrostatic Discharge): risk when humidity too low \u2014 ground strap, anti-static mats.",
+              "Raised floor: allows underfloor cable management and cold air distribution from CRAC units."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2.5,
+        "name": "The Power Standard",
+        "description": "Power over Ethernet standards, power negotiation, and cable considerations for PoE deployments.",
+        "items": [
+          {
+            "title": "PoE Standards Quick Reference",
+            "type": "table",
+            "headers": [
+              "Standard",
+              "Power",
+              "Use Case"
+            ],
+            "rows": [
+              [
+                "802.3af (Type 1)",
+                "15.4W",
+                "Basic VoIP phones, basic sensors"
+              ],
+              [
+                "802.3at (Type 2 / PoE+)",
+                "30W",
+                "PTZ cameras, high-power APs"
+              ],
+              [
+                "802.3bt (Type 3/4)",
+                "60W - 90W",
+                "HD Video units, multi-gigabit devices"
+              ]
+            ]
+          },
+          {
+            "title": "PoE Power Negotiation & Budgeting",
+            "type": "concept",
+            "body": "Power is negotiated between the Powered Device (PD) and the Power Sourcing Equipment (PSE). Management of the total power budget is critical: a switch with a limited budget must account for individual port requirements (e.g., 15.4W/30W) to avoid over-subscription."
+          },
+          {
+            "title": "Cable & Infrastructure Considerations",
+            "type": "list",
+            "key_points": [
+              "Cat5e minimum for basic 802.3af (15.4W)",
+              "Cat6 or better recommended for longer runs to minimize power loss",
+              "Bundle limits: High-wattage PoE can cause heat buildup in large cable bundles",
+              "Distance limit: Max run length is 100m; cable resistance reduces available wattage at the end of long runs"
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "zone": 3,
+    "domain": "Network Operations",
+    "flavorName": "The Operations Bastion",
+    "objectives": [
+      {
+        "id": 3.1,
+        "name": "The Watchtower",
+        "description": "SNMP, syslog, NetFlow, and network monitoring tools.",
+        "items": [
+          {
+            "title": "SNMP vs Syslog vs NetFlow",
+            "type": "table",
+            "headers": [
+              "Protocol",
+              "Data Type",
+              "Common Purpose",
+              "Typical Port"
+            ],
+            "rows": [
+              [
+                "SNMP",
+                "Management/State",
+                "Device health, status, and configuration",
+                "161 (Query), 162 (Trap)"
+              ],
+              [
+                "Syslog",
+                "System Events",
+                "Logging errors, logins, and state changes",
+                "514"
+              ],
+              [
+                "NetFlow",
+                "Traffic Flow",
+                "Volume, source/destination, and usage patterns",
+                "2055"
+              ]
+            ]
+          },
+          {
+            "title": "SNMP Trap vs Poll",
+            "type": "concept",
+            "body": "A Poll is a 'pull' mechanism: The Management Station (NMS) asks the device for information at set intervals.\n\nA Trap is a 'push' mechanism: The Device (Agent) sends an unsolicited notification to the NMS immediately when a specific condition is met."
+          },
+          {
+            "title": "SNMP Versions \u2014 v1 vs v2c vs v3",
+            "type": "table",
+            "headers": [
+              "Version",
+              "Security",
+              "Community Strings",
+              "Key Features",
+              "Use Today?"
+            ],
+            "rows": [
+              [
+                "SNMPv1",
+                "None \u2014 plaintext",
+                "Yes (public/private)",
+                "Original standard; GetRequest, SetRequest, GetNextRequest, Trap",
+                "Legacy only \u2014 insecure"
+              ],
+              [
+                "SNMPv2c",
+                "None \u2014 plaintext",
+                "Yes (same as v1)",
+                "GetBulkRequest (efficient bulk queries), Inform (acknowledged traps)",
+                "Common but insecure \u2014 community strings cleartext"
+              ],
+              [
+                "SNMPv3",
+                "Full security model",
+                "No \u2014 uses users/groups",
+                "AuthNoPriv (auth+no encrypt), AuthPriv (auth+encrypt with AES/DES), NoAuthNoPriv",
+                "Recommended \u2014 only secure version"
+              ]
+            ],
+            "key_points": [
+              "SNMPv1/v2c: community string 'public' = read-only, 'private' = read-write. Both cleartext \u2014 sniffable.",
+              "SNMPv3 AuthPriv mode: authentication (MD5/SHA) + encryption (AES/DES). Use this for production.",
+              "SNMP uses UDP 161 for queries (manager \u2192 agent), UDP 162 for traps/informs (agent \u2192 manager).",
+              "Trap = unreliable (fire-and-forget). Inform = reliable (agent retransmits until ACK).",
+              "MIB (Management Information Base): database of manageable objects on a device.",
+              "OID (Object Identifier): unique numeric address for each MIB object (e.g., 1.3.6.1.2.1.1.1 = sysDescr)."
+            ]
+          },
+          {
+            "title": "Syslog Severity Levels",
+            "type": "table",
+            "headers": [
+              "Level",
+              "Name",
+              "Meaning",
+              "Example"
+            ],
+            "rows": [
+              [
+                "0",
+                "Emergency (emerg)",
+                "System is unusable",
+                "Kernel panic, complete failure"
+              ],
+              [
+                "1",
+                "Alert",
+                "Immediate action required",
+                "Database corruption, loss of backup primary"
+              ],
+              [
+                "2",
+                "Critical",
+                "Critical conditions",
+                "Hardware failure, temperature critical"
+              ],
+              [
+                "3",
+                "Error",
+                "Error conditions",
+                "Interface down, BGP neighbor lost"
+              ],
+              [
+                "4",
+                "Warning",
+                "Warning conditions",
+                "Disk space low, config change warning"
+              ],
+              [
+                "5",
+                "Notice",
+                "Normal but significant",
+                "Interface bounced, routing table changed"
+              ],
+              [
+                "6",
+                "Informational",
+                "Informational messages",
+                "User login, config saved, service started"
+              ],
+              [
+                "7",
+                "Debug",
+                "Debug-level messages",
+                "Packet-by-packet trace, protocol state machine"
+              ]
+            ],
+            "key_points": [
+              "Mnemonic: Every Awesome Cisco Engineer Will Need Daily Biscuits (0-7).",
+              "Lower number = higher severity. 0 is worst, 7 is most verbose.",
+              "Syslog uses UDP 514 (default) or TCP 514/6514 (TLS-secured).",
+              "Syslog server (collector): centralised log aggregation \u2014 Graylog, Splunk, syslog-ng.",
+              "Severity 0-3: critical/alerts requiring immediate attention.",
+              "Production devices usually set to level 5 (Notice) or 6 (Info) \u2014 level 7 (Debug) floods logs."
+            ]
+          },
+          {
+            "title": "Network Monitoring Tools Comparison",
+            "type": "table",
+            "headers": [
+              "Tool / Protocol",
+              "What it monitors",
+              "Port/Protocol",
+              "Direction",
+              "Use Case"
+            ],
+            "rows": [
+              [
+                "SNMP",
+                "Device health: CPU, memory, interface counters, config",
+                "UDP 161/162",
+                "Poll (manager\u2192agent) or Trap (agent\u2192manager)",
+                "Device performance monitoring, alerting"
+              ],
+              [
+                "Syslog",
+                "Event messages, logs from devices",
+                "UDP 514",
+                "One-way (device \u2192 syslog server)",
+                "Centralised log management, security auditing"
+              ],
+              [
+                "NetFlow / IPFIX",
+                "Traffic flows: src/dst IP, port, protocol, bytes",
+                "UDP 2055 (NetFlow)",
+                "One-way (router \u2192 collector)",
+                "Bandwidth analysis, traffic patterns, anomaly detection"
+              ],
+              [
+                "ICMP Ping",
+                "Reachability and round-trip latency",
+                "ICMP",
+                "Request/Reply",
+                "Basic up/down monitoring, latency measurement"
+              ],
+              [
+                "RMON",
+                "Network traffic stats captured at remote devices",
+                "SNMP MIB extension",
+                "Agent-based",
+                "Detailed traffic analysis without centralised polling"
+              ],
+              [
+                "Port Mirroring (SPAN)",
+                "Full packet capture from a switch port",
+                "Ethernet (mirrored)",
+                "Copy to monitor port",
+                "Packet analysis with Wireshark; IDS sensors"
+              ]
+            ],
+            "key_points": [
+              "NetFlow = flow-level visibility (who talked to whom, how much). SNMP = device-level stats.",
+              "SPAN (Switched Port Analyzer) / port mirroring: copies traffic from source port to monitor port for analysis.",
+              "RSPAN (Remote SPAN): mirrors traffic across the network to a remote switch port.",
+              "Baseline: record normal performance metrics to compare against anomalies later.",
+              "NMS (Network Management System): software platform that uses SNMP to monitor/manage all devices.",
+              "Nagios, PRTG, SolarWinds, Zabbix \u2014 common NMS platforms."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3.2,
+        "name": "The Metrics Chamber",
+        "description": "Network performance metrics, QoS, and interface error diagnostics.",
+        "items": [
+          {
+            "title": "Network Performance Metrics",
+            "type": "table",
+            "headers": [
+              "Metric",
+              "Definition",
+              "Unit",
+              "Impact when bad"
+            ],
+            "rows": [
+              [
+                "Bandwidth",
+                "Maximum data transfer capacity of a link",
+                "Mbps / Gbps",
+                "Congestion, slow transfers"
+              ],
+              [
+                "Throughput",
+                "Actual data rate achieved (always \u2264 bandwidth)",
+                "Mbps / Gbps",
+                "Lower than expected = overhead, errors, congestion"
+              ],
+              [
+                "Latency",
+                "Time for a packet to travel from source to destination",
+                "Milliseconds (ms)",
+                "Slow response, poor VoIP/gaming quality"
+              ],
+              [
+                "Jitter",
+                "Variation in latency between consecutive packets",
+                "Milliseconds (ms)",
+                "VoIP/video choppy, packet reordering"
+              ],
+              [
+                "Packet loss",
+                "Percentage of packets that fail to reach destination",
+                "Percentage (%)",
+                "Retransmissions, poor quality, TCP slowdown"
+              ],
+              [
+                "Error rate",
+                "Percentage of corrupt/errored frames",
+                "Percentage (%)",
+                "CRC errors \u2192 retransmits \u2192 degraded performance"
+              ]
+            ],
+            "key_points": [
+              "VoIP quality thresholds: latency <150ms, jitter <30ms, packet loss <1%.",
+              "Bandwidth \u2260 throughput. Bandwidth is the pipe size; throughput is actual water flowing.",
+              "Jitter buffer: VoIP devices use a small buffer to smooth out jitter \u2014 too large = latency, too small = choppy.",
+              "Packet loss causes TCP to trigger congestion control (slow start) \u2014 dramatically reduces throughput.",
+              "Establish a BASELINE of normal metrics \u2014 anomaly detection compares current vs baseline."
+            ]
+          },
+          {
+            "title": "QoS \u2014 Differentiated Services & Queuing",
+            "type": "table",
+            "headers": [
+              "QoS Component",
+              "Layer",
+              "Value Range",
+              "Purpose / Notes"
+            ],
+            "rows": [
+              [
+                "DSCP (Differentiated Services Code Point)",
+                "Layer 3 (IP header)",
+                "0\u201363 (6 bits)",
+                "Marks IP packets for priority treatment. EF=46 (VoIP), AF classes, CS classes, BE=0 (default)"
+              ],
+              [
+                "CoS (Class of Service / 802.1p)",
+                "Layer 2 (802.1Q tag)",
+                "0\u20137 (3 bits)",
+                "VLAN-tagged frames only. 7=highest priority. Mapped to DSCP at L3 boundary."
+              ],
+              [
+                "Traffic Shaping",
+                "Outbound",
+                "Rate limiting (token bucket)",
+                "Buffers excess traffic \u2014 introduces delay but avoids drops"
+              ],
+              [
+                "Traffic Policing",
+                "Inbound or outbound",
+                "Rate limiting (drop excess)",
+                "Drops or re-marks excess traffic immediately \u2014 no buffering"
+              ],
+              [
+                "LLQ (Low Latency Queuing)",
+                "N/A",
+                "Strict priority queue",
+                "Guarantees VoIP/real-time traffic is always served first"
+              ],
+              [
+                "CBWFQ (Class-Based WFQ)",
+                "N/A",
+                "Bandwidth %",
+                "Assigns minimum bandwidth guarantee per traffic class"
+              ]
+            ],
+            "key_points": [
+              "DSCP EF (Expedited Forwarding) = 46 \u2014 used for VoIP/real-time traffic (strict priority).",
+              "DSCP BE (Best Effort) = 0 \u2014 default, no special treatment.",
+              "Shaping vs Policing: shaping queues excess (smooth, adds delay). Policing drops excess (harsh, immediate).",
+              "QoS must be configured end-to-end \u2014 a single device without QoS breaks the chain.",
+              "Voice traffic: mark at ingress (access port), trust DSCP at core, use LLQ for guaranteed forwarding."
+            ]
+          },
+          {
+            "title": "Interface Errors & Diagnostics",
+            "type": "table",
+            "headers": [
+              "Error Type",
+              "Cause",
+              "Fix"
+            ],
+            "rows": [
+              [
+                "Runts",
+                "Frames < 64 bytes \u2014 collision or malformed frames",
+                "Check for collisions, duplex mismatch, or faulty NIC"
+              ],
+              [
+                "Giants",
+                "Frames > 1518 bytes (or 1522 with 802.1Q)",
+                "Check for jumbo frame misconfiguration or MTU mismatch"
+              ],
+              [
+                "CRC errors",
+                "Corrupt frames \u2014 bad cable, connector, or interference",
+                "Replace cable, check SFP/connector, test cable with tester"
+              ],
+              [
+                "Input/Output errors",
+                "Drops due to buffer overflow or hardware issues",
+                "Check interface utilisation \u2014 possible upgrade needed"
+              ],
+              [
+                "Duplex mismatch",
+                "One end full-duplex, other half-duplex \u2192 collisions and errors",
+                "Set both ends to same duplex explicitly \u2014 disable auto-negotiate"
+              ],
+              [
+                "Flapping interface",
+                "Interface repeatedly going up/down",
+                "Check cable, SFP, remote port, or spanning tree issue"
+              ]
+            ],
+            "key_points": [
+              "Duplex mismatch: most common cause of CRC errors + late collisions on Ethernet links.",
+              "Auto-negotiate: can fail \u2014 best practice is explicit speed/duplex on server and uplink ports.",
+              "Late collisions (detected >512 bits into frame) = strong indicator of duplex mismatch.",
+              "show interface: key command to see all error counters on Cisco devices.",
+              "Runts + collisions together = typical half-duplex or duplex mismatch scenario."
+            ]
+          },
+          {
+            "title": "Traffic Shaping vs Policing \u2014 The On-Ramp Meter vs The Speed Trap",
+            "type": "concept",
+            "body": "Shaping = on-ramp metering light: holds excess traffic in a queue and releases it at a steady rate. Nothing dropped, but adds delay.\nPolicing = speed trap: excess traffic is dropped or re-marked instantly. No delay, but causes loss/retransmits.\n\nBoth use a token bucket \u2014 traffic within the bucket passes normally, traffic beyond it is queued (shaping) or dropped (policing).",
+            "key_points": [
+              "Shaping: queue + delay, no loss \u2014 used outbound toward a slower link.",
+              "Policing: drop/re-mark, no delay \u2014 used inbound to enforce a contracted rate (e.g., ISP CIR).",
+              "Shaping smooths bursts; policing protects the network from a sender exceeding its rate."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3.3,
+        "name": "The Archives",
+        "description": "Network documentation, change management, and organizational policies.",
+        "items": [
+          {
+            "title": "Network Diagram Types",
+            "type": "table",
+            "headers": [
+              "Diagram Type",
+              "What it shows",
+              "Includes",
+              "Used for"
+            ],
+            "rows": [
+              [
+                "Logical diagram",
+                "Network topology, IP addressing, VLANs, routing",
+                "IP subnets, routers, switches, VLANs, cloud symbols",
+                "Troubleshooting, capacity planning, understanding traffic flow"
+              ],
+              [
+                "Physical diagram",
+                "Actual physical layout of equipment and connections",
+                "Exact device locations, cable types, port numbers",
+                "Installation, physical troubleshooting, site audits"
+              ],
+              [
+                "Wiring / cabling diagram",
+                "Cable runs, patch panel mappings, port-to-port",
+                "Cable IDs, patch panel labels, wall jack locations",
+                "Physical cable management, moves/adds/changes"
+              ],
+              [
+                "Rack diagram",
+                "Rack unit layout \u2014 what's installed where in each rack",
+                "Device model, U position, PDU, cable management",
+                "Data center documentation, power planning"
+              ],
+              [
+                "Network baseline diagram",
+                "Traffic flows, bandwidth utilization at normal operation",
+                "Utilization percentages, top talkers",
+                "Anomaly detection, capacity planning"
+              ]
+            ],
+            "key_points": [
+              "Logical \u2260 Physical: two devices can be adjacent logically but floors apart physically.",
+              "Documentation is a living document \u2014 update after every change.",
+              "IP address management (IPAM): software or spreadsheet tracking all assigned IPs, subnets, DNS.",
+              "Out-of-date documentation is worse than no documentation \u2014 it misleads troubleshooting.",
+              "Rack diagram should include power draw (W per device) to prevent PDU/UPS overload."
+            ]
+          },
+          {
+            "title": "Change Management Process",
+            "type": "concept",
+            "body": "Change management ensures network changes are planned, reviewed, and reversible \u2014 reducing outages from uncontrolled changes.\n\nKEY STEPS:\n  1. RFC (Request for Change): document the change, reason, scope, schedule, rollback plan\n  2. CAB (Change Advisory Board): reviews and approves/rejects the RFC\n  3. Change window: scheduled maintenance period (often low-traffic hours)\n  4. Implementation: execute the change following the documented procedure\n  5. Testing: verify the change works as expected\n  6. Rollback: revert using the documented rollback plan if something breaks\n  7. Documentation update: update diagrams, IP docs, configs after successful change\n\nCHANGE TYPES:\n  \u2022 Standard change: pre-approved, low risk, recurring (e.g., adding a user)\n  \u2022 Normal change: requires RFC + CAB approval\n  \u2022 Emergency change: expedited process for critical issues (post-change documentation still required)",
+            "key_points": [
+              "Every change needs a rollback plan \u2014 know how to undo it before you start.",
+              "Change window: schedule during low-impact hours (nights/weekends for business networks).",
+              "CAB (Change Advisory Board): committee that evaluates risk and approves changes.",
+              "Emergency changes: still document after the fact \u2014 'fix first, document second'.",
+              "Configuration backups: always back up device config BEFORE making changes.",
+              "RFC must include: reason, scope, risk assessment, test plan, rollback plan, schedule."
+            ]
+          },
+          {
+            "title": "Policies and Agreements",
+            "type": "table",
+            "headers": [
+              "Policy / Agreement",
+              "Purpose",
+              "Key Points"
+            ],
+            "rows": [
+              [
+                "AUP (Acceptable Use Policy)",
+                "Defines permitted use of org network/systems",
+                "Users must sign; covers internet use, prohibited content, personal device use"
+              ],
+              [
+                "BYOD Policy",
+                "Rules for personal devices on corp network",
+                "MDM enrollment, network segmentation (guest VLAN), data containerisation"
+              ],
+              [
+                "NDA (Non-Disclosure Agreement)",
+                "Protects confidential info shared with third parties",
+                "Vendors, contractors, employees \u2014 legal agreement before access"
+              ],
+              [
+                "SLA (Service Level Agreement)",
+                "Defines service expectations between provider and customer",
+                "Uptime % (e.g., 99.9%), response time, MTTR, remedies for breach"
+              ],
+              [
+                "DLP (Data Loss Prevention)",
+                "Prevents unauthorised data exfiltration",
+                "Monitors email, USB, cloud upload for sensitive data (PII, PCI, PHI)"
+              ],
+              [
+                "MOU (Memorandum of Understanding)",
+                "Informal agreement defining roles/responsibilities",
+                "Less binding than SLA \u2014 used between internal departments or partners"
+              ]
+            ],
+            "key_points": [
+              "SLA 99.9% uptime = ~8.76 hours downtime/year. 99.99% = ~52.6 min/year. 99.999% = ~5.26 min/year.",
+              "BYOD risk: personal devices may lack corporate security controls \u2014 use network segmentation.",
+              "MDM (Mobile Device Management): enforce policies, remote wipe, containerise corp data on personal devices.",
+              "PII = Personally Identifiable Information. PHI = Protected Health Information (HIPAA). PCI = Payment Card data.",
+              "DLP can be endpoint-based (agent) or network-based (proxy/CASB)."
+            ]
+          },
+          {
+            "title": "Change Management Order \u2014 \"Rita Cooks Wonderful Indian Tacos, Daily\"",
+            "type": "mnemonic",
+            "body": "\"Rita Cooks Wonderful Indian Tacos, Daily\" = the change order:\nRita=RFC (request, scope, rollback plan) \u2192 Cooks=CAB (approves) \u2192 Wonderful=Window (maintenance time) \u2192 Indian=Implementation \u2192 Tacos=Testing \u2192 Daily=Documentation.\n\nIf Implementation/Testing fails, ROLLBACK happens before Documentation.",
+            "key_points": [
+              "Standard change = pre-approved, low-risk, skips full CAB.",
+              "Normal change = full RFC + CAB cycle (the mnemonic above).",
+              "Emergency change = fix first, document/CAB after.",
+              "Always back up config BEFORE implementing \u2014 gives rollback something to restore."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3.4,
+        "name": "The Vault",
+        "description": "High availability, RAID, NIC teaming, clustering, and redundancy design.",
+        "items": [
+          {
+            "title": "RAID Levels \u2014 Quick Reference",
+            "type": "table",
+            "headers": [
+              "RAID Level",
+              "Method",
+              "Min Disks",
+              "Fault Tolerance",
+              "Read Perf",
+              "Write Perf",
+              "Notes"
+            ],
+            "rows": [
+              [
+                "RAID 0",
+                "Striping only",
+                "2",
+                "None \u2014 any disk failure = total loss",
+                "Excellent",
+                "Excellent",
+                "Fastest but zero redundancy. Not for important data."
+              ],
+              [
+                "RAID 1",
+                "Mirroring only",
+                "2",
+                "1 disk failure",
+                "Good",
+                "Moderate",
+                "Exact copy on second disk. Usable capacity = 50%."
+              ],
+              [
+                "RAID 5",
+                "Striping + single distributed parity",
+                "3",
+                "1 disk failure",
+                "Good",
+                "Moderate (parity calc)",
+                "Most common. Usable = N-1 disks. Slow rebuild."
+              ],
+              [
+                "RAID 6",
+                "Striping + double distributed parity",
+                "4",
+                "2 disk failures",
+                "Good",
+                "Lower (2x parity)",
+                "Safer than RAID 5 for large arrays. Usable = N-2 disks."
+              ],
+              [
+                "RAID 10 (1+0)",
+                "Mirroring + Striping",
+                "4",
+                "1 disk per mirrored pair",
+                "Excellent",
+                "Good",
+                "Best performance + redundancy. Usable = 50%."
+              ]
+            ],
+            "key_points": [
+              "RAID 5: most common for file servers \u2014 balance of performance, capacity, fault tolerance. CANNOT survive 2 disk failures.",
+              "RAID 6: preferred for large drives (>2TB) where rebuild time increases second failure risk.",
+              "RAID 10: best for databases/high I/O \u2014 can lose one disk per mirrored pair (possibly multiple).",
+              "RAID 0: NEVER for production data \u2014 zero fault tolerance.",
+              "RAID is NOT a backup \u2014 it protects against drive failure, not accidental deletion, ransomware, or site disaster.",
+              "Hot spare: idle disk automatically rebuilds when a RAID member fails."
+            ]
+          },
+          {
+            "title": "High Availability Concepts",
+            "type": "table",
+            "headers": [
+              "HA Concept",
+              "Description",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Active-Active clustering",
+                "All nodes actively process traffic simultaneously \u2014 load balanced",
+                "Two web servers both serving requests; traffic split between them"
+              ],
+              [
+                "Active-Passive (failover) clustering",
+                "One node active, one on standby \u2014 standby takes over on failure",
+                "Primary DB server + standby DB; standby activates only on failure"
+              ],
+              [
+                "NIC Teaming (bonding)",
+                "Multiple NICs aggregated into one logical interface",
+                "Two 1Gbps NICs bonded = 2Gbps + redundancy; one NIC fails \u2192 other carries on"
+              ],
+              [
+                "Multipathing",
+                "Multiple physical paths to a storage device (SAN)",
+                "iSCSI with two HBAs \u2014 if one path fails, traffic uses alternate path automatically"
+              ],
+              [
+                "Diverse path / redundant links",
+                "Multiple physical routes between locations",
+                "Two ISP connections via different paths \u2014 if one fails, other carries traffic"
+              ],
+              [
+                "Graceful degradation",
+                "System continues at reduced capacity after partial failure",
+                "RAID 5 array after 1 disk failure \u2014 still operates (degraded) until disk replaced"
+              ]
+            ],
+            "key_points": [
+              "Active-Active: all nodes share load \u2192 better performance AND redundancy.",
+              "Active-Passive: standby wastes resources when idle, but simpler to configure.",
+              "NIC teaming modes: Active-Backup (failover only), LACP 802.3ad (active-active + bonding), Round-Robin.",
+              "Single point of failure (SPOF): any component whose failure takes down the system \u2014 eliminate via redundancy.",
+              "Five 9s (99.999%) availability = ~5 minutes downtime/year \u2014 requires HA at every layer.",
+              "Load balancer: distributes requests to server pool \u2014 can do health checks and remove failed servers."
+            ]
+          },
+          {
+            "title": "Parity \u2014 One Disk of Math, Not Data",
+            "type": "concept",
+            "body": "Parity = checksum (XOR) across all data disks in a stripe. Takes ~1 disk of capacity, any array size. Lose 1 disk \u2192 parity + survivors rebuild it.\n\n'Distributed' = parity rotates across all disks (no bottleneck).",
+            "key_points": [
+              "RAID 5 = 1 parity block \u2192 survives 1 disk failure.",
+              "RAID 6 = 2 parity blocks (P+Q) \u2192 survives 2 disk failures.",
+              "Rebuild reads ALL surviving disks \u2014 long rebuild = 2nd-failure risk."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3.5,
+        "name": "The Recovery Room",
+        "description": "Disaster recovery sites, backup strategies, RTO, RPO, MTTR, and MTBF.",
+        "items": [
+          {
+            "title": "Disaster Recovery Site Types",
+            "type": "table",
+            "headers": [
+              "Site Type",
+              "Equipment",
+              "Data Currency",
+              "Activation Time",
+              "Cost"
+            ],
+            "rows": [
+              [
+                "Cold site",
+                "Just space, power, cooling \u2014 NO equipment",
+                "None until restored from backup",
+                "Days to weeks",
+                "Lowest"
+              ],
+              [
+                "Warm site",
+                "Partially equipped \u2014 servers present but not fully configured",
+                "Backup tapes/cloud restore needed",
+                "Hours to days",
+                "Medium"
+              ],
+              [
+                "Hot site",
+                "Fully operational mirror \u2014 identical equipment, live data sync",
+                "Near real-time / current",
+                "Minutes to hours (or immediate)",
+                "Highest"
+              ]
+            ],
+            "key_points": [
+              "Hot site: most expensive but fastest failover \u2014 data is always current (continuous replication).",
+              "Cold site: cheapest \u2014 just floor space and power. Requires shipping equipment and full restore.",
+              "Warm site: middle ground \u2014 hardware present but needs config + data restore.",
+              "Cloud DR / DRaaS (Disaster Recovery as a Service): spin up virtual infrastructure in cloud on demand.",
+              "Geographic diversity: DR site should be far enough to avoid same regional disaster (hurricane, earthquake).",
+              "Test your DR plan regularly \u2014 an untested DR plan may fail when needed."
+            ]
+          },
+          {
+            "title": "Backup Types Comparison",
+            "type": "table",
+            "headers": [
+              "Backup Type",
+              "What it backs up",
+              "Speed (backup)",
+              "Speed (restore)",
+              "Media needed for restore"
+            ],
+            "rows": [
+              [
+                "Full backup",
+                "ALL data regardless of change flag",
+                "Slowest (backs up everything)",
+                "Fastest (single backup set)",
+                "Just the full backup"
+              ],
+              [
+                "Incremental backup",
+                "Only data changed since LAST backup (full OR incremental)",
+                "Fastest (only changes)",
+                "Slowest (need full + all incrementals in sequence)",
+                "Full backup + ALL incrementals since full"
+              ],
+              [
+                "Differential backup",
+                "All data changed since last FULL backup",
+                "Moderate (grows each day)",
+                "Fast (full + one differential)",
+                "Full backup + latest differential only"
+              ]
+            ],
+            "key_points": [
+              "Incremental: fast to back up, slow to restore (need full + every incremental in order).",
+              "Differential: slower to back up each day (grows), but only need last full + last diff to restore.",
+              "3-2-1 rule: 3 copies of data, on 2 different media types, with 1 copy offsite.",
+              "Backup window: time allowed for backup operation \u2014 incrementals fit tighter windows.",
+              "Backup rotation schemes: GFS (Grandfather-Father-Son) \u2014 daily/weekly/monthly retention tiers.",
+              "Test restores regularly \u2014 backup files that cannot be restored are worthless."
+            ]
+          },
+          {
+            "title": "RTO, RPO, MTTR, MTBF",
+            "type": "table",
+            "headers": [
+              "Metric",
+              "Full Name",
+              "Definition",
+              "Who sets it",
+              "Lower = ?"
+            ],
+            "rows": [
+              [
+                "RTO",
+                "Recovery Time Objective",
+                "Maximum acceptable time to restore service after a disaster",
+                "Business (SLA/BCP)",
+                "More expensive HA required"
+              ],
+              [
+                "RPO",
+                "Recovery Point Objective",
+                "Maximum acceptable data loss measured in time (how old can the backup be?)",
+                "Business (risk tolerance)",
+                "More frequent backups / replication needed"
+              ],
+              [
+                "MTTR",
+                "Mean Time To Repair",
+                "Average time to repair/restore a failed component",
+                "Operations team",
+                "Faster repairs \u2014 better SLA compliance"
+              ],
+              [
+                "MTBF",
+                "Mean Time Between Failures",
+                "Average time between failures of a component or system",
+                "Manufacturer / history",
+                "More reliable hardware/design"
+              ]
+            ],
+            "key_points": [
+              "RTO: 'How long can we be down?' \u2014 drives DR site choice. RTO=0 \u2192 hot site. RTO=days \u2192 cold site.",
+              "RPO: 'How much data can we lose?' \u2014 drives backup frequency. RPO=1hr \u2192 backup every hour.",
+              "RPO 4 hours + incremental every 4 hours: if disaster strikes, worst case = 4 hours of data lost.",
+              "MTBF: used to predict reliability. Higher MTBF = more reliable. Used for redundancy planning.",
+              "MTTR: drives support contract choices (4-hour hardware replacement SLA = MTTR \u2264 4 hours).",
+              "Availability = MTBF / (MTBF + MTTR) \u2014 increasing MTBF or decreasing MTTR improves availability."
+            ]
+          },
+          {
+            "title": "GFS Backup Rotation \u2014 The Family Tree of Backup Sets",
+            "type": "concept",
+            "body": "GFS (Grandfather-Father-Son) = 3-tier backup retention.\nSon = daily, kept days. Father = weekly, kept ~a month. Grandfather = monthly, kept ~a year (often offsite).\n\nKey idea: PROMOTION \u2014 the same daily job is just retained longer on certain days, not run 3x.",
+            "key_points": [
+              "Balances storage cost vs how far back you can restore.",
+              "Grandfather (monthly) tapes are best candidates for offsite/cold storage.",
+              "Works with any backup type underneath (full/incremental/differential).",
+              "Test restores from each tier \u2014 an untested grandfather tape is worthless."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "zone": 4,
+    "domain": "Network Security",
+    "flavorName": "The Security Citadel",
+    "objectives": [
+      {
+        "id": 4.1,
+        "name": "The Threat Landscape",
+        "description": "Attack types, social engineering, DDoS categories, and threat actors.",
+        "items": [
+          {
+            "title": "Attack Types \u2014 Identification & Mitigation",
+            "type": "table",
+            "headers": [
+              "Attack",
+              "How it works",
+              "Mitigation"
+            ],
+            "rows": [
+              [
+                "DoS (Denial of Service)",
+                "Single attacker floods target with traffic or exploits vulnerability to exhaust resources",
+                "Rate limiting, firewall ACLs, null routing attack source"
+              ],
+              [
+                "DDoS (Distributed DoS)",
+                "Botnet of thousands of compromised hosts floods target simultaneously",
+                "Anti-DDoS scrubbing service (Cloudflare, AWS Shield), upstream filtering"
+              ],
+              [
+                "On-path / MITM",
+                "Attacker positions between two hosts \u2014 intercepts and optionally modifies traffic",
+                "Encrypt all traffic (TLS/IPsec), certificate pinning, mutual authentication"
+              ],
+              [
+                "ARP Poisoning",
+                "Attacker sends gratuitous ARPs to map victim IPs to attacker's MAC \u2014 intercepts LAN traffic",
+                "Dynamic ARP Inspection (DAI), static ARP entries for critical hosts"
+              ],
+              [
+                "DNS Poisoning / Hijacking",
+                "Corrupt DNS cache or intercept DNS responses \u2014 redirect users to malicious sites",
+                "DNSSEC, encrypted DNS (DoH/DoT), use trusted resolvers"
+              ],
+              [
+                "Rogue DHCP",
+                "Attacker runs unauthorised DHCP server \u2014 assigns malicious default gateway/DNS",
+                "DHCP snooping \u2014 designate trusted DHCP ports only"
+              ],
+              [
+                "Rogue AP / Evil Twin",
+                "Attacker sets up fake AP with same SSID \u2014 users connect, traffic intercepted",
+                "802.1X Enterprise auth (rogue can't replicate), wireless IDS, RF monitoring"
+              ],
+              [
+                "Deauthentication attack",
+                "Attacker sends spoofed deauth frames to disconnect clients from legitimate AP",
+                "802.11w (Management Frame Protection), WPA3"
+              ],
+              [
+                "VLAN Hopping",
+                "Double-tagging or DTP exploit to jump to another VLAN",
+                "Change native VLAN, disable DTP, use dedicated unused native VLAN"
+              ],
+              [
+                "Replay attack",
+                "Attacker captures and retransmits valid authentication traffic",
+                "Session tokens, timestamps, nonces in authentication protocols"
+              ],
+              [
+                "Password Spraying",
+                "Try a few common passwords against many accounts \u2014 avoids lockout thresholds",
+                "Account lockout after N attempts, MFA, strong password policy"
+              ],
+              [
+                "Brute Force",
+                "Systematically try all possible passwords against one account",
+                "Account lockout, MFA, long complex passwords, rate limiting"
+              ],
+              [
+                "Rainbow Table",
+                "Pre-computed hash-to-plaintext lookup table for cracking password hashes",
+                "Salt passwords before hashing \u2014 salting defeats rainbow tables entirely"
+              ]
+            ],
+            "key_points": [
+              "ARP poisoning \u2192 On-path/MITM at Layer 2. Mitigation: DAI (Dynamic ARP Inspection).",
+              "DNS poisoning \u2192 redirect at Layer 7. Mitigation: DNSSEC validates DNS responses cryptographically.",
+              "Rogue DHCP \u2192 gives clients malicious gateway. Mitigation: DHCP snooping (trust only uplink port).",
+              "Evil twin vs rogue AP: rogue = unauthorised AP on your network. Evil twin = fake AP mimicking your SSID.",
+              "DDoS types: Volumetric (bandwidth flood), Protocol (SYN flood, Smurf \u2014 exploits L3/L4), Application (HTTP flood, Slowloris \u2014 L7).",
+              "Salt defeats rainbow tables \u2014 even same passwords produce different hashes per-user."
+            ]
+          },
+          {
+            "title": "Social Engineering Attacks",
+            "type": "table",
+            "headers": [
+              "Attack Type",
+              "Method",
+              "Example"
+            ],
+            "rows": [
+              [
+                "Phishing",
+                "Mass email impersonating trusted entity \u2014 generic, sent to many",
+                "Fake PayPal email asking all users to 'verify account'"
+              ],
+              [
+                "Spear Phishing",
+                "Targeted phishing \u2014 researched and personalised for specific victim",
+                "Email to CFO from 'CEO' requesting urgent wire transfer"
+              ],
+              [
+                "Whaling",
+                "Spear phishing targeting senior executives (C-suite)",
+                "Fake legal subpoena email sent to CEO"
+              ],
+              [
+                "Vishing",
+                "Voice/phone phishing \u2014 caller impersonates IT helpdesk, bank, IRS",
+                "'This is Microsoft Support \u2014 your PC is infected, give us access'"
+              ],
+              [
+                "Smishing",
+                "SMS phishing \u2014 text message with malicious link or pretexting",
+                "Text: 'Your package is held \u2014 click here to confirm delivery'"
+              ],
+              [
+                "Pretexting",
+                "Creating a fabricated scenario to extract information",
+                "Attacker pretends to be an auditor needing network credentials"
+              ],
+              [
+                "Tailgating / Piggybacking",
+                "Following an authorised person through a secured door without authenticating",
+                "Attacker carries boxes and walks in behind badge-access employee"
+              ],
+              [
+                "Baiting",
+                "Leaving infected USB drives in visible locations for victims to plug in",
+                "USB labelled 'Payroll Q4 2024' left in company car park"
+              ]
+            ],
+            "key_points": [
+              "Phishing is generic (mass). Spear phishing is targeted. Whaling targets executives specifically.",
+              "Vishing = Voice. Smishing = SMS. Phishing = Email. Know the prefix.",
+              "Social engineering exploits HUMANS, not technology \u2014 technical controls don't fully prevent it.",
+              "Key defence: security awareness training \u2014 users recognise and report attempts.",
+              "Pretexting = the story the attacker tells to justify their request for access/info.",
+              "Tailgating defence: mantrap/airlock, badge + PIN, security awareness training to challenge strangers."
+            ]
+          },
+          {
+            "title": "DDoS Attack Categories & Threat Actors",
+            "type": "table",
+            "headers": [
+              "Category",
+              "Type / Description",
+              "Example"
+            ],
+            "rows": [
+              [
+                "DDoS \u2014 Volumetric",
+                "Overwhelm bandwidth \u2014 huge traffic volume (Gbps scale)",
+                "UDP flood, ICMP flood, DNS amplification"
+              ],
+              [
+                "DDoS \u2014 Protocol",
+                "Exhaust state tables on firewalls/routers \u2014 not just bandwidth",
+                "SYN flood (half-open TCP connections), Smurf attack"
+              ],
+              [
+                "DDoS \u2014 Application (L7)",
+                "Exhaust server resources with seemingly valid requests",
+                "HTTP GET flood, Slowloris (holds connections open), DNS query flood"
+              ],
+              [
+                "Threat Actor \u2014 Nation-State",
+                "Government-sponsored, highly skilled, long-term APT campaigns",
+                "Sophisticated persistent access for espionage"
+              ],
+              [
+                "Threat Actor \u2014 Hacktivist",
+                "Ideologically motivated \u2014 embarrass or disrupt target",
+                "Anonymous DDoS on corporate/government sites"
+              ],
+              [
+                "Threat Actor \u2014 Insider",
+                "Current or former employee with legitimate access",
+                "Disgruntled employee exfiltrating data or sabotaging systems"
+              ],
+              [
+                "Threat Actor \u2014 Script Kiddie",
+                "Low skill \u2014 uses existing tools/exploits without understanding them",
+                "Runs downloaded DDoS tools against targets"
+              ],
+              [
+                "Threat Actor \u2014 Organised Crime",
+                "Financially motivated \u2014 ransomware, data theft, fraud",
+                "Ransomware gangs, credential theft operations"
+              ]
+            ],
+            "key_points": [
+              "DNS amplification: small query \u2192 large response sent to spoofed victim IP. Amplification factor up to 50x.",
+              "SYN flood: send many SYN packets without completing handshake \u2014 exhausts server's half-open connection table.",
+              "Mitigation for SYN flood: SYN cookies (server doesn't allocate state until handshake complete).",
+              "APT (Advanced Persistent Threat): long-term, stealthy compromise \u2014 often nation-state sponsored.",
+              "Insider threat: hardest to detect \u2014 has legitimate credentials. Defence: least privilege, DLP, audit logs.",
+              "Script kiddies: unsophisticated but can still cause damage with off-the-shelf tools."
+            ]
+          },
+          {
+            "title": "Threat Actor Mnemonic \u2014 \"Sneaky Hackers Inside Often Attack\"",
+            "type": "mnemonic",
+            "body": "Sneaky Hackers Inside Often Attack = the 5 threat actor types:\nScript kiddie \u2192 low skill, downloaded tools, no real motive.\nHacktivist \u2192 ideology, wants to be SEEN.\nInsider \u2192 already has access \u2014 hardest to detect.\nOrganized crime \u2192 money (ransomware, fraud).\nAPT/nation-state \u2192 patient, stealthy, long-term access.",
+            "key_points": [
+              "Hacktivist wants visibility; APT wants the opposite \u2014 long-term stealth.",
+              "Insider threats are hard to catch because the access itself isn't suspicious.",
+              "Sophistication/resourcing roughly increases left\u2192right in the mnemonic.",
+              "Quickest exam tell-apart: ideology vs money vs espionage."
+            ]
+          },
+          {
+            "title": "CIA Triad + AAA (know both trios cold)",
+            "type": "mnemonic",
+            "body": "CIA Triad \u2014 the security goals:\n  Confidentiality - only authorized eyes (encryption)\n  Integrity       - data unaltered (hashing)\n  Availability    - reachable when needed (redundancy)\n\nAAA \u2014 access control:\n  Authentication - WHO are you?  (password, MFA)\n  Authorization  - what may you DO? (permissions)\n  Accounting     - what DID you do? (logging/audit)",
+            "key_points": [
+              "Authentication = identity; Authorization = permissions. The exam mixes these on purpose.",
+              "TACACS+ encrypts the WHOLE packet and separates AuthN/AuthZ; RADIUS encrypts only the password.",
+              "Hashing protects Integrity; Encryption protects Confidentiality.",
+              "Accounting/Auditing = the logs proving who did what."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4.2,
+        "name": "The Perimeter Wall",
+        "description": "Firewalls, IDS/IPS, DMZ, network segmentation, and Zero Trust architecture.",
+        "items": [
+          {
+            "title": "Firewall Types \u2014 Full Comparison",
+            "type": "table",
+            "headers": [
+              "Firewall Type",
+              "Inspects",
+              "State Aware?",
+              "Layer",
+              "Weakness"
+            ],
+            "rows": [
+              [
+                "Packet filter (stateless)",
+                "Src/Dst IP, port, protocol per packet",
+                "No \u2014 each packet evaluated independently",
+                "L3/L4",
+                "Cannot validate return traffic; easily spoofed"
+              ],
+              [
+                "Stateful firewall",
+                "Connection state table + packet headers",
+                "Yes \u2014 tracks TCP/UDP sessions",
+                "L3/L4",
+                "Cannot inspect application payload content"
+              ],
+              [
+                "Application-layer / Proxy FW",
+                "Full application data (URL, commands)",
+                "Yes + application context",
+                "L7",
+                "Application-specific; slower; harder to scale"
+              ],
+              [
+                "Next-Gen Firewall (NGFW)",
+                "App ID, User ID, SSL decryption, IPS, threat intel",
+                "Yes + deep packet inspection",
+                "L3\u2013L7",
+                "Higher cost; SSL inspection adds latency; complex config"
+              ],
+              [
+                "WAF (Web Application Firewall)",
+                "HTTP/HTTPS \u2014 OWASP Top 10 (SQLi, XSS, CSRF)",
+                "Yes + web-app aware",
+                "L7 (web only)",
+                "Web traffic only \u2014 not general purpose"
+              ],
+              [
+                "UTM (Unified Threat Management)",
+                "FW + IPS + AV + Web filter + VPN + DLP in one box",
+                "Yes",
+                "L3\u2013L7",
+                "Single point of failure; performance impact; SMB-focused"
+              ]
+            ],
+            "key_points": [
+              "Stateless = no memory of connections. Stateful = tracks session state (syn/established/fin).",
+              "NGFW adds App-ID (identifies app regardless of port) and User-ID beyond stateful.",
+              "WAF: specifically defends web apps against SQLi, XSS, path traversal \u2014 placed in front of web servers.",
+              "UTM: one appliance for everything \u2014 cost-effective for small business but can bottleneck.",
+              "Implicit deny: firewall drops anything not explicitly permitted. Always the last rule.",
+              "DMZ: screened subnet between two firewalls \u2014 public-facing servers here (web, mail, DNS)."
+            ]
+          },
+          {
+            "title": "IDS vs IPS and Network Segmentation",
+            "type": "table",
+            "headers": [
+              "Concept",
+              "Description",
+              "Key Detail"
+            ],
+            "rows": [
+              [
+                "IDS (Intrusion Detection System)",
+                "DETECTS and ALERTS \u2014 passive, out-of-band or tap mode",
+                "Cannot block traffic. False positive = alert on legitimate traffic. No latency added."
+              ],
+              [
+                "IPS (Intrusion Prevention System)",
+                "DETECTS and BLOCKS \u2014 active, inline mode",
+                "Sits in the traffic path. False positive = drops legitimate traffic. Adds small latency."
+              ],
+              [
+                "HIDS/HIPS",
+                "Host-based IDS/IPS \u2014 agent installed on endpoint",
+                "Monitors OS calls, file changes, running processes on the host itself."
+              ],
+              [
+                "DMZ (Demilitarized Zone)",
+                "Screened subnet between untrusted internet and trusted internal network",
+                "Public-facing servers (web, email, DNS) placed here. Internet can reach DMZ; DMZ cannot initiate to internal."
+              ],
+              [
+                "Screened subnet",
+                "Synonym for DMZ \u2014 subnet accessible from both internet and internal, but restricted",
+                "Typically between two firewalls: external FW faces internet, internal FW protects LAN."
+              ],
+              [
+                "Honeypot",
+                "Decoy system designed to attract attackers \u2014 logs their techniques",
+                "No real data. Alerts admins to active intrusion attempts. Honeynets = multiple honeypots."
+              ],
+              [
+                "Jump server / Bastion host",
+                "Hardened, audited gateway to reach sensitive internal systems",
+                "Admins connect to bastion first, then SSH/RDP from there to internal servers."
+              ],
+              [
+                "Microsegmentation",
+                "Granular network segmentation \u2014 per-workload firewall policies (East-West traffic control)",
+                "Software-defined; used in data centres/cloud. Limits lateral movement if one host is compromised."
+              ]
+            ],
+            "key_points": [
+              "IDS = detect only. IPS = detect + block. IPS must be inline; IDS can be tap/span.",
+              "IPS false positive risk: blocks legitimate traffic \u2014 tune signatures carefully.",
+              "DMZ: two-firewall design \u2014 outer FW (internet\u2192DMZ), inner FW (DMZ\u2192LAN). Only DMZ servers are reachable from internet.",
+              "Honeypot: zero legitimate traffic expected \u2014 any access = suspicious. High signal-to-noise ratio for alerts.",
+              "Zero Trust: 'never trust, always verify' \u2014 no implicit trust based on network location. Every access request authenticated/authorized.",
+              "Defense in depth: multiple overlapping security layers \u2014 compromising one layer doesn't mean full compromise."
+            ]
+          },
+          {
+            "title": "The DMZ Sandwich \u2014 Two-Firewall Design",
+            "type": "concept",
+            "body": "Internet \u2192 FW1 \u2192 DMZ (web/mail/DNS servers) \u2192 FW2 \u2192 Internal LAN.\nDMZ = the filling \u2014 reachable from outside, but can't freely reach the LAN.\nFW1: only DMZ-bound traffic gets in. FW2: only specific DMZ\u2192LAN flows allowed (e.g., web server \u2192 DB on one port).",
+            "key_points": [
+              "If a DMZ server is compromised, FW2 still blocks it from roaming the LAN.",
+              "Single-firewall DMZ = a third interface/zone on one device \u2014 same logic, less redundancy.",
+              "Public-facing servers (web, mail, DNS) live in the DMZ \u2014 never the internal LAN.",
+              "Implicit deny on both firewalls \u2014 only explicitly permitted flows pass."
+            ]
+          },
+          {
+            "title": "Attack Types \u2014 fast categorization",
+            "type": "concept",
+            "body": "Group attacks by what they abuse:\n\n  Spoofing / on-path: ARP spoofing, MAC spoofing, MITM, DNS poisoning, rogue DHCP/AP\n  Denial:             DoS, DDoS, amplification/reflection\n  Social engineering: phishing, vishing, tailgating, shoulder surfing\n  Wireless:           evil twin, deauth, jamming\n  Reconnaissance:     port scan, war-driving",
+            "key_points": [
+              "ARP spoofing maps the attacker's MAC to the gateway's IP -> on-path interception.",
+              "Evil twin = rogue AP imitating a legit SSID to harvest credentials.",
+              "Amplification (DNS/NTP) turns a tiny request into a huge response aimed at the victim.",
+              "Deauth attack kicks clients off Wi-Fi - often the setup for an evil twin."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4.3,
+        "name": "The Secret Tunnels",
+        "description": "VPN technologies, IPsec modes, SSL/TLS, PKI, and cryptographic concepts.",
+        "items": [
+          {
+            "title": "VPN Types \u2014 Site-to-Site vs Remote Access",
+            "type": "table",
+            "headers": [
+              "VPN Type",
+              "Use Case",
+              "Protocol Options",
+              "Key Details"
+            ],
+            "rows": [
+              [
+                "Site-to-Site VPN",
+                "Permanently connect two office networks over internet",
+                "IPsec (most common), GRE over IPsec",
+                "Router/firewall handles VPN \u2014 transparent to end users. Always-on."
+              ],
+              [
+                "Remote Access VPN",
+                "Individual users connect to corporate network from anywhere",
+                "IPsec, SSL/TLS VPN (HTTPS port 443)",
+                "Client software on endpoint. User authenticates to connect."
+              ],
+              [
+                "SSL/TLS VPN",
+                "Remote access VPN over HTTPS (port 443)",
+                "TLS 1.2/1.3",
+                "Works through firewalls (port 443 usually open). Clientless option via browser."
+              ],
+              [
+                "IPsec VPN",
+                "Both site-to-site and remote access",
+                "IKE (key exchange) + ESP/AH",
+                "More complex setup. Better performance. Blocked by some firewalls (UDP 500/4500)."
+              ],
+              [
+                "GRE (Generic Routing Encapsulation)",
+                "Tunnels multicast/broadcast over point-to-point links",
+                "IP protocol 47",
+                "No encryption by default \u2014 combine with IPsec for security."
+              ],
+              [
+                "Split tunneling",
+                "Only corporate traffic goes through VPN \u2014 internet goes direct",
+                "VPN client config",
+                "Reduces VPN load but internet traffic bypasses corporate security controls."
+              ]
+            ],
+            "key_points": [
+              "SSL/TLS VPN advantage: uses HTTPS port 443 \u2014 rarely blocked by firewalls. Easy for remote users.",
+              "IPsec advantage: stronger performance for site-to-site. Uses UDP 500 (IKE), UDP 4500 (NAT traversal).",
+              "Full tunnel: ALL traffic through VPN (including internet) \u2014 more secure but higher load on VPN gateway.",
+              "Split tunnel: only LAN traffic through VPN \u2014 internet bypasses VPN. Security risk: endpoint not protected by corporate controls.",
+              "GRE alone = no security. GRE + IPsec = encrypted tunnel that can carry routing protocols.",
+              "Always-on VPN: endpoint is always connected to corporate network \u2014 reduces attack surface on remote devices."
+            ]
+          },
+          {
+            "title": "IPsec \u2014 Protocols, Modes, and Key Exchange",
+            "type": "table",
+            "headers": [
+              "Component",
+              "Description",
+              "Key Detail"
+            ],
+            "rows": [
+              [
+                "AH (Authentication Header)",
+                "Provides integrity + authentication \u2014 NO encryption",
+                "IP protocol 51. Verifies packet was not tampered with. Does NOT hide content."
+              ],
+              [
+                "ESP (Encapsulating Security Payload)",
+                "Provides encryption + integrity + authentication",
+                "IP protocol 50. Encrypts payload. Used in almost all deployments."
+              ],
+              [
+                "Transport mode",
+                "Encrypts payload only \u2014 original IP header preserved",
+                "Used for host-to-host VPNs. Endpoints must be VPN endpoints."
+              ],
+              [
+                "Tunnel mode",
+                "Encrypts entire original packet + adds new outer IP header",
+                "Used for network-to-network (site-to-site) VPNs. Standard for most VPNs."
+              ],
+              [
+                "IKE Phase 1 (ISAKMP SA)",
+                "Establishes secure channel for Phase 2 negotiation. Diffie-Hellman key exchange.",
+                "Creates ISAKMP SA (management tunnel). Main mode (6 msgs) or Aggressive mode (3 msgs)."
+              ],
+              [
+                "IKE Phase 2 (IPsec SA)",
+                "Negotiates the actual IPsec tunnel parameters (encryption, hashing, lifetime)",
+                "Creates IPsec SA (data tunnel). Uses PFS optionally."
+              ],
+              [
+                "PFS (Perfect Forward Secrecy)",
+                "New Diffie-Hellman exchange for each session \u2014 compromise of one key doesn't expose others",
+                "Prevents decryption of past sessions if long-term keys are later compromised."
+              ]
+            ],
+            "key_points": [
+              "AH = integrity only (no encryption). ESP = encryption + integrity. Use ESP.",
+              "Transport mode: encrypt payload only (host-to-host). Tunnel mode: encrypt entire packet (network-to-network).",
+              "IKE Phase 1 = management tunnel (authenticate peers). Phase 2 = data tunnel (IPsec SA).",
+              "UDP 500 = IKE/ISAKMP. UDP 4500 = IPsec NAT traversal (encapsulates ESP in UDP).",
+              "DH (Diffie-Hellman): allows two parties to establish shared secret over insecure channel. Basis of IKE.",
+              "PFS: use it. Without PFS, compromise of the long-term key can decrypt ALL past traffic."
+            ]
+          },
+          {
+            "title": "PKI, Certificates, and Encryption",
+            "type": "table",
+            "headers": [
+              "Term",
+              "Definition",
+              "Key Detail"
+            ],
+            "rows": [
+              [
+                "PKI (Public Key Infrastructure)",
+                "Framework for issuing, managing, and revoking digital certificates",
+                "Enables trust in public keys via chain of trust to a trusted CA."
+              ],
+              [
+                "CA (Certificate Authority)",
+                "Trusted entity that signs and issues digital certificates",
+                "Root CA \u2192 Intermediate CA \u2192 End-entity cert. Root CA self-signed."
+              ],
+              [
+                "Certificate (X.509)",
+                "Binds a public key to an identity, signed by CA",
+                "Contains: subject, issuer, public key, validity period, SAN, serial number."
+              ],
+              [
+                "CSR (Certificate Signing Request)",
+                "Request submitted to CA containing public key + identity info",
+                "CA signs the CSR \u2192 issues certificate. Private key never leaves the requester."
+              ],
+              [
+                "CRL (Certificate Revocation List)",
+                "Published list of revoked certificate serial numbers",
+                "Checked by clients to detect revoked certs. Can be stale \u2014 updated periodically."
+              ],
+              [
+                "OCSP (Online Certificate Status Protocol)",
+                "Real-time certificate revocation check",
+                "Client queries OCSP responder for cert status: good/revoked/unknown. Faster than CRL."
+              ],
+              [
+                "Symmetric encryption",
+                "Same key encrypts and decrypts \u2014 fast",
+                "AES-128/256 (block cipher). Used for bulk data encryption."
+              ],
+              [
+                "Asymmetric encryption",
+                "Public key encrypts; private key decrypts (or vice versa for signatures)",
+                "RSA, ECC. Slower. Used for key exchange, signatures, certificates."
+              ],
+              [
+                "TLS (Transport Layer Security)",
+                "Protocol securing communications \u2014 record protocol + handshake protocol",
+                "TLS 1.3 current standard. Negotiates cipher suite, exchanges keys, authenticates server (and optionally client)."
+              ]
+            ],
+            "key_points": [
+              "TLS handshake: client hello \u2192 server hello + cert \u2192 client verifies cert \u2192 key exchange \u2192 symmetric session key established.",
+              "Certificate chain: trust flows Root CA \u2192 Intermediate CA \u2192 End-entity cert. Root CA must be trusted by client.",
+              "CRL vs OCSP: CRL = list (download whole list). OCSP = per-cert query (real-time, more efficient).",
+              "OCSP stapling: server fetches OCSP response and 'staples' it to TLS handshake \u2014 client doesn't need to query OCSP separately.",
+              "AES (symmetric) for bulk data. RSA/ECDH (asymmetric) for key exchange. Hybrid approach used in TLS.",
+              "Self-signed certificate: signed by same entity that issued it \u2014 not trusted by others without explicit import."
+            ]
+          },
+          {
+            "title": "AH vs ESP \u2014 \"AH, No Hiding\"",
+            "type": "mnemonic",
+            "body": "AH (Authentication Header) = \"AH, no hiding\" \u2014 integrity + auth only, payload stays in cleartext. IP protocol 51.\nESP (Encapsulating Security Payload) = Encrypts, Seals, Protects \u2014 encryption + integrity + auth. IP protocol 50.\n\nAlmost every real deployment uses ESP.",
+            "key_points": [
+              "AH provides NO confidentiality \u2014 that's the whole mnemonic.",
+              "ESP is the one that actually encrypts the payload.",
+              "Protocol numbers: AH=51, ESP=50 \u2014 both ride directly on IP, not TCP/UDP.",
+              "Tunnel mode (whole packet) vs transport mode (payload only) applies to both."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4.4,
+        "name": "The Gatehouse",
+        "description": "AAA, RADIUS, TACACS+, 802.1X, NAC, port security, DHCP snooping, DAI, and ACLs.",
+        "items": [
+          {
+            "title": "AAA \u2014 RADIUS vs TACACS+",
+            "type": "table",
+            "headers": [
+              "Feature",
+              "RADIUS",
+              "TACACS+"
+            ],
+            "rows": [
+              [
+                "Standard",
+                "Open \u2014 RFC 2865/2866",
+                "Cisco proprietary (though widely supported)"
+              ],
+              [
+                "Transport",
+                "UDP 1812 (auth) + 1813 (acct) [legacy: 1645/1646]",
+                "TCP 49 (reliable)"
+              ],
+              [
+                "Encryption",
+                "Encrypts password only in Access-Request",
+                "Encrypts ENTIRE payload"
+              ],
+              [
+                "AAA separation",
+                "Combines Authentication + Authorization in one response",
+                "Separates Authentication, Authorization, Accounting individually"
+              ],
+              [
+                "Primary use",
+                "Network access authentication (Wi-Fi 802.1X, VPN, dial-up)",
+                "Device administration (CLI access to routers/switches)"
+              ],
+              [
+                "Accounting",
+                "Supported (session start/stop records)",
+                "Supported (per-command accounting possible)"
+              ]
+            ],
+            "key_points": [
+              "RADIUS = UDP, encrypts only password. TACACS+ = TCP, encrypts everything.",
+              "RADIUS best for network access (802.1X, VPN). TACACS+ best for device admin (SSH to router).",
+              "AAA: Authentication (who are you?), Authorization (what can you do?), Accounting (what did you do?).",
+              "RADIUS ports: UDP 1812 (auth) / 1813 (accounting). Old: 1645/1646. Know both.",
+              "TACACS+ TCP 49. TCP = reliable delivery \u2014 important for device management sessions.",
+              "EAP runs over 802.1X \u2014 RADIUS is the backend that processes EAP authentication."
+            ]
+          },
+          {
+            "title": "Layer 2 Security \u2014 DHCP Snooping, DAI, Port Security",
+            "type": "table",
+            "headers": [
+              "Feature",
+              "Attack it prevents",
+              "How it works"
+            ],
+            "rows": [
+              [
+                "DHCP Snooping",
+                "Rogue DHCP server",
+                "Designates switch ports as 'trusted' (uplink to real DHCP server) or 'untrusted' (access ports). DHCP offers on untrusted ports are dropped."
+              ],
+              [
+                "Dynamic ARP Inspection (DAI)",
+                "ARP poisoning / MITM",
+                "Uses DHCP snooping binding table to validate ARP packets. ARP replies on untrusted ports checked \u2014 invalid = dropped."
+              ],
+              [
+                "IP Source Guard",
+                "IP spoofing",
+                "Validates source IP on untrusted ports against DHCP snooping binding table. Prevents hosts from spoofing another host's IP."
+              ],
+              [
+                "Port Security",
+                "MAC flooding / unauthorised devices",
+                "Limits number of MAC addresses on an access port. Violation modes: Protect (drop), Restrict (drop + log), Shutdown (err-disable port)."
+              ],
+              [
+                "Sticky MAC",
+                "Unauthorised device connection",
+                "Port security variant \u2014 first learned MAC is stored in config automatically. Only that MAC allowed unless manually changed."
+              ],
+              [
+                "Storm Control",
+                "Broadcast/multicast storms",
+                "Rate-limits broadcast, multicast, or unicast traffic per port. Activates when threshold exceeded (drops or shuts port)."
+              ]
+            ],
+            "key_points": [
+              "DHCP snooping must be enabled BEFORE DAI \u2014 DAI relies on the DHCP snooping binding table.",
+              "Port security violation modes: Protect (silent drop), Restrict (drop + SNMP alert), Shutdown (err-disable \u2014 port goes down). Default = Shutdown.",
+              "Sticky MAC: learned dynamically but saved to running-config. Survives reboot if saved to startup-config.",
+              "DAI: all ports untrusted by default \u2014 only trunk/uplink ports should be trusted.",
+              "IP Source Guard: stops hosts from using IP addresses not assigned to them via DHCP.",
+              "Storm control: prevents a broadcast storm from taking down the entire segment \u2014 sets threshold (packets/sec or %)."
+            ]
+          },
+          {
+            "title": "ACLs and 802.1X / NAC",
+            "type": "concept",
+            "body": "ACCESS CONTROL LISTS (ACLs):\n  Standard ACL: matches SOURCE IP only. Numbered 1\u201399 or 1300\u20131999.\n  Extended ACL: matches src IP + dst IP + protocol + src/dst port. Numbered 100\u2013199 or 2000\u20132699.\n\n  PLACEMENT RULE:\n    Extended ACL \u2192 as CLOSE to SOURCE as possible (blocks traffic early)\n    Standard ACL \u2192 as CLOSE to DESTINATION as possible (only matches src IP, so must be near dest to avoid over-blocking)\n\n  ACL PROCESSING:\n    Top-down, first-match wins. Implicit deny at end = any traffic not explicitly permitted is dropped.\n    Always add explicit 'permit ip any any' at bottom if you want to allow everything else.\n\n802.1X PORT-BASED ACCESS CONTROL:\n  Supplicant (client) \u2192 Authenticator (switch/AP) \u2192 Authentication Server (RADIUS)\n  EAP (Extensible Authentication Protocol) is the framework used.\n  Port starts in unauthorised state \u2014 only 802.1X traffic allowed.\n  On RADIUS Accept: port moves to authorised state \u2014 full network access granted.\n  On RADIUS Reject: port stays blocked (or placed in guest VLAN if configured).\n\nNAC (Network Access Control):\n  Checks endpoint posture before granting network access \u2014 is antivirus up to date? Patches current? Compliant?\n  Non-compliant endpoints quarantined to remediation VLAN.",
+            "key_points": [
+              "Standard ACL near destination. Extended ACL near source.",
+              "Implicit deny: last rule in every ACL \u2014 drops anything not matched above. Often the reason traffic is blocked.",
+              "802.1X requires: supplicant (client + EAP software), authenticator (switch with 802.1X enabled), RADIUS server.",
+              "NAC = posture assessment before access. Quarantine VLAN for non-compliant hosts.",
+              "ACL numbers: standard = 1\u201399. Extended = 100\u2013199. Named ACLs also supported.",
+              "ACE (Access Control Entry): individual line in an ACL. Processed top to bottom \u2014 order matters."
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "zone": 5,
+    "domain": "Network Troubleshooting",
+    "flavorName": "The Troubleshooter's Gauntlet",
+    "objectives": [
+      {
+        "id": 5.1,
+        "name": "The Methodology",
+        "description": "CompTIA's 7-step troubleshooting process, OSI layer approaches, and problem documentation.",
+        "items": [
+          {
+            "title": "CompTIA 7-Step Troubleshooting Methodology",
+            "type": "table",
+            "headers": [
+              "Step",
+              "Action",
+              "Key Detail"
+            ],
+            "rows": [
+              [
+                "1",
+                "Identify the problem",
+                "Gather info from user, identify symptoms, duplicate the problem, question obvious changes, check logs"
+              ],
+              [
+                "2",
+                "Establish a theory of probable cause",
+                "Consider obvious causes first (OSI bottom-up or top-down, or divide & conquer)"
+              ],
+              [
+                "3",
+                "Test the theory",
+                "Confirm or deny the theory with specific tests. If confirmed \u2192 step 4. If wrong \u2192 back to step 2."
+              ],
+              [
+                "4",
+                "Establish a plan of action",
+                "Document the fix, consider impact, identify side effects, get approval if needed"
+              ],
+              [
+                "5",
+                "Implement the solution (or escalate)",
+                "Apply the fix. Escalate if beyond skill level or authority."
+              ],
+              [
+                "6",
+                "Verify full system functionality",
+                "Test that the reported problem is resolved AND that nothing else broke"
+              ],
+              [
+                "7",
+                "Document findings, actions, and outcomes",
+                "Record: problem, root cause, fix applied, lessons learned. Update documentation."
+              ]
+            ],
+            "key_points": [
+              "MEMORISE the 7 steps in order \u2014 exam questions often ask what comes next.",
+              "Step 1: ALWAYS question what has changed recently \u2014 most problems follow a change.",
+              "Step 3: if theory is wrong, go back to step 2 \u2014 do NOT skip straight to implementing a fix.",
+              "Step 6: verify the fix AND check for side effects (fixing one thing can break another).",
+              "Step 7: documentation is mandatory \u2014 not optional. Records help future troubleshooting.",
+              "Escalation happens at step 5 if the technician lacks authority or expertise to fix it."
+            ]
+          },
+          {
+            "title": "Troubleshooting Approaches",
+            "type": "table",
+            "headers": [
+              "Approach",
+              "Start point",
+              "Works best when"
+            ],
+            "rows": [
+              [
+                "Bottom-up (OSI Layer 1\u21927)",
+                "Start at Physical layer \u2014 check cables, NIC, power",
+                "Physical symptoms obvious: cable unplugged, link light off, interface errors"
+              ],
+              [
+                "Top-down (OSI Layer 7\u21921)",
+                "Start at Application layer \u2014 can the app connect?",
+                "Application-specific problem: one app broken, others work fine"
+              ],
+              [
+                "Divide & conquer",
+                "Start at Layer 3 (ping gateway, ping DNS) \u2014 split the problem",
+                "Problem location unknown \u2014 rapidly narrow scope by testing mid-stack first"
+              ],
+              [
+                "Follow the path",
+                "Trace the traffic path from source to destination step by step",
+                "Intermittent issues, routing problems, asymmetric paths"
+              ],
+              [
+                "Compare against baseline",
+                "Compare current metrics against known-good baseline",
+                "Degraded performance (not total failure) \u2014 spot what changed"
+              ],
+              [
+                "Swap components",
+                "Replace suspect component with known-good spare",
+                "Hardware suspected \u2014 quickest way to isolate NIC, cable, SFP"
+              ]
+            ],
+            "key_points": [
+              "Bottom-up: most systematic. Good for physical issues. Can be slow if problem is at Layer 7.",
+              "Divide and conquer: most efficient in practice \u2014 ping the gateway first to establish Layer 3 works.",
+              "Ping test sequence: loopback (127.0.0.1) \u2192 own IP \u2192 gateway \u2192 remote IP \u2192 DNS name.",
+              "If ping IP works but DNS name fails \u2192 DNS problem, not network connectivity.",
+              "If ping gateway fails but ping own IP works \u2192 local config issue (wrong mask, wrong gateway).",
+              "Document the approach used \u2014 helps next engineer start where you left off."
+            ]
+          },
+          {
+            "title": "The 7-Step Mnemonic \u2014 \"Ice Eaters Taste Everything In Vivid Detail\"",
+            "type": "mnemonic",
+            "body": "Ice Eaters Taste Everything In Vivid Detail = I-E-T-E-I-V-D, the 7 steps in order:\nIdentify \u2192 Establish theory \u2192 Test theory \u2192 Establish plan \u2192 Implement (or escalate) \u2192 Verify \u2192 Document.\n\nIf step 3 (Test) fails, loop back to step 2 \u2014 don't skip ahead to a fix.",
+            "key_points": [
+              "Step 3 fails \u2192 back to step 2, never jump straight to implementing.",
+              "Step 5: escalate if the fix is beyond your skill or authority.",
+              "Step 6: verify the FIX, and check nothing else broke.",
+              "Step 7: documenting is mandatory, not optional."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5.2,
+        "name": "The Cable Lab",
+        "description": "Physical layer faults, cable types, connectors, and troubleshooting tools.",
+        "items": [
+          {
+            "title": "Cable Types & Pinouts",
+            "type": "table",
+            "headers": [
+              "Cable Type",
+              "Pinout",
+              "Use Case"
+            ],
+            "rows": [
+              [
+                "Straight-through",
+                "Same standard (T568B or T568A) on BOTH ends",
+                "PC \u2192 switch, switch \u2192 router (different device types)"
+              ],
+              [
+                "Crossover",
+                "T568A on one end, T568B on other end",
+                "PC \u2192 PC, switch \u2192 switch direct (same device types). MDI/MDIX auto-negates this on modern equipment."
+              ],
+              [
+                "Rollover / Console",
+                "Pins reversed (pin 1\u21948, 2\u21947, etc.) \u2014 flat ribbon cable",
+                "Laptop serial/USB \u2192 router/switch console port for CLI management"
+              ],
+              [
+                "T568A pinout",
+                "W/G, G, W/Or, Bl, W/Bl, Or, W/Br, Br",
+                "Used in government buildings, some home installations"
+              ],
+              [
+                "T568B pinout",
+                "W/Or, Or, W/G, Bl, W/Bl, G, W/Br, Br",
+                "Most common in commercial/enterprise wiring in North America"
+              ]
+            ],
+            "key_points": [
+              "T568B is the dominant standard in enterprise \u2014 most patch panels and wall jacks use T568B.",
+              "T568A vs T568B: only orange and green pairs swap. Both are valid \u2014 just must be consistent.",
+              "Split pair: wires from different pairs twisted together \u2014 looks correct on continuity test but fails due to crosstalk. Requires proper wire map tester to detect.",
+              "MDI/MDIX auto-sensing: modern switches auto-detect cable type \u2014 crossover cables rarely needed today.",
+              "Rollover cable: pins completely reversed (1\u21948). Used ONLY for console/management access, not data.",
+              "Open circuit: wire broken \u2014 no connectivity. Short circuit: two wires touching \u2014 both fail."
+            ]
+          },
+          {
+            "title": "Physical Layer Troubleshooting Tools",
+            "type": "table",
+            "headers": [
+              "Tool",
+              "What it does",
+              "Use case"
+            ],
+            "rows": [
+              [
+                "Cable tester (continuity)",
+                "Verifies all 8 wires are connected and in correct order (wire map)",
+                "Quickly validate a patch cable or horizontal run \u2014 finds opens, shorts, reversed pairs"
+              ],
+              [
+                "Tone generator + probe (fox & hound)",
+                "Toner injects audio tone; probe detects tone to trace cable through walls/bundles",
+                "Locate which cable in a bundle goes where; trace cables with no labels"
+              ],
+              [
+                "OTDR (Optical Time Domain Reflectometer)",
+                "Sends light pulse into fiber; measures reflections to locate breaks/faults and measure distance",
+                "Fiber troubleshooting \u2014 exact location of a break, splice quality, end-to-end loss mapping"
+              ],
+              [
+                "Optical light meter / power meter",
+                "Measures optical power (dBm) at the end of a fiber run",
+                "Verify fiber meets loss budget; confirm signal strong enough for the transceiver"
+              ],
+              [
+                "Visual fault locator (VFL)",
+                "Injects visible red light into fiber \u2014 light visible at break point or bend",
+                "Quickly find breaks, tight bends, or bad connectors on short fiber runs"
+              ],
+              [
+                "Multimeter",
+                "Measures AC/DC voltage, resistance, continuity",
+                "Test power supplies, verify cable continuity, check for opens/shorts on copper"
+              ],
+              [
+                "Loopback adapter",
+                "Connects TX to RX on a port \u2014 tests the port's ability to send and receive",
+                "Verify NIC/switch port hardware works; isolate port vs cable vs device issue"
+              ],
+              [
+                "Punch-down tool (110 block)",
+                "Seats wire into IDC (Insulation Displacement Connector) on patch panels/keystones",
+                "Terminating horizontal cable runs at patch panels and wall jacks"
+              ],
+              [
+                "Spectrum analyser",
+                "Shows RF energy across frequency bands \u2014 identifies interference sources",
+                "Wireless troubleshooting \u2014 find rogue APs, microwave interference, baby monitors on 2.4GHz"
+              ]
+            ],
+            "key_points": [
+              "OTDR is the key fiber tool \u2014 finds exact location of a break (reports distance in meters/feet).",
+              "Toner probe (fox and hound): toner at one end, probe at other \u2014 traces unknown cables through walls.",
+              "Optical power meter: measures dBm. Know expected loss values for the fiber type/length.",
+              "Loopback test: if loopback passes but cable fails \u2192 cable is the problem. If loopback fails \u2192 port/NIC is the problem.",
+              "Spectrum analyser for wireless: identifies non-Wi-Fi interference (microwave = 2.4GHz broadband noise).",
+              "Cable certifier (high-end tester): not just continuity \u2014 measures attenuation, crosstalk, return loss to certify Cat6A 10GbE compliance."
+            ]
+          },
+          {
+            "title": "Common Cable Faults",
+            "type": "table",
+            "headers": [
+              "Fault",
+              "Cause",
+              "Symptom",
+              "Detection"
+            ],
+            "rows": [
+              [
+                "Open circuit",
+                "Broken conductor inside the cable or at a connector",
+                "No connectivity \u2014 link light off",
+                "Continuity tester \u2014 fail on affected pair"
+              ],
+              [
+                "Short circuit",
+                "Two conductors touching (damaged jacket, over-crimped)",
+                "No connectivity or erratic behaviour",
+                "Continuity tester \u2014 continuity between wrong pins"
+              ],
+              [
+                "Crossed/reversed pairs",
+                "Incorrect wiring \u2014 T568A one end, B other when straight needed",
+                "No link (if MDIX not supported) or works on modern switches with MDIX",
+                "Wire map tester"
+              ],
+              [
+                "Split pair",
+                "Wires from different pairs twisted together (e.g., pin 1 from pair 2)",
+                "Passes continuity test but high crosstalk \u2014 data errors at speed",
+                "Wire map tester with pair identification"
+              ],
+              [
+                "Attenuation",
+                "Signal weakens over distance \u2014 exceeding 100m or poor quality cable",
+                "Intermittent errors, reduced speed, link may drop",
+                "Cable certifier measures insertion loss"
+              ],
+              [
+                "Crosstalk (NEXT/FEXT)",
+                "Interference between adjacent pairs in same cable",
+                "High error rates, especially at Gigabit speeds",
+                "Cable certifier measures Near-End CrossTalk"
+              ],
+              [
+                "EMI / RFI interference",
+                "External electromagnetic or radio interference (motors, fluorescent lights)",
+                "CRC errors, increased collisions, intermittent outages",
+                "Move cable away from power lines; use STP (shielded)"
+              ]
+            ],
+            "key_points": [
+              "Split pairs PASS a simple continuity test (all 8 wires connected) but FAIL a wire map test \u2014 critical difference.",
+              "Attenuation: worst on long runs. Keep horizontal cable \u226490m (100m total with patch cables).",
+              "Crosstalk: reduces with proper twist density. Untwisting more than 0.5 inches at termination causes NEXT.",
+              "EMI: run data cables perpendicular to power cables when crossing; avoid running parallel and close.",
+              "Shielded cable (STP/FTP): required near high-EMI sources \u2014 requires proper grounding to be effective."
+            ]
+          },
+          {
+            "title": "dB Math \u2014 The Rule of 10s and 3s",
+            "type": "concept",
+            "body": "dB is logarithmic, but two shortcuts cover most exam math:\n\u00b110dB = \u00d710 or \u00f710 power.\n\u00b13dB = \u00d72 or \u00f72 power.\n\nExample: -13dB loss = -10dB (\u00f710) then -3dB (\u00f72) = original power \u00f720.",
+            "key_points": [
+              "+dB = gain (amp/repeater). -dB = loss (attenuation, splices, connectors).",
+              "Typical loss: ~0.3-0.5dB per connector, ~0.1-0.2dB per splice.",
+              "Power meter reads dBm \u2014 compare against the transceiver's minimum receive sensitivity.",
+              "Add up all losses (connectors + splices + fiber length) and check against the link's dB budget."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5.3,
+        "name": "The Command Post",
+        "description": "Network troubleshooting commands \u2014 ping, traceroute, nslookup, nmap, netstat, arp, ipconfig.",
+        "items": [
+          {
+            "title": "Troubleshooting Commands \u2014 Quick Reference",
+            "type": "table",
+            "headers": [
+              "Command",
+              "OS",
+              "What it does",
+              "Key output to look for"
+            ],
+            "rows": [
+              [
+                "ping",
+                "All",
+                "Tests ICMP reachability to a host; measures RTT",
+                "Reply vs Request timeout (no route/blocked/down); TTL value; RTT ms"
+              ],
+              [
+                "traceroute / tracert",
+                "Linux/macOS / Windows",
+                "Shows hop-by-hop path to destination with RTT at each hop",
+                "Where * * * appear (timeout/blocked); high RTT at specific hop; last hop before failure"
+              ],
+              [
+                "pathping",
+                "Windows",
+                "Combines ping + traceroute \u2014 shows packet loss % at each hop",
+                "Loss% column \u2014 identifies which hop drops packets"
+              ],
+              [
+                "ipconfig / ifconfig",
+                "Windows / Linux",
+                "Shows NIC IP address, subnet mask, default gateway, MAC, DNS",
+                "169.254.x.x = APIPA (no DHCP); wrong mask; missing gateway"
+              ],
+              [
+                "nslookup / dig",
+                "All / Linux+Mac",
+                "Queries DNS \u2014 resolves hostnames to IPs or looks up records",
+                "NXDOMAIN = name not found; wrong IP returned = DNS issue; which server answered"
+              ],
+              [
+                "arp -a",
+                "All",
+                "Shows ARP cache \u2014 IP-to-MAC mappings learned by the local host",
+                "Duplicate IP: two entries with same IP different MACs; wrong gateway MAC"
+              ],
+              [
+                "netstat",
+                "All",
+                "Shows active network connections, listening ports, routing table",
+                "netstat -an: open ports/connections; netstat -r: routing table"
+              ],
+              [
+                "nmap",
+                "All",
+                "Network discovery and port scanning \u2014 finds open ports, OS fingerprinting",
+                "Open/closed/filtered ports; host discovery on subnet"
+              ],
+              [
+                "route print / ip route",
+                "Windows / Linux",
+                "Displays routing table \u2014 shows all routes the OS knows",
+                "Missing default gateway; wrong next-hop; unreachable network"
+              ],
+              [
+                "show interface",
+                "Cisco IOS",
+                "Shows interface status, speed/duplex, error counters",
+                "Input errors, CRC, runts, giants; line up/protocol down vs both down"
+              ],
+              [
+                "show ip route",
+                "Cisco IOS",
+                "Shows routing table \u2014 connected, static, and dynamic routes",
+                "Missing network; wrong AD; default route (0.0.0.0/0) present or absent"
+              ],
+              [
+                "show arp",
+                "Cisco IOS",
+                "Shows ARP table on router/switch \u2014 IP-to-MAC mappings",
+                "Incomplete ARP entry; wrong MAC for a gateway IP"
+              ]
+            ],
+            "key_points": [
+              "169.254.x.x in ipconfig/ifconfig = APIPA \u2014 host failed to get a DHCP address.",
+              "ping 127.0.0.1 = loopback test. If this fails \u2192 TCP/IP stack broken on the local machine.",
+              "traceroute: * * * at a hop = that router blocks ICMP TTL-exceeded. Not always a problem \u2014 check if NEXT hop responds.",
+              "nslookup: always check which DNS server responded \u2014 client may be pointing at wrong DNS.",
+              "arp -a: if gateway MAC resolves to attacker's MAC \u2192 ARP poisoning. If incomplete \u2192 ARP failing (Layer 2 issue).",
+              "netstat -rn: routing table without DNS resolution \u2014 faster. Shows if default route (0.0.0.0) is present."
+            ]
+          },
+          {
+            "title": "netstat Connection States \u2014 Reading the Conversation",
+            "type": "concept",
+            "body": "LISTENING = a service is waiting, but not yet talking to anyone.\nESTABLISHED = an active session \u2014 both sides exchanging data.\nTIME_WAIT = connection just closed, OS holding the socket briefly to catch stray packets.\nCLOSE_WAIT = remote side closed, but THIS host hasn't closed its end \u2014 often an app bug.",
+            "key_points": [
+              "Many LISTENING ports with nothing ESTABLISHED \u2192 service up, but no clients connecting.",
+              "Lots of CLOSE_WAIT \u2192 app isn't closing sockets \u2014 possible resource leak.",
+              "TIME_WAIT pile-up under load is normal \u2014 it self-clears after the OS timeout.",
+              "netstat -an: -a = all connections/listening ports, -n = numeric (no DNS lookups)."
+            ]
+          },
+          {
+            "title": "Connectivity Decision Flow (isolate the fault)",
+            "type": "concept",
+            "body": "Work outward from the host:\n\n  ping 127.0.0.1 (loopback) fails -> TCP/IP stack broken on THIS host\n  ping own IP fails          -> NIC / driver issue\n  ping default gateway fails -> local link / switch / cabling / VLAN\n  ping remote IP fails (gw OK) -> routing / remote-side issue\n  ping by NAME fails, by IP works -> DNS problem",
+            "key_points": [
+              "Name fails + IP works = DNS. The #1 'connected but can't browse' cause.",
+              "169.254.x.x = APIPA = DHCP failed (no lease).",
+              "Reach gateway but not internet = routing / ISP / upstream issue.",
+              "traceroute shows WHERE the path dies; pathping shows packet-loss % per hop."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5.4,
+        "name": "The Signal Tower",
+        "description": "Wireless troubleshooting \u2014 interference, coverage, authentication failures, and APIPA.",
+        "items": [
+          {
+            "title": "Wireless Troubleshooting Scenarios",
+            "type": "table",
+            "headers": [
+              "Symptom",
+              "Likely Cause",
+              "Fix"
+            ],
+            "rows": [
+              [
+                "Cannot see the SSID",
+                "AP too far away; SSID broadcasting disabled; wrong frequency band (5GHz device looking for 2.4GHz)",
+                "Move closer; enable SSID broadcast; check band compatibility"
+              ],
+              [
+                "Connected but no internet (169.254.x.x)",
+                "DHCP failure \u2014 AP DHCP scope exhausted or DHCP server unreachable",
+                "Renew DHCP (ipconfig /release /renew); check DHCP server; check DHCP scope"
+              ],
+              [
+                "Intermittent drops when microwave runs",
+                "2.4GHz interference \u2014 microwave operates in 2.4GHz ISM band",
+                "Move client to 5GHz band (SSID); change AP channel to 1, 6, or 11"
+              ],
+              [
+                "Low speed despite strong signal",
+                "Co-channel interference (nearby APs on same channel); high client count; background noise",
+                "Change channel; reduce AP transmit power for smaller cells; add APs"
+              ],
+              [
+                "Authentication failure (wrong password)",
+                "PSK mismatch; case-sensitive passphrase error",
+                "Re-enter passphrase carefully; check WPA2/WPA3 mode matches"
+              ],
+              [
+                "WPA2 Enterprise auth failure",
+                "RADIUS server unreachable; wrong certificate; client EAP type mismatch",
+                "Verify RADIUS reachability; check cert validity; match EAP profile on client and server"
+              ],
+              [
+                "One AP works, others don't",
+                "CAPWAP tunnel to WLC broken; AP not getting IP from DHCP; AP not provisioned in WLC",
+                "Check WLC CAPWAP connectivity; verify AP gets DHCP; check WLC AP whitelist"
+              ],
+              [
+                "Roaming drops call mid-walk",
+                "AP cells not overlapping adequately (coverage gap)",
+                "Increase transmit power or add AP; ensure 15-20% cell overlap for roaming"
+              ]
+            ],
+            "key_points": [
+              "169.254.x.x (APIPA) on wireless = DHCP problem, not wireless problem. The wireless connected successfully.",
+              "2.4GHz interference sources: microwave ovens, Bluetooth, baby monitors, cordless phones, ZigBee devices.",
+              "Co-channel interference worse than adjacent-channel. Always use channels 1, 6, 11 on 2.4GHz.",
+              "Signal strength (dBm) vs signal quality: strong signal with high noise floor = still poor quality.",
+              "Hidden SSID: client must manually enter SSID name \u2014 provides minimal security benefit, causes connection issues.",
+              "Band steering: AP can push capable clients to 5GHz to reduce 2.4GHz congestion."
+            ]
+          },
+          {
+            "title": "Reading Wi-Fi Signal \u2014 dBm and SNR",
+            "type": "concept",
+            "body": "dBm is negative \u2014 closer to 0 is stronger:\n-30dBm = excellent (right next to the AP).\n-67dBm = usable minimum for VoIP/video.\n-80dBm or worse = unreliable, frequent retries.\n\nSNR = signal minus noise floor. Below ~20dB means low speeds even if the signal looks 'strong'.",
+            "key_points": [
+              "A strong signal (-40dBm) on a noisy channel can perform worse than a weaker, quiet one.",
+              "Roaming threshold: clients should switch APs around -67 to -70dBm, not wait for -80dBm.",
+              "RSSI scales differ by vendor \u2014 compare trends, not raw numbers, across devices.",
+              "High noise floor = more retransmits = lower throughput, even with full bars."
+            ]
+          },
+          {
+            "title": "2.4 vs 5 vs 6 GHz \u2014 the range/speed trade-off",
+            "type": "concept",
+            "body": "  2.4 GHz - longest range, best through walls, but only 3 non-overlapping\n            channels (1, 6, 11) and crowded (microwave, Bluetooth).\n  5 GHz   - many channels, far less interference, higher throughput,\n            but shorter range and weaker through walls.\n  6 GHz   - most spectrum, least congestion, shortest range (Wi-Fi 6E).\n\nMore range <-> less speed/cleaner air. Always a trade-off.",
+            "key_points": [
+              "2.4 GHz non-overlapping channels: 1, 6, 11. Memorize them.",
+              "Microwave/Bluetooth interference -> it's 2.4 GHz -> move to 5 GHz.",
+              "Co-channel interference = too many APs sharing one channel.",
+              "Far from AP / through walls -> 2.4 GHz reaches better than 5 GHz."
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5.5,
+        "name": "The Service Desk",
+        "description": "DHCP, DNS, NTP, routing, duplicate IP, and IP addressing service troubleshooting.",
+        "items": [
+          {
+            "title": "Common Network Service Issues",
+            "type": "table",
+            "headers": [
+              "Issue",
+              "Symptom",
+              "Cause",
+              "Fix"
+            ],
+            "rows": [
+              [
+                "APIPA address (169.254.x.x)",
+                "Host gets 169.254.x.x IP \u2014 cannot reach network",
+                "DHCP server unreachable, scope exhausted, or DHCP disabled",
+                "ipconfig /release /renew; check DHCP server; expand scope"
+              ],
+              [
+                "DHCP scope exhaustion",
+                "New devices cannot get IP addresses",
+                "All IPs in DHCP scope assigned; stale leases not released",
+                "Expand scope; reduce lease time; clean stale leases"
+              ],
+              [
+                "Wrong DHCP option (gateway)",
+                "Host gets IP but cannot route outside local subnet",
+                "DHCP option 3 (default gateway) misconfigured in scope",
+                "Correct gateway IP in DHCP scope options"
+              ],
+              [
+                "Wrong DHCP option (DNS)",
+                "Host gets IP and can ping IPs but cannot resolve names",
+                "DHCP option 6 (DNS server) misconfigured",
+                "Correct DNS server IP in DHCP scope options"
+              ],
+              [
+                "DNS NXDOMAIN",
+                "Hostname lookup fails \u2014 NXDOMAIN error in nslookup",
+                "DNS record doesn't exist; wrong DNS server queried; split-brain DNS issue",
+                "Add missing DNS record; verify client is querying correct DNS server"
+              ],
+              [
+                "DNS resolves wrong IP",
+                "Browser goes to wrong site; ping resolves wrong address",
+                "Stale DNS cache; DNS poisoning; wrong A record in DNS",
+                "ipconfig /flushdns; check DNS record; verify DNSSEC"
+              ],
+              [
+                "Duplicate IP address",
+                "Intermittent connectivity for one or both hosts; ARP conflicts",
+                "Two devices configured with same static IP; static IP in DHCP pool",
+                "Find and fix duplicate; exclude static IPs from DHCP pool"
+              ],
+              [
+                "Wrong default gateway",
+                "Can ping local hosts but cannot reach internet or other subnets",
+                "Default gateway IP wrong or missing in host config or DHCP scope",
+                "Fix gateway IP in host config or DHCP scope"
+              ],
+              [
+                "Wrong subnet mask",
+                "Can only reach some hosts on what appears to be the same LAN",
+                "Subnet mask set too large or too small \u2014 host computes wrong network range",
+                "Correct subnet mask; check DHCP scope mask option"
+              ],
+              [
+                "NTP time sync failure",
+                "Kerberos auth failures; certificate errors; log timestamp mismatch",
+                "NTP server unreachable; wrong NTP server IP; firewall blocks UDP 123",
+                "Fix NTP server address; open UDP 123; verify NTP hierarchy"
+              ]
+            ],
+            "key_points": [
+              "APIPA 169.254.x.x: Windows/macOS assign this when DHCP fails \u2014 means DHCP is broken, not the NIC.",
+              "ipconfig /release then /renew: forces DHCP rebind \u2014 quick fix for lease issues.",
+              "ipconfig /flushdns: clears local DNS cache \u2014 fixes stale or poisoned cached entries.",
+              "Duplicate IP: ARP conflict causes both hosts to drop off the network intermittently.",
+              "NTP failure causes Kerberos auth to fail (5-minute clock skew tolerance in Active Directory).",
+              "Wrong subnet mask: host A at 192.168.1.1/24 and host B at 192.168.1.1/25 may not communicate if mask mismatches cause incorrect network calculations."
+            ]
+          },
+          {
+            "title": "IP Addressing Diagnostic Flow",
+            "type": "concept",
+            "body": "SYSTEMATIC PING TEST SEQUENCE:\n  Step 1: ping 127.0.0.1 (loopback)\n    FAIL \u2192 TCP/IP stack is broken on local machine\n\n  Step 2: ping <own IP address>\n    FAIL \u2192 NIC driver issue or duplicate IP conflict\n\n  Step 3: ping <default gateway>\n    FAIL \u2192 check IP/mask/gateway config; check cable/switch; ARP cache\n    \u2192 'ping works but traceroute fails' often = ICMP blocked by firewall\n\n  Step 4: ping <remote IP address>\n    FAIL \u2192 routing issue between networks; check routing table (route print)\n\n  Step 5: ping <hostname / FQDN>\n    FAIL but Step 4 WORKS \u2192 DNS issue (nslookup to diagnose)\n    FAIL and Step 4 FAILS \u2192 network connectivity issue\n\nCOMMON WRONG MASK SYMPTOMS:\n  /24 instead of /25 \u2192 host thinks it's on a larger subnet, tries to ARP for hosts that are actually on another subnet\n  /25 instead of /24 \u2192 host thinks some same-LAN hosts are remote, sends to gateway instead of direct\n\nROUTING TABLE CHECK:\n  Missing default route (0.0.0.0/0) \u2192 can reach local subnet, nothing else\n  Correct route present but wrong next-hop \u2192 traffic goes to wrong place",
+            "key_points": [
+              "Loopback (127.0.0.1) ALWAYS responds if TCP/IP stack works \u2014 doesn't need a NIC.",
+              "APIPA means DHCP failed \u2014 not a DNS or firewall issue. Renew DHCP first.",
+              "Ping IP works, ping hostname fails \u2192 pure DNS issue. Check nslookup output.",
+              "Ping gateway fails \u2192 check: Is IP in same subnet as gateway? Is cable connected? ARP resolve?",
+              "route print (Windows) / ip route (Linux): default route shows as 0.0.0.0 0.0.0.0.",
+              "ipconfig /all: shows ALL NIC info including DNS servers, DHCP lease time, MAC address."
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

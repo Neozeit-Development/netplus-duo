@@ -1,0 +1,15 @@
+.caption {
+  font-size: var(--text-label);
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  line-height: 1.5;
+}
+
+.neutral {
+  color: var(--ink-300);
+}
+
+.accent {
+  color: var(--signal-red);
+}

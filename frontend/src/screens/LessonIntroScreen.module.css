@@ -1,0 +1,35 @@
+.wrap {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+}
+
+.title {
+  font-family: var(--font-display);
+  font-size: var(--text-headline);
+  color: var(--paper-white);
+}
+
+.stats {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+  font-size: var(--text-label);
+  color: var(--ink-300);
+  letter-spacing: 0.08em;
+}
+
+.copy {
+  color: var(--ink-200);
+  max-width: 40ch;
+}
+
+.waitCopy {
+  font-size: var(--text-label);
+  color: var(--signal-red);
+  letter-spacing: 0.1em;
+}
+
+.back {
+  display: block;
+}

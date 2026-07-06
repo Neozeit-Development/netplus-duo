@@ -1,0 +1,24 @@
+/* Breach+ design-canvas presentation layer for desktop review */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  position: relative;
+  min-height: 100vh;
+  min-width: var(--canvas-width, 535px);
+}
+
+@media (min-width: 768px) {
+  body {
+    padding-top: 32px;
+    padding-bottom: 72px;
+    padding-left: max(48px, calc((100vw - var(--canvas-width, 535px)) / 2));
+    padding-right: max(48px, calc((100vw - var(--canvas-width, 535px)) / 2));
+  }
+
+  .phone {
+    outline: 1px solid #1a1a1a;
+    outline-offset: 0;
+  }
+}

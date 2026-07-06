@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<title>Breach+ — Weak Area Drill</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #111; }
+.phone {
+  position: absolute;
+  width: 375px;
+  height: 812px;
+  overflow: hidden;
+  border: 1px solid #181818;
+}
+.phone-scroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+.phone-scroll::-webkit-scrollbar { display: none; }
+.row-label {
+  position: absolute;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  color: #383838;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  border-top: 1px solid #222;
+  padding-top: 9px;
+  width: 375px;
+}
+</style>
+<link rel="stylesheet" href="breach-mockup-desktop.css">
+</head>
+<body class="canvas-single" style="--canvas-width: 535px;">
+<div class="design-canvas" style="position:relative;width:535px;min-height:980px;">
+
+<!-- Canvas header -->
+<div style="position:absolute;top:44px;left:80px;font-family:'DM Sans',sans-serif;">
+  <div style="font-size:0.8125rem;font-weight:700;letter-spacing:3px;color:#555;text-transform:uppercase;">Direction D</div>
+  <div style="font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px;margin-top:4px;">Breach+</div>
+  <div style="font-size:12px;color:#888888;margin-top:4px;line-height:1.5;">Screen 07 — Weak Area Drill · Intro</div>
+</div>
+
+<div class="row-label" style="top:140px;left:80px;">Screen 07 — Weak Area Drill · Intro</div>
+
+<div class="phone" style="left:80px;top:163px;background:#000;font-family:'JetBrains Mono',monospace;">
+<div class="phone-scroll">
+
+  <!-- Status bar -->
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:12px;color:#dc3535;letter-spacing:1px;">♥♥♥♥♡</span>
+    <span style="font-size:0.8125rem;color:#3a3a3a;letter-spacing:2px;">ZONE 02 · LESSON 3</span>
+    <span style="font-size:0.875rem;color:#333;">// 🔥 13</span>
+  </div>
+
+  <!-- Mode header -->
+  <div style="padding:0 16px;border-bottom:1px solid #1a0000;background:#060000;">
+    <div style="display:flex;align-items:center;justify-content:space-between;padding:11px 0 0;">
+      <span style="font-size:0.75rem;color:#dc3535;letter-spacing:2.5px;">// DRILL MODE</span>
+      <span style="font-size:0.75rem;color:#2a2a2a;letter-spacing:2px;">← BACK</span>
+    </div>
+    <div style="padding:8px 0 14px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:62px;color:#dc3535;line-height:0.88;letter-spacing:1px;">WEAK<br>AREA<br>DRILL</div>
+      <div style="margin-top:10px;display:flex;align-items:center;gap:10px;">
+        <div style="height:1px;flex:1;background:#1a0000;position:relative;">
+          <div style="position:absolute;top:0;left:0;height:1px;width:41%;background:#dc3535;"></div>
+        </div>
+        <span style="font-size:0.75rem;color:#dc3535;letter-spacing:2px;flex-shrink:0;">ADAPTIVE · TARGETING ENABLED</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Session parameters -->
+  <div style="padding:12px 16px 10px;border-bottom:1px solid #0d0d0d;display:grid;grid-template-columns:1fr 1fr 1fr;gap:0;">
+
+    <div style="padding-right:10px;border-right:1px solid #0d0d0d;">
+      <div style="font-size:0.6875rem;color:#888888;letter-spacing:2px;margin-bottom:5px;">// QUESTIONS</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:#fff;line-height:1;letter-spacing:1px;">15</div>
+    </div>
+
+    <div style="padding:0 10px;border-right:1px solid #0d0d0d;">
+      <div style="font-size:0.6875rem;color:#888888;letter-spacing:2px;margin-bottom:5px;">// EST. TIME</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:#fff;line-height:1;letter-spacing:1px;">8<span style="font-size:18px;color:#555;">MIN</span></div>
+    </div>
+
+    <div style="padding-left:10px;">
+      <div style="font-size:0.6875rem;color:#888888;letter-spacing:2px;margin-bottom:5px;">// DIFFICULTY</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:#dc3535;line-height:1;letter-spacing:1px;">A<span style="font-size:18px;color:#dc3535;">DPT</span></div>
+    </div>
+
+  </div>
+
+  <!-- Target areas header -->
+  <div style="padding:12px 16px 8px;border-bottom:1px solid #0d0d0d;">
+    <div style="display:flex;align-items:center;justify-content:space-between;">
+      <span style="font-size:0.75rem;color:#888888;letter-spacing:2.5px;">// TARGET AREAS</span>
+      <span style="font-size:0.6875rem;color:#2a2a2a;letter-spacing:2px;">3 FLAGGED</span>
+    </div>
+  </div>
+
+  <!-- Target 01 — critical -->
+  <div style="border-bottom:1px solid #0d0d0d;background:#060000;">
+    <div style="padding:13px 16px;display:flex;align-items:stretch;gap:14px;">
+      <!-- rank + bar -->
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#dc3535;line-height:1;">01</span>
+        <div style="flex:1;width:1px;background:#1a0000;"></div>
+      </div>
+      <!-- content -->
+      <div style="flex:1;min-width:0;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px;">
+          <div>
+            <div style="font-size:0.875rem;font-weight:700;color:#e0e0e0;letter-spacing:0.5px;text-transform:uppercase;line-height:1.3;">Subnetting · CIDR</div>
+            <div style="font-size:0.75rem;color:#dc3535;letter-spacing:1.5px;margin-top:3px;">// 3 ERRORS · ZONE 02 · OBJ 2.3</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#dc3535;line-height:1;">41<span style="font-size:14px;color:#dc3535;">%</span></div>
+            <div style="font-size:0.6875rem;color:#dc3535;letter-spacing:1.5px;">ACCURACY</div>
+          </div>
+        </div>
+        <!-- accuracy bar -->
+        <div style="height:1px;background:#2a0000;position:relative;">
+          <div style="position:absolute;top:0;left:0;height:1px;width:41%;background:#dc3535;"></div>
+        </div>
+        <!-- error tags -->
+        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
+          <div style="padding:3px 7px;border:1px solid #1a0000;background:#0a0000;">
+            <span style="font-size:0.75rem;color:#dc3535;letter-spacing:1px;">CIDR→MASK CONVERSION</span>
+          </div>
+          <div style="padding:3px 7px;border:1px solid #1a0000;background:#0a0000;">
+            <span style="font-size:0.75rem;color:#dc3535;letter-spacing:1px;">HOST COUNT</span>
+          </div>
+          <div style="padding:3px 7px;border:1px solid #1a0000;background:#0a0000;">
+            <span style="font-size:0.75rem;color:#dc3535;letter-spacing:1px;">/31 EDGE CASE</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Target 02 -->
+  <div style="border-bottom:1px solid #0d0d0d;">
+    <div style="padding:13px 16px;display:flex;align-items:stretch;gap:14px;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#3a3a3a;line-height:1;">02</span>
+        <div style="flex:1;width:1px;background:#0d0d0d;"></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px;">
+          <div>
+            <div style="font-size:0.875rem;font-weight:700;color:#888;letter-spacing:0.5px;text-transform:uppercase;line-height:1.3;">VLAN Trunking</div>
+            <div style="font-size:0.75rem;color:#888;letter-spacing:1.5px;margin-top:3px;">// 2 ERRORS · ZONE 02 · OBJ 2.5</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#555;line-height:1;">60<span style="font-size:14px;color:#333;">%</span></div>
+            <div style="font-size:0.6875rem;color:#888;letter-spacing:1.5px;">ACCURACY</div>
+          </div>
+        </div>
+        <div style="height:1px;background:#0d0d0d;position:relative;">
+          <div style="position:absolute;top:0;left:0;height:1px;width:60%;background:#333;"></div>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
+          <div style="padding:3px 7px;border:1px solid #111;background:#090909;">
+            <span style="font-size:0.75rem;color:#888;letter-spacing:1px;">802.1Q TAGGING</span>
+          </div>
+          <div style="padding:3px 7px;border:1px solid #111;background:#090909;">
+            <span style="font-size:0.75rem;color:#888;letter-spacing:1px;">NATIVE VLAN</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Target 03 -->
+  <div style="border-bottom:1px solid #0d0d0d;">
+    <div style="padding:13px 16px;display:flex;align-items:stretch;gap:14px;">
+      <div style="display:flex;flex-direction:column;align-items:center;gap:4px;flex-shrink:0;">
+        <span style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:#2a2a2a;line-height:1;">03</span>
+        <div style="flex:1;width:1px;background:#0d0d0d;"></div>
+      </div>
+      <div style="flex:1;min-width:0;">
+        <div style="display:flex;align-items:flex-start;justify-content:space-between;gap:8px;margin-bottom:6px;">
+          <div>
+            <div style="font-size:0.875rem;font-weight:700;color:#666;letter-spacing:0.5px;text-transform:uppercase;line-height:1.3;">OSI Layer Mapping</div>
+            <div style="font-size:0.75rem;color:#888;letter-spacing:1.5px;margin-top:3px;">// 1 ERROR · ZONE 01 · OBJ 1.1</div>
+          </div>
+          <div style="text-align:right;flex-shrink:0;">
+            <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#888888;line-height:1;">67<span style="font-size:14px;color:#2a2a2a;">%</span></div>
+            <div style="font-size:0.6875rem;color:#888;letter-spacing:1.5px;">ACCURACY</div>
+          </div>
+        </div>
+        <div style="height:1px;background:#0d0d0d;position:relative;">
+          <div style="position:absolute;top:0;left:0;height:1px;width:67%;background:#242424;"></div>
+        </div>
+        <div style="display:flex;gap:6px;margin-top:8px;flex-wrap:wrap;">
+          <div style="padding:3px 7px;border:1px solid #111;background:#090909;">
+            <span style="font-size:0.75rem;color:#888;letter-spacing:1px;">LAYER 2 VS 3 DEVICES</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Drill logic note -->
+  <div style="padding:11px 16px;border-bottom:1px solid #0d0d0d;background:#050505;">
+    <div style="font-size:0.6875rem;color:#333;letter-spacing:2.5px;margin-bottom:7px;">// HOW THIS DRILL WORKS</div>
+    <div style="display:flex;flex-direction:column;gap:6px;">
+      <div style="display:flex;align-items:flex-start;gap:9px;">
+        <div style="width:1px;height:100%;background:#1a1a1a;flex-shrink:0;margin-top:2px;align-self:stretch;"></div>
+        <span style="font-size:0.75rem;color:#888888;letter-spacing:0.5px;line-height:1.7;text-transform:uppercase;">Questions weight toward your lowest-accuracy topics. Correct answers reduce weight; errors increase it.</span>
+      </div>
+      <div style="display:flex;align-items:flex-start;gap:9px;">
+        <div style="width:1px;height:100%;background:#1a1a1a;flex-shrink:0;margin-top:2px;align-self:stretch;"></div>
+        <span style="font-size:0.75rem;color:#888888;letter-spacing:0.5px;line-height:1.7;text-transform:uppercase;">No lives lost during drill. XP still awarded. <span style="color:#888;">+2× multiplier</span> on first-attempt corrects.</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- XP reward preview -->
+  <div style="padding:11px 16px;border-bottom:1px solid #0d0d0d;display:flex;align-items:center;justify-content:space-between;">
+    <div>
+      <div style="font-size:0.6875rem;color:#333;letter-spacing:2.5px;margin-bottom:4px;">// POTENTIAL REWARD</div>
+      <div style="font-size:0.75rem;color:#555;letter-spacing:0.5px;text-transform:uppercase;">Complete all 15 without errors</div>
+    </div>
+    <div style="text-align:right;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:32px;color:#888888;line-height:1;">+150 <span style="font-size:14px;color:#2a2a2a;">XP</span></div>
+      <div style="font-size:0.6875rem;color:#dc3535;letter-spacing:1.5px;">// PERFECT BONUS INCLUDED</div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="padding:16px 16px 0;">
+    <button style="width:100%;padding:18px;background:#dc3535;border:none;color:#fff;font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;letter-spacing:2.5px;cursor:pointer;text-transform:uppercase;">[ BEGIN DRILL → ]</button>
+  </div>
+  <div style="padding:10px 16px 24px;display:flex;align-items:center;gap:0;">
+    <button style="flex:1;padding:13px;background:transparent;border:1px solid #1a1a1a;color:#333;font-family:'JetBrains Mono',monospace;font-size:0.8125rem;font-weight:600;letter-spacing:2px;cursor:pointer;text-transform:uppercase;border-right:none;">[ REVIEW TARGETS ]</button>
+    <button style="flex:1;padding:13px;background:transparent;border:1px solid #1a1a1a;color:#333;font-family:'JetBrains Mono',monospace;font-size:0.8125rem;font-weight:600;letter-spacing:2px;cursor:pointer;text-transform:uppercase;">[ SKIP FOR NOW ]</button>
+  </div>
+
+</div><!-- phone-scroll -->
+</div><!-- phone -->
+
+</div>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="design_doc_mode" content="canvas">
+<title>Breach+ — Stats</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700;800&family=Bebas+Neue&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { background: #111; }
+.phone {
+  position: absolute;
+  width: 375px;
+  height: 812px;
+  overflow: hidden;
+  border: 1px solid #181818;
+}
+.phone-scroll {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  scrollbar-width: none;
+}
+.phone-scroll::-webkit-scrollbar { display: none; }
+.row-label {
+  position: absolute;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 9px;
+  color: #383838;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  border-top: 1px solid #222;
+  padding-top: 9px;
+  width: 375px;
+}
+</style>
+<link rel="stylesheet" href="breach-mockup-desktop.css">
+</head>
+<body class="canvas-single" style="--canvas-width: 535px;">
+<div class="design-canvas" style="position:relative;width:535px;min-height:980px;">
+
+<!-- Header -->
+<div style="position:absolute;top:44px;left:80px;font-family:'DM Sans',sans-serif;">
+  <div style="font-size:0.8125rem;font-weight:700;letter-spacing:3px;color:#555;text-transform:uppercase;">Direction D</div>
+  <div style="font-size:28px;font-weight:700;color:#fff;letter-spacing:-0.5px;margin-top:4px;">Breach+</div>
+  <div style="font-size:12px;color:#888888;margin-top:4px;line-height:1.5;">Screen 06 — Stats</div>
+</div>
+
+<!-- ══════════════════════════════════════════════════ -->
+<!-- Screen 06 — Stats                                  -->
+<!-- ══════════════════════════════════════════════════ -->
+
+<div class="row-label" style="top:140px;left:80px;">Screen 06 — Stats</div>
+
+<div class="phone" style="left:80px;top:163px;background:#000;font-family:'JetBrains Mono',monospace;">
+<div class="phone-scroll">
+
+  <!-- Status bar -->
+  <div style="padding:10px 16px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #0d0d0d;">
+    <span style="font-size:12px;color:#dc3535;letter-spacing:1px;">♥♥♥♥♡</span>
+    <span style="font-size:0.8125rem;color:#3a3a3a;letter-spacing:2px;">ZONE 02 · LESSON 3</span>
+    <span style="font-size:0.875rem;color:#333;">// 🔥 13</span>
+  </div>
+
+  <!-- Nav tabs -->
+  <div style="display:grid;grid-template-columns:1fr 1fr 1fr;border-bottom:1px solid #0d0d0d;">
+    <div style="padding:10px 0;text-align:center;border-right:1px solid #0d0d0d;">
+      <span style="font-size:0.75rem;color:#333;letter-spacing:2px;text-transform:uppercase;">LEARN</span>
+    </div>
+    <div style="padding:10px 0;text-align:center;border-right:1px solid #0d0d0d;">
+      <span style="font-size:0.75rem;color:#333;letter-spacing:2px;text-transform:uppercase;">PRACTICE</span>
+    </div>
+    <div style="padding:10px 0;text-align:center;position:relative;">
+      <span style="font-size:0.75rem;color:#dc3535;letter-spacing:2px;text-transform:uppercase;">STATS</span>
+      <div style="position:absolute;bottom:0;left:0;right:0;height:1px;background:#dc3535;"></div>
+    </div>
+  </div>
+
+  <!-- Rank hero -->
+  <div style="padding:20px 16px 0;">
+    <div style="font-size:0.75rem;color:#dc3535;letter-spacing:3px;margin-bottom:10px;">// OPERATOR RANK</div>
+    <div style="display:flex;align-items:flex-end;gap:14px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:100px;color:#fff;line-height:0.85;letter-spacing:1px;">L<span style="color:#dc3535;">04</span></div>
+      <div style="padding-bottom:8px;">
+        <div style="font-size:0.75rem;color:#555;letter-spacing:2px;margin-bottom:5px;">// NETWORK TECH II</div>
+        <div style="display:flex;align-items:center;gap:8px;">
+          <div style="flex:1;height:1px;background:#1a1a1a;position:relative;">
+            <div style="position:absolute;top:0;left:0;height:1px;width:62%;background:#dc3535;"></div>
+          </div>
+          <span style="font-size:0.75rem;color:#dc3535;letter-spacing:1px;">620 / 1000 XP</span>
+        </div>
+        <div style="font-size:0.75rem;color:#2a2a2a;letter-spacing:1.5px;margin-top:4px;">// 380 XP TO L05</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div style="height:1px;background:#dc3535;margin:16px 16px 0;"></div>
+
+  <!-- Key metrics row -->
+  <div style="padding:14px 16px 0;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:0;">
+
+    <div style="padding-right:10px;border-right:1px solid #0d0d0d;">
+      <div style="font-size:0.6875rem;color:#888888;letter-spacing:2px;margin-bottom:5px;">// TOTAL XP</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:#fff;line-height:1;letter-spacing:1px;">4<span style="font-size:18px;color:#555;">k</span>20</div>
+    </div>
+
+    <div style="padding:0 8px;border-right:1px solid #0d0d0d;">
+      <div style="font-size:0.6875rem;color:#888888;letter-spacing:2px;margin-bottom:5px;">// ACCURACY</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:#fff;line-height:1;letter-spacing:1px;">76<span style="font-size:18px;color:#555;">%</span></div>
+    </div>
+
+    <div style="padding:0 8px;border-right:1px solid #0d0d0d;">
+      <div style="font-size:0.6875rem;color:#888888;letter-spacing:2px;margin-bottom:5px;">// BEST STREAK</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:#dc3535;line-height:1;letter-spacing:1px;">21<span style="font-size:18px;color:#dc3535;">d</span></div>
+    </div>
+
+    <div style="padding-left:10px;">
+      <div style="font-size:0.6875rem;color:#888888;letter-spacing:2px;margin-bottom:5px;">// STUDIED</div>
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:38px;color:#fff;line-height:1;letter-spacing:1px;">8<span style="font-size:18px;color:#555;">h</span>4</div>
+    </div>
+
+  </div>
+
+  <!-- Divider -->
+  <div style="height:1px;background:#1a1a1a;margin:22px 16px 0;"></div>
+
+  <!-- Zone breakdown -->
+  <div style="padding:12px 16px 0;">
+    <div style="font-size:0.75rem;color:#888888;letter-spacing:2.5px;margin-bottom:11px;">// ZONE PERFORMANCE</div>
+    <div style="display:flex;flex-direction:column;gap:9px;">
+
+      <!-- Zone 01 -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#3a3a3a;line-height:1;">01</span>
+            <span style="font-size:0.75rem;color:#666;letter-spacing:1px;text-transform:uppercase;">Networking Concepts</span>
+          </div>
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-size:0.75rem;color:#888888;letter-spacing:1px;">84%</span>
+            <span style="font-size:0.75rem;color:#3aaa3a;letter-spacing:1px;">✓ DONE</span>
+          </div>
+        </div>
+        <div style="height:1px;background:#1a1a1a;position:relative;">
+          <div style="position:absolute;top:0;left:0;height:1px;width:84%;background:#3a3a3a;"></div>
+        </div>
+      </div>
+
+      <!-- Zone 02 — active -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#dc3535;line-height:1;">02</span>
+            <span style="font-size:0.75rem;color:#c0c0c0;letter-spacing:1px;text-transform:uppercase;">Network Impl.</span>
+            <span style="font-size:0.6875rem;color:#dc3535;letter-spacing:2px;">// ACTIVE</span>
+          </div>
+          <span style="font-size:0.75rem;color:#dc3535;letter-spacing:1px;">48%</span>
+        </div>
+        <div style="height:1px;background:#2a0000;position:relative;">
+          <div style="position:absolute;top:0;left:0;height:1px;width:48%;background:#dc3535;"></div>
+        </div>
+      </div>
+
+      <!-- Zone 03 -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#1a1a1a;line-height:1;">03</span>
+            <span style="font-size:0.75rem;color:#333;letter-spacing:1px;text-transform:uppercase;">Network Operations</span>
+          </div>
+          <span style="font-size:0.75rem;color:#2a2a2a;letter-spacing:1px;">LOCKED</span>
+        </div>
+        <div style="height:1px;background:#111;"></div>
+      </div>
+
+      <!-- Zone 04 -->
+      <div>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:5px;">
+          <div style="display:flex;align-items:center;gap:8px;">
+            <span style="font-family:'Bebas Neue',sans-serif;font-size:18px;color:#141414;line-height:1;">04</span>
+            <span style="font-size:0.75rem;color:#242424;letter-spacing:1px;text-transform:uppercase;">Network Security</span>
+          </div>
+          <span style="font-size:0.75rem;color:#1e1e1e;letter-spacing:1px;">LOCKED</span>
+        </div>
+        <div style="height:1px;background:#0d0d0d;"></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div style="height:1px;background:#1a1a1a;margin:22px 16px 0;"></div>
+
+  <!-- 30-day activity strip -->
+  <div style="padding:12px 16px 0;">
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;">
+      <div style="font-size:0.75rem;color:#888888;letter-spacing:2.5px;">// 30-DAY ACTIVITY</div>
+      <div style="font-size:0.75rem;color:#333;letter-spacing:1.5px;">JUN · JUL</div>
+    </div>
+    <!-- Real weekly grid (7 cols x rows) instead of one indistinguishable 30-cell row -->
+    <div style="display:grid;grid-template-columns:repeat(7,1fr);gap:3px;">
+      <div style="height:14px;background:#0d0d0d;"></div>
+      <div style="height:14px;background:#111;"></div>
+      <div style="height:14px;background:#1a1a1a;"></div>
+      <div style="height:14px;background:#0d0d0d;"></div>
+      <div style="height:14px;background:#1a1a1a;"></div>
+      <div style="height:14px;background:#1e1e1e;"></div>
+      <div style="height:14px;background:#222;"></div>
+
+      <div style="height:14px;background:#0d0d0d;"></div>
+      <div style="height:14px;background:#1e1e1e;"></div>
+      <div style="height:14px;background:#0d0d0d;"></div>
+      <div style="height:14px;background:#222;"></div>
+      <div style="height:14px;background:#282828;"></div>
+      <div style="height:14px;background:#222;"></div>
+      <div style="height:14px;background:#0d0d0d;"></div>
+
+      <div style="height:14px;background:#282828;"></div>
+      <div style="height:14px;background:#060e06;border:1px solid #1e3a1e;"></div>
+      <div style="height:14px;background:#060e06;border:1px solid #1e3a1e;"></div>
+      <div style="height:14px;background:#060e06;border:1px solid #1e3a1e;"></div>
+      <div style="height:14px;background:#060e06;border:1px solid #1e3a1e;"></div>
+      <div style="height:14px;background:#060e06;border:1px solid #1e3a1e;"></div>
+      <div style="height:14px;background:#060e06;border:1px solid #1e3a1e;"></div>
+
+      <div style="height:14px;background:#060e06;border:1px solid #1e3a1e;"></div>
+      <div style="height:14px;background:#1a0000;border:1px solid #dc3535;"></div>
+      <div style="height:14px;background:#1a0000;border:1px solid #dc3535;"></div>
+      <div style="height:14px;background:#1a0000;border:1px solid #dc3535;"></div>
+      <div style="height:14px;background:#1a0000;border:1px solid #dc3535;"></div>
+      <div style="height:14px;background:#1a0000;border:1px solid #dc3535;"></div>
+      <div style="height:14px;background:#1a0000;border:1px solid #dc3535;"></div>
+
+      <div style="height:14px;background:#1a0000;border:1px solid #dc3535;"></div>
+      <div style="height:14px;background:#dc3535;"></div>
+      <div style="grid-column:span 5;"></div>
+    </div>
+    <div style="display:flex;align-items:center;justify-content:space-between;margin-top:9px;">
+      <div style="display:flex;gap:14px;">
+        <div style="display:flex;align-items:center;gap:5px;">
+          <div style="width:10px;height:10px;background:#dc3535;"></div>
+          <span style="font-size:0.75rem;color:#7a2020;letter-spacing:1px;">ACTIVE STREAK (7D)</span>
+        </div>
+        <div style="display:flex;align-items:center;gap:5px;">
+          <div style="width:10px;height:10px;background:#060e06;border:1px solid #1e3a1e;"></div>
+          <span style="font-size:0.75rem;color:#3a7a3a;letter-spacing:1px;">STUDIED</span>
+        </div>
+      </div>
+      <div style="display:flex;align-items:center;gap:4px;">
+        <span style="font-size:0.6875rem;color:#888888;letter-spacing:1px;">LESS</span>
+        <div style="width:9px;height:9px;background:#0d0d0d;"></div>
+        <div style="width:9px;height:9px;background:#1e1e1e;"></div>
+        <div style="width:9px;height:9px;background:#333;"></div>
+        <div style="width:9px;height:9px;background:#555;"></div>
+        <span style="font-size:0.6875rem;color:#888888;letter-spacing:1px;">MORE</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Divider -->
+  <div style="height:1px;background:#1a1a1a;margin:22px 16px 0;"></div>
+
+  <!-- Weak topics -->
+  <div style="padding:12px 16px 0;">
+    <div style="font-size:0.75rem;color:#888888;letter-spacing:2.5px;margin-bottom:9px;">// DRILL TARGETS</div>
+    <div style="display:flex;flex-direction:column;gap:5px;">
+
+      <div style="background:#0a0a0a;border:1px solid #2a0000;padding:9px 12px;display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:0.8125rem;font-weight:700;color:#c0c0c0;letter-spacing:0.5px;text-transform:uppercase;">Subnetting · CIDR</div>
+          <div style="font-size:0.75rem;color:#dc3535;letter-spacing:1.5px;margin-top:2px;">// 3 ERRORS · ZONE 02</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#dc3535;line-height:1;">41<span style="font-size:12px;">%</span></div>
+          <div style="font-size:0.75rem;color:#dc3535;letter-spacing:1px;">ACC</div>
+        </div>
+      </div>
+
+      <div style="background:#0a0a0a;border:1px solid #1a1a1a;padding:9px 12px;display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:0.8125rem;font-weight:700;color:#888;letter-spacing:0.5px;text-transform:uppercase;">VLAN Trunking</div>
+          <div style="font-size:0.75rem;color:#888888;letter-spacing:1.5px;margin-top:2px;">// 2 ERRORS · ZONE 02</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#888;line-height:1;">60<span style="font-size:12px;">%</span></div>
+          <div style="font-size:0.75rem;color:#888;letter-spacing:1px;">ACC</div>
+        </div>
+      </div>
+
+      <div style="background:#0a0a0a;border:1px solid #141414;padding:9px 12px;display:flex;align-items:center;justify-content:space-between;">
+        <div>
+          <div style="font-size:0.8125rem;font-weight:700;color:#666;letter-spacing:0.5px;text-transform:uppercase;">OSI Layer Mapping</div>
+          <div style="font-size:0.75rem;color:#333;letter-spacing:1.5px;margin-top:2px;">// 1 ERROR · ZONE 01</div>
+        </div>
+        <div style="text-align:right;">
+          <div style="font-family:'Bebas Neue',sans-serif;font-size:22px;color:#888;line-height:1;">67<span style="font-size:12px;">%</span></div>
+          <div style="font-size:0.75rem;color:#888;letter-spacing:1px;">ACC</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div style="padding:14px 16px 20px;">
+    <button style="width:100%;padding:17px;background:#dc3535;border:none;color:#fff;font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:700;letter-spacing:2px;cursor:pointer;text-transform:uppercase;">[ DRILL WEAK ZONES → ]</button>
+  </div>
+
+</div><!-- phone-scroll -->
+</div>
+
+</div>
+</body>
+</html>

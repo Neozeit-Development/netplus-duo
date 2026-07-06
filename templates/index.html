@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>NetPlus Duo</title>
+<link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+<header class="app-header">
+  <div class="header-stat" id="stat-streak">🔥 <span id="streak-value">0</span></div>
+  <div class="header-stat" id="stat-hearts">
+    <span id="hearts-display">♥♥♥♥♥</span>
+  </div>
+  <div class="header-stat" id="stat-level">Level <span id="level-value">1</span></div>
+  <div class="header-stat" id="stat-xp">XP: <span id="xp-value">0</span>/<span id="xp-next-value">100</span></div>
+</header>
+
+<main id="app-root">
+
+  <!-- MAIN MENU -->
+  <section id="screen-menu" class="screen">
+    <h1 class="app-title">NetPlus Duo</h1>
+    <p class="app-subtitle">Study your way to the Network+ cert</p>
+    <div class="menu-buttons">
+      <button class="btn btn-primary btn-lg" id="btn-play">🔥 Play Daily Lesson</button>
+      <button class="btn btn-secondary btn-lg" id="btn-study">📚 Study Guide</button>
+      <button class="btn btn-secondary btn-lg" id="btn-weak">🎯 Weak Areas</button>
+      <button class="btn btn-secondary btn-lg" id="btn-exam">📝 Practice Exam</button>
+      <button class="btn btn-secondary btn-lg" id="btn-stats">📊 Stats</button>
+      <button class="btn btn-secondary btn-lg" id="btn-settings">⚙️ Settings</button>
+    </div>
+  </section>
+
+  <!-- WEAK AREAS INTRO -->
+  <section id="screen-weak-intro" class="screen hidden">
+    <h2>🎯 Weak Area Drill</h2>
+    <div class="intro-stats">
+      <p id="weak-summary-text">Loading your history...</p>
+    </div>
+    <button class="btn btn-primary btn-lg" id="btn-start-weak">Start Drill</button>
+    <button class="btn btn-text" id="btn-weak-back">Back</button>
+  </section>
+
+  <!-- STUDY GUIDE: DOMAIN LIST -->
+  <section id="screen-study-domains" class="screen hidden">
+    <h2>📚 Study Guide</h2>
+    <p class="app-subtitle">Pick a domain to review</p>
+    <div class="study-list" id="study-domains-list"></div>
+    <button class="btn btn-secondary btn-lg" id="btn-study-domains-back">Back</button>
+  </section>
+
+  <!-- STUDY GUIDE: OBJECTIVE LIST -->
+  <section id="screen-study-objectives" class="screen hidden">
+    <p class="study-breadcrumb" id="study-objectives-breadcrumb"></p>
+    <h2 id="study-objectives-title"></h2>
+    <div class="study-list" id="study-objectives-list"></div>
+    <button class="btn btn-secondary btn-lg" id="btn-study-objectives-back">Back to Domains</button>
+  </section>
+
+  <!-- STUDY GUIDE: OBJECTIVE DETAIL -->
+  <section id="screen-study-detail" class="screen hidden">
+    <p class="study-breadcrumb" id="study-detail-breadcrumb"></p>
+    <h2 id="study-detail-title"></h2>
+    <p class="app-subtitle" id="study-detail-description"></p>
+    <div class="study-items" id="study-items-list"></div>
+    <button class="btn btn-secondary btn-lg" id="btn-study-detail-back">Back to Objectives</button>
+  </section>
+
+  <!-- PRACTICE EXAM: INTRO -->
+  <section id="screen-exam-intro" class="screen hidden">
+    <h2>📝 Practice Exam</h2>
+    <div class="intro-stats">
+      <div class="intro-stat">⏱️ <span id="exam-intro-minutes">90</span> minutes</div>
+      <div class="intro-stat"><span id="exam-intro-count">90</span> questions across all 5 domains</div>
+      <div class="intro-stat">🎯 Pass mark: <span id="exam-intro-pass">80%</span> (approximate — not an official score)</div>
+      <div class="intro-stat">No hints or feedback until you submit, just like the real exam.</div>
+    </div>
+    <button class="btn btn-primary btn-lg" id="btn-start-exam">Start Exam</button>
+    <button class="btn btn-text" id="btn-exam-intro-back">Back</button>
+  </section>
+
+  <!-- PRACTICE EXAM: IN PROGRESS -->
+  <section id="screen-exam" class="screen hidden">
+    <div class="exam-topbar">
+      <div class="exam-timer" id="exam-timer">90:00</div>
+      <button class="btn btn-text" id="btn-exam-quit">Quit</button>
+    </div>
+    <div class="lesson-progress">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="exam-progress-fill"></div>
+      </div>
+    </div>
+
+    <div class="question-card" id="exam-question-card">
+      <p class="question-meta" id="exam-meta"></p>
+      <h2 class="question-text" id="exam-question-text"></h2>
+      <div class="options-grid" id="exam-options-grid"></div>
+    </div>
+
+    <div class="exam-nav">
+      <button class="btn btn-secondary btn-lg" id="btn-exam-prev">Previous</button>
+      <button class="btn btn-primary btn-lg" id="btn-exam-next">Next</button>
+    </div>
+  </section>
+
+  <!-- PRACTICE EXAM: SUMMARY -->
+  <section id="screen-exam-summary" class="screen hidden">
+    <h2 id="exam-summary-title">Exam Submitted</h2>
+    <div class="exam-result-banner" id="exam-result-banner">
+      <span class="exam-result-pct" id="exam-result-pct">0%</span>
+      <span class="exam-result-label" id="exam-result-label">PASS</span>
+    </div>
+    <div class="summary-stats">
+      <div class="summary-stat">✅ Correct: <span id="exam-summary-correct">0</span></div>
+      <div class="summary-stat">❌ Wrong: <span id="exam-summary-wrong">0</span></div>
+      <div class="summary-stat">📄 Total: <span id="exam-summary-total">0</span></div>
+    </div>
+    <h3 class="study-breadcrumb">By Domain</h3>
+    <div class="exam-domain-breakdown" id="exam-domain-breakdown"></div>
+    <button class="btn btn-primary btn-lg" id="btn-exam-summary-done">Done</button>
+  </section>
+
+  <!-- LESSON INTRO -->
+  <section id="screen-intro" class="screen hidden">
+    <h2>Ready to study?</h2>
+    <div class="intro-stats">
+      <div class="intro-stat">🔥 Streak: <span id="intro-streak">0</span> days</div>
+      <div class="intro-stat">♥ Hearts: <span id="intro-hearts">5</span>/5</div>
+      <div class="intro-stat"><span id="intro-count">10</span> questions today</div>
+    </div>
+    <button class="btn btn-primary btn-lg" id="btn-start-lesson">Start Lesson</button>
+    <button class="btn btn-text" id="btn-intro-back">Back</button>
+  </section>
+
+  <!-- LESSON / QUESTION CARD -->
+  <section id="screen-lesson" class="screen hidden">
+    <div class="lesson-progress">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progress-bar-fill"></div>
+      </div>
+    </div>
+
+    <div class="question-card" id="question-card">
+      <p class="question-meta" id="question-meta"></p>
+      <h2 class="question-text" id="question-text"></h2>
+      <div class="options-grid" id="options-grid">
+        <!-- 4 option buttons injected here -->
+      </div>
+    </div>
+
+    <div class="feedback-panel hidden" id="feedback-panel">
+      <p class="feedback-title" id="feedback-title"></p>
+      <p class="feedback-explanation" id="feedback-explanation"></p>
+      <button class="btn btn-primary btn-lg" id="btn-continue">Continue</button>
+    </div>
+  </section>
+
+  <!-- LESSON SUMMARY -->
+  <section id="screen-summary" class="screen hidden">
+    <h2 id="summary-title">Lesson Complete!</h2>
+    <div class="summary-stats">
+      <div class="summary-stat">✅ Correct: <span id="summary-correct">0</span></div>
+      <div class="summary-stat">❌ Wrong: <span id="summary-wrong">0</span></div>
+      <div class="summary-stat">⭐ XP earned: <span id="summary-xp">0</span></div>
+      <div class="summary-stat">🔥 Streak: <span id="summary-streak">0</span> days</div>
+    </div>
+    <div id="summary-levelup" class="summary-levelup hidden">🎉 Level Up! You're now Level <span id="summary-newlevel"></span></div>
+    <div id="summary-outofhearts" class="summary-outofhearts hidden">💔 Out of hearts! Come back tomorrow for more.</div>
+    <button class="btn btn-primary btn-lg" id="btn-summary-done">Done</button>
+  </section>
+
+  <!-- STATS -->
+  <section id="screen-stats" class="screen hidden">
+    <h2>📊 Your Stats</h2>
+    <div class="stats-grid">
+      <div class="stats-card"><span class="stats-num" id="stats-streak">0</span><span class="stats-label">Current Streak</span></div>
+      <div class="stats-card"><span class="stats-num" id="stats-longest">0</span><span class="stats-label">Longest Streak</span></div>
+      <div class="stats-card"><span class="stats-num" id="stats-level">1</span><span class="stats-label">Level</span></div>
+      <div class="stats-card"><span class="stats-num" id="stats-xp">0</span><span class="stats-label">Total XP</span></div>
+      <div class="stats-card"><span class="stats-num" id="stats-hearts">5</span><span class="stats-label">Hearts</span></div>
+      <div class="stats-card"><span class="stats-num" id="stats-reviews">0</span><span class="stats-label">Cards in Review</span></div>
+    </div>
+    <button class="btn btn-secondary btn-lg" id="btn-stats-back">Back</button>
+  </section>
+
+  <!-- SETTINGS -->
+  <section id="screen-settings" class="screen hidden">
+    <h2>⚙️ Settings</h2>
+    <div class="settings-list">
+      <label class="settings-row">
+        <span>Username</span>
+        <input type="text" id="settings-username" placeholder="Your name">
+      </label>
+      <button class="btn btn-danger btn-lg" id="btn-reset-progress">Reset All Progress</button>
+    </div>
+    <button class="btn btn-secondary btn-lg" id="btn-settings-back">Back</button>
+  </section>
+
+</main>
+
+<script src="/static/questions.js"></script>
+<script src="/static/study_content.js"></script>
+<script src="/static/app.js"></script>
+</body>
+</html>
