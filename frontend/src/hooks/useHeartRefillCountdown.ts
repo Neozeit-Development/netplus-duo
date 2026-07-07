@@ -10,7 +10,7 @@ export function useHeartRefillCountdown(state: GameState): string {
     setLabel(heartRefillLabel(state));
     const id = setInterval(() => setLabel(heartRefillLabel(state)), 60_000);
     return () => clearInterval(id);
-  }, [state.hearts, state.last_heart_refill_at, state.last_heart_refill_date]);
+  }, [state]);
 
   return label;
 }

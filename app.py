@@ -1,30 +1,29 @@
-"""Flask backend for NetPlus Duo. Serves the SPA and the questions API."""
-import json
-import re
+"""Flask app for NetPlus Duo — serves the built React SPA."""
 from pathlib import Path
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, send_from_directory
 
 BASE_DIR = Path(__file__).resolve().parent
-QUESTIONS_JS_PATH = BASE_DIR / "static" / "questions.js"
+DIST_DIR = BASE_DIR / "frontend" / "dist"
 
-app = Flask(__name__)
-
-
-def load_questions():
-    js_source = QUESTIONS_JS_PATH.read_text()
-    match = re.search(r"const QUESTIONS = (.*);\s*$", js_source, re.DOTALL)
-    return json.loads(match.group(1))
+app = Flask(__name__, static_folder=None)
 
 
-@app.route("/")
-def index():
-    return render_template("index.html")
+@app.route("/", defaults={"path": ""})
+@app.route("/<path:path>")
+def serve(path: str):
+    """Serve built assets, or index.html for client-side routes."""
+    if path and (DIST_DIR / path).is_file():
+        return send_from_directory(DIST_DIR, path)
 
-
-@app.route("/api/questions")
-def api_questions():
-    return jsonify(load_questions())
+    index = DIST_DIR / "index.html"
+    if not index.is_file():
+        return (
+            "Frontend not built. Run: cd frontend && npm ci && npm run build",
+            503,
+            {"Content-Type": "text/plain"},
+        )
+    return send_from_directory(DIST_DIR, "index.html")
 
 
 if __name__ == "__main__":

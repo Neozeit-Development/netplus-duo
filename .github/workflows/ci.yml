@@ -28,7 +28,7 @@ jobs:
         working-directory: frontend
 
   lint-test-build:
-    name: Lint, test, build
+    name: Lint, test, build, Flask smoke
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -45,3 +45,19 @@ jobs:
         working-directory: frontend
       - run: npm run build
         working-directory: frontend
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - run: pip install -r requirements.txt
+      - name: Smoke test Flask serves the SPA
+        run: |
+          python3 -c "
+          from app import app, DIST_DIR
+          assert (DIST_DIR / 'index.html').is_file(), 'dist/index.html missing after build'
+          client = app.test_client()
+          r = client.get('/')
+          assert r.status_code == 200, r.status_code
+          assert b'root' in r.data or b'NetPlus' in r.data
+          r = client.get('/lesson/intro')
+          assert r.status_code == 200, r.status_code
+          "
